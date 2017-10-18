@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="../js/echarts.js"></script>
+</head>
+
+<body>
+
+<div id="chanpin" style="width:270px; height:250px"></div>
+        
+        <div>
+            <script type="text/javascript" language="javascript">
+            var myChart = echarts.init(document.getElementById('chanpin'));
+   function fetchData(cb) {
+    // 通过 setTimeout 模拟异步加载
+    setInterval(function () {
+        cb({
+           
+        });
+    }, 1000);
+}
+
+// 初始 option
+option = {
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 50, 20]
+    }]
+};
+
+var data = { 
+name: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+value: [5, 20, 36, 30, 50, 20]}
+
+fetchData(function () {
+    myChart.setOption({
+        xAxis: {
+            data: data.name
+        },
+        series: [{
+            // 根据名字对应到相应的系列
+            name: '销量',
+            data: data.value
+        }]
+    });
+	
+});
+
+myChart.setOption(option);
+
+
+
+
+
+
+    
+    
+            
+            </script>
+        
+        </div>
+
+
+</body>
+</html>

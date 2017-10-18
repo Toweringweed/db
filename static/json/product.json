@@ -1,0 +1,78 @@
+{
+    "jinJian":[
+        {
+            "AREA":"选址阶段",
+            "LANDNUM":900
+        },
+        {
+            "AREA":"用地阶段",
+            "LANDNUM":475
+        },
+        {
+            "AREA":"设计方案",
+            "LANDNUM":475
+        },
+{
+            "AREA":"工程规划",
+            "LANDNUM":900
+        },
+{
+            "AREA":"施工许可",
+            "LANDNUM":475
+        },
+{
+            "AREA":"销售许可",
+            "LANDNUM":475
+        },
+{
+            "AREA":"规划验收",
+            "LANDNUM":475
+        },
+{
+            "AREA":"综合验收",
+            "LANDNUM":800
+        },
+{
+            "AREA":"档案验收",
+            "LANDNUM":475
+        }
+    ],
+"banJie":[
+        {
+            "AREA":"选址阶段",
+            "LANDNUM":20
+        },
+        {
+            "AREA":"用地阶段",
+            "LANDNUM":900
+        },
+        {
+            "AREA":"设计方案",
+            "LANDNUM":352
+        },
+{
+            "AREA":"工程规划",
+            "LANDNUM":352
+        },
+{
+            "AREA":"施工许可",
+            "LANDNUM":352
+        },
+{
+            "AREA":"销售许可",
+            "LANDNUM":352
+        },
+{
+            "AREA":"规划验收",
+            "LANDNUM":352
+        },
+{
+            "AREA":"综合验收",
+            "LANDNUM":352
+        },
+{
+            "AREA":"档案验收",
+            "LANDNUM":352
+        }
+    ]
+}

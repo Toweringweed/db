@@ -1,0 +1,146 @@
+<div>
+    	<script type="text/javascript">
+			var myChart = echarts.init(document.getElementById('loudou'));
+			
+			option = {
+    title: {
+        text: '',
+        
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{b} : {c}%"
+    },
+
+    series: [
+        {
+            name: '',
+            type: 'funnel',
+            left: '10%',
+            width: '80%',
+            min: -50,
+            max: 100,
+            label: {
+                normal: {
+                    show: false
+                    
+                },
+                emphasis: {
+                    position:'inside',
+                    formatter: '{b}: {c}%'
+                }
+            },
+
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    opacity: 0.7
+                }
+            },
+             data: [
+                {value: 97.2, name: '黑名单', itemStyle: {
+                        normal: {
+                            color: '#eacf02'
+                        }
+            },},
+                {value: 92.8, name: '反欺诈', itemStyle: {
+                        normal: {
+                            color: '#6c890b'
+                        }
+            },},
+                {value: 87.6, name: '三方校验',
+                    itemStyle: {
+                        normal: {
+                            color: '#abc327'
+                        }
+            },
+                },
+                {value: 59.4, name: '智能评级', itemStyle: {
+                        normal: {
+                            color: '#dfb5b7'
+                        }
+            },},
+                {value: 51.2, name: '人工审核', itemStyle: {
+                        normal: {
+                            color: '#7f1874'
+                        }
+            },}
+               
+            ]
+        },
+        {
+            name: '',
+            type: 'funnel',
+            left: '15%',
+            width: '70%',
+            maxSize: '80%',
+			min: -50,
+            max: 100,
+			
+            label: {
+                normal: {
+                    position: 'inside',
+                    formatter: '{b}:  {c}%',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                emphasis: {
+                    position:'inside',
+                    formatter: '{b}: {c}%'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    opacity: 0.9,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }
+            },
+            data: [
+                {value: 97.2, name: '黑名单', itemStyle: {
+                        normal: {
+                            color: '#eacf02'
+                        }
+            },},
+                {value: 92.8, name: '反欺诈', itemStyle: {
+                        normal: {
+                            color: '#6c890b'
+                        }
+            },},
+                {value: 87.6, name: '三方校验',
+                    itemStyle: {
+                        normal: {
+                            color: '#abc327'
+                        }
+            },
+                },
+                {value: 59.4, name: '智能评级', itemStyle: {
+                        normal: {
+                            color: '#dfb5b7'
+                        }
+            },},
+                {value: 51.2, name: '人工审核', itemStyle: {
+                        normal: {
+                            color: '#7f1874'
+                        }
+            },}
+               
+               
+            ]
+        }
+    ]
+};
+
+
+
+
+			myChart.setOption(option);
+		
+        
+        </script>
+    </div>

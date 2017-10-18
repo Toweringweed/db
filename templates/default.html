@@ -1,0 +1,2104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>红上信贷数据中心</title>
+
+    {% load staticfiles %}
+    <link type="text/css" href="{% static 'css/layout.css' %}" rel="stylesheet" />
+
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/china.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/city.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+
+    <link type="text/css" href="../visual/static/css/layout.css" rel="stylesheet" />
+    <link type="text/css" href="/static/css/layout.css" rel="stylesheet" />
+
+
+    <script type="text/javascript" language="javascript">
+
+        function ajax_citymap(url) {
+
+            var data = [];
+
+            var convertData = function (data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var geoCoord = geoCoordMap[data[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value)
+                        });
+                    }
+                }
+                return res;
+            };
+
+            var series = [];
+            var series2 = [];
+
+            $.ajax({
+                type: 'get',
+                url: url,//请求数据的地址
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    $.each(result.province, function (index, item) {
+
+                        series.push(item);
+                    });
+                    $.each(result.city, function (index, item) {
+                        series2.push(item);
+                    });
+
+                    data1 = series;
+                    data2 = convertData(series2)
+                    data3 = convertData(series2.sort(function (a, b) {
+                        return b.value - a.value;
+                    }).slice(0, 6));
+
+                    myChart_map.hideLoading();    //隐藏加载动画
+
+                    myChart_map.setOption({        //加载数据图表
+
+                        series: [{
+                            data: data1
+                        },
+                        {
+                            data: data2
+                        },
+
+                        {
+                            data: data3
+                        }
+                        ]
+                    });
+
+                },
+                error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    myChart_map.showLoading();
+                    myChart_map.hideLoading();
+                }
+            });
+        };
+
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        function ajax_s2(url, xy) {
+
+            var series = [];
+            var series2 = [];
+            var names = [];    //类别数组（实际用来盛放X轴坐标值） 
+            $.ajax({
+                type: 'get',
+                url: url,//请求数据的地址
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    $.each(result.name_data1, function (index, item) {
+                        names.push(item.name);    //挨个取出类别并填入类别数组
+                        series.push(item.value);
+                    });
+                    $.each(result.name_data2, function (index, item) {
+                        series2.push(item.value);
+                    });
+                    myChart.hideLoading();    //隐藏加载动画
+
+                    if (xy = 'x') {
+                        myChart.setOption({        //加载数据图表
+                            xAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+                    if (xy = 'y') {
+                        myChart.setOption({        //加载数据图表
+                            yAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+
+                },
+                error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    myChart.showLoading();
+                    myChart.hideLoading();
+                }
+            });
+        };
+    </script>
+
+
+    <script type="text/javascript" language="javascript">
+        function ajax_hp2(url, xy) {
+
+            var series = [];
+            var series2 = [];
+            var names = [];    //类别数组（实际用来盛放X轴坐标值） 
+            $.ajax({
+                type: 'get',
+                url: url,//请求数据的地址
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    $.each(result, function (index, item) {
+                        names.push(item.name);    //挨个取出类别并填入类别数组
+                        series.push(item.value1);
+                    });
+                    $.each(result, function (index, item) {
+                        series2.push(item.value2);
+                    });
+                    myChart.hideLoading();    //隐藏加载动画
+
+                    if (xy = 'x') {
+                        myChart_hp2.setOption({        //加载数据图表
+                            xAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+                    if (xy = 'y') {
+                        myChart_hp2.setOption({        //加载数据图表
+                            yAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+
+                },
+                error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    myChart_hp2.showLoading();
+                    myChart_hp2.hideLoading();
+                }
+            });
+        };
+    </script>
+
+
+    <script type="text/javascript" language="javascript">
+        function ajax_hp3(url, xy) {
+
+            var series = [];
+            var series2 = [];
+            var names = [];    //类别数组（实际用来盛放X轴坐标值） 
+            $.ajax({
+                type: 'get',
+                url: url,//请求数据的地址
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    $.each(result, function (index, item) {
+                        names.push(item.name);    //挨个取出类别并填入类别数组
+                        series.push(item.value1);
+                    });
+                    $.each(result, function (index, item) {
+                        series2.push(item.value2);
+                    });
+                    myChart.hideLoading();    //隐藏加载动画
+
+                    if (xy = 'x') {
+                        myChart_hp3.setOption({        //加载数据图表
+                            xAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+                    if (xy = 'y') {
+                        myChart_hp3.setOption({        //加载数据图表
+                            yAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+
+                },
+                error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    myChart_hp3.showLoading();
+                    myChart_hp3.hideLoading();
+                }
+            });
+        };
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        function ajax_s3(url, xy) {
+
+            var series = [];
+            var series2 = [];
+            var names = [];    //类别数组（实际用来盛放X轴坐标值） 
+            $.ajax({
+                type: 'get',
+                url: url,//请求数据的地址
+                dataType: "json",        //返回数据形式为json
+                success: function (result) {
+                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                    $.each(result.name_data1, function (index, item) {
+                        names.push(item.name);    //挨个取出类别并填入类别数组
+                        series.push(item.value1);
+                        series2.push(item.value2);
+                    });
+
+                    myChart.hideLoading();    //隐藏加载动画
+
+                    if (xy = 'x') {
+                        myChart.setOption({        //加载数据图表
+                            xAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+                    if (xy = 'y') {
+                        myChart.setOption({        //加载数据图表
+                            yAxis: {
+                                data: names
+                            },
+                            series: [{
+                                data: series
+                            },
+                            {
+                                data: series2
+                            }]
+                        });
+                    }
+
+                },
+                error: function (errorMsg) {
+                    //请求失败时执行该函数
+                    myChart.showLoading();
+                    myChart.hideLoading();
+                }
+            });
+        };
+    </script>
+
+
+</head>
+
+
+
+<body>
+
+    <div class="container">
+        <div class="header">
+
+            <h1>红上信贷数据中心</h1>
+            <div id="time" style="padding-right:300px; height:20px; text-align:right"></div>
+
+            <script type="text/javascript">
+
+                function ajax_get1() {
+                    $.ajax({
+                        type: 'get',
+                        url: 'ajax_time',//请求数据的地址
+                        dataType: 'html',        //返回数据形式为json
+                        success: function (result) {
+                            document.getElementById("time").innerHTML = result;
+                        },
+                    });
+                }
+                ajax_get1()
+
+                setInterval(function () {
+                    ajax_get1()
+                }, 1000)
+
+
+            </script>
+
+            <div class="small_box"></div>
+        </div>
+        <div class="sidebar0">
+
+            <div id="yue" class="echarts_box" style="width:280px; height:960px"></div>
+            <div>
+                <script type="text/javascript">
+                    var myChart = echarts.init(document.getElementById('yue'));
+
+
+                    option = {
+
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        title: {
+                            text: '上月各营业部提醒客户数及C-M1',
+                            left: 'center',
+                            textStyle: {
+                                color: '#eee',
+                                fontSize: 14,
+                            },
+
+                        },
+
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['提醒客户数', 'C-M1'],
+                            top: 30,
+                            height: 20,
+                            textStyle: {
+
+                                color: '#eee'
+
+                            },
+                        },
+                        grid: {
+                            top: 60,
+                            left: 10,
+                            right: 3,
+                            bottom: 0,
+                            containLabel: true
+                        },
+                        xAxis: [
+                            {
+                                type: 'value',
+                                splitLine: false,
+                                show: false,
+                                inverse: true,
+
+                                axisLabel: {
+                                    show: false,
+                                    color: '#eee'
+                                }
+                            },
+                            {
+                                type: 'value',
+                                splitLine: false,
+                                show: false,
+                                inverse: true,
+                                max: 10,
+
+                                axisLabel: {
+                                    show: false,
+                                    color: '#eee'
+                                }
+                            }
+                        ],
+
+
+
+                        yAxis: [
+                            {
+                                type: 'category',
+                                position: 'right',
+                                axisTick: { show: false },
+                                splitLine: false,
+                                inverse: true,
+                                axisLabel: {
+                                    show: true,
+                                    color: '#eee'
+                                },
+                                data: ['西安锦绣华庭', '西安中贸广场', '汉中财富首座', '宝鸡天同国际', '安康汉城国际', '咸阳峰汇国际', '银川紫荆花商务中心', '西宁同仁路', '成都时代八号', '郑州盛润白宫', '拉萨哈达滨河花园', '兰州金都广场', '上海豫园', '上海南证大厦', '宁波汇金大厦', '合肥绿地赢海', '台州天和大厦', '南京天时商贸中心', '南通金融汇', '苏州新苏大厦', '无锡清扬路', '镇江中浩国际广场', '钦州阳光曼哈顿', '柳州桂中大道', '玉林美桥商务中心', '南宁青秀万达', '遵义航天大厦', '襄阳盛特区C座', '昆明金泰大厦', '贵阳花果园', '石家庄万达广场 ', '保定康泰国际', '济宁万丽富德', '临沂奥斯卡CBD', '青岛国华大厦', '烟台阳光100', '济南中银大厦', '泰安万达广场', '潍坊万达广场', '淄博潘成国际', '滨州国际大厦']
+                            }
+                        ],
+                        series: [
+
+                            {
+                                name: '提醒客户数',
+                                type: 'bar',
+                                stack: '总量',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#6c890b'
+                                    },
+                                },
+                                label: {
+                                    normal: {
+                                        show: true
+                                    }
+                                },
+                                data: [668, 333, 549, 205, 454, 387, 376, 674, 1077, 668, 134, 876, 231, 557, 842, 374, 303, 682, 446, 349, 432, 320, 147, 319, 283, 716, 283, 255, 449, 462, 268, 193, 533, 488, 153, 418, 348, 335, 285, 449, 325]
+                            },
+                            {
+                                name: 'C-M1',
+                                type: 'line',
+
+                                itemStyle: {
+                                    normal: {
+                                        color: '#f01b2d'
+                                    },
+                                },
+                                xAxisIndex: 1,
+                                smooth: true,
+                                label: {
+                                    normal: {
+                                        show: true,
+
+                                    }
+                                },
+                                data: [3.7, 4.2, 1.6, 2.9, 2.4, 2.3, 6.1, 1.5, 2.6, 2.5, 0, 1.8, 3, 4.1, 4.5, 2.7, 3.6, 1.6, 4.7, 6.6, 5.3, 3.1, 3.4, 6, 2.8, 2.7, 4.2, 2.7, 2.2, 3.2, 2.2, 2.6, 2.8, 2.9, 5.9, 5.5, 2.3, 4.2, 3.9, 2.4, 4.6]
+                            }
+                        ]
+                    };
+
+
+                    myChart.setOption(option);
+
+
+                </script>
+            </div>
+
+
+
+        </div>
+        
+
+        <div class="center_box">
+            <div class="sidebar1">
+
+                <div class="txt_box">
+                    <ul>
+                        <dd>上月</dd>
+                        <li>
+                            <span>提醒客户数：</span>
+                            <b>17646</b>
+                            <span> 人</span>
+                        </li>
+
+                        <li>
+                            <span>正常还款客户数：</span>
+                            <b>17063</b>
+                            <span> 人</span>
+                        </li>
+                        <li>
+                            <span>回收金额：</span>
+                            <b>4172.98</b>
+                            <span> 万元</span>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+                <div id="mm" class="echarts_box" style="height:245px; width:270px; margin-bottom:10px"></div>
+                <div>
+                    <script type="text/javascript">
+                        var myChart = echarts.init(document.getElementById('mm'));
+
+                        option = {
+
+                            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                            title: {
+                                text: '上月逾期率与还款进度',
+                                left: 'center',
+                                textStyle: {
+                                    color: '#eee',
+                                    fontSize: 14,
+                                },
+
+                            },
+                            grid: [{
+                                left: 0,
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                containLabel: false,
+                            },
+                            {
+                                left: 50,
+                                top: '54%',
+                                right: 30,
+                                bottom: 5,
+                                containLabel: false,
+                            }
+                            ],
+
+                            xAxis: [
+                                {
+                                    gridIndex: 1,
+                                    type: 'value',
+                                    splitLine: false,
+                                    show: false,
+
+                                    axisLabel: {
+                                        show: false,
+                                        color: '#eee'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    gridIndex: 1,
+                                    type: 'category',
+                                    axisTick: { show: false },
+                                    splitLine: false,
+                                    inverse: true,
+                                    axisLabel: {
+                                        show: true,
+                                        color: '#eee'
+                                    },
+
+                                    boundaryGap: ['10%', '10%'],
+
+                                    data: ['12期', '18期', '24期', '36期']
+                                }
+                            ],
+
+
+                            series: [
+                                {
+                                    name: 'C-M1',
+                                    type: 'pie',
+                                    center: ['16%', '30%'],
+                                    avoidLabelOverlap: false,
+                                    selectedMode: 'single',
+                                    selectedOffset: 1,
+                                    radius: ['30%', '33%'],
+
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: 'center',
+                                            formatter: '{d}%',
+                                            fontSize: 22
+                                        }
+                                    },
+
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#444'
+                                        }
+                                    },
+                                    data: [
+                                        {                                            
+value: 3.3, name: 'C-M1', selected: true,
+                                            itemStyle: {
+                                                normal: {
+                                                    color: '#eacf02'
+                                                }
+                                            },
+                                            label: {
+                                                normal: {
+
+                                                    position: 'center',
+                                                    formatter: [
+                                                        '{rr|{b}}',
+                                                        '{d|{d}%}',
+                                                    ].join('\n'),
+
+                                                    color: '#000',
+                                                    rich: {
+                                                        rr: {
+                                                            fontSize: 12,
+                                                        },
+                                                        d: {
+                                                            fontSize: 22,
+                                                        },
+                                                    }
+
+                                                },
+
+
+                                            },
+
+
+                                        },
+                                        {                                            
+value: 96.7, name: '', label: {                                                
+normal: {
+                                                    show: false
+                                                }
+                                            },
+                                        },
+
+
+                                    ]
+                                },
+                                {
+                                    name: '',
+                                    type: 'pie',
+                                    center: ['50%', '30%'],
+                                    selectedMode: 'single',
+                                    selectedOffset: 1,
+                                    radius: ['30%', '33%'],
+                                    label: {
+                                        normal: {
+                                            position: 'inner',
+                                            formatter: '{d}%'
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#444'
+                                        }
+                                    },
+
+
+                                    data: [
+                                        {
+                                            value: 3.0,
+                                            name: 'C-M2',
+                                            itemStyle: {
+                                                normal: {
+                                                    color: '#eacf02'
+                                                }
+                                            },
+                                            label: {
+                                                normal: {
+
+                                                    position: 'center',
+                                                    formatter: [
+                                                        '{rr|{b}}',
+                                                        '{d|{d}%}',
+                                                    ].join('\n'),
+
+                                                    color: '#000',
+                                                    rich: {
+                                                        rr: {
+                                                            fontSize: 12,
+                                                        },
+                                                        d: {
+                                                            fontSize: 22,
+                                                        },
+                                                    }
+
+                                                },
+
+                                            }                                        
+},
+
+
+
+                                        { value: 97, name: '', label: { normal: { show: false } } },
+
+                                    ]
+                                },
+
+                                {
+                                    name: '',
+                                    type: 'pie',
+                                    center: ['84%', '30%'],
+                                    selectedMode: 'single',
+                                    selectedOffset: 1,
+                                    radius: ['30%', '33%'],
+                                    label: {
+                                        normal: {
+                                            position: 'inner',
+                                            formatter: '{d}%'
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#444'
+                                        }
+                                    },
+
+
+                                    data: [
+                                        {
+                                            value: 2.5, name: 'C-M3',
+                                            itemStyle: {
+                                                normal: {
+                                                    color: '#eacf02'
+                                                }
+                                            },
+
+                                            label: {
+                                                normal: {
+
+                                                    position: 'center',
+                                                    formatter: [
+                                                        '{rr|{b}}',
+                                                        '{d|{d}%}',
+                                                    ].join('\n'),
+
+                                                    color: '#000',
+                                                    rich: {
+                                                        rr: {
+                                                            fontSize: 12,
+                                                        },
+                                                        d: {
+                                                            fontSize: 22,
+                                                        },
+                                                    }
+                                                    ,
+                                                }                                            
+}
+                                        },
+                                        { value: 97.5, name: '', label: { normal: { show: false } } },
+
+                                    ]
+                                }
+
+                                ,
+
+                                {
+                                    name: '还款进度',
+                                    type: 'bar',
+                                    barWidth: 10,
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#6c890b'
+                                        },
+                                    },
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: 'right'
+
+                                        }
+                                    },
+
+                                    data: [50, 37.2, 29.6, 21.8]
+
+
+                                },
+
+
+                            ]
+                        };
+                        myChart.setOption(option);
+
+
+                    </script>
+
+                </div>
+
+                <div id="chanpin" class="echarts_box" style="width:270px; height:250px"></div>
+
+                <div>
+                    <script type="text/javascript" language="javascript">
+                        var myChart1 = echarts.init(document.getElementById('chanpin'));
+
+                        option1 = {
+
+                            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                            title: {
+                                text: '上月各产品提醒客户数及C-M1',
+                                left: 'center',
+                                textStyle: {
+                                    color: '#eee',
+                                    fontSize: 14,
+                                },
+
+                            },
+
+                            grid: [{
+                                left: 0,
+                                right: 0,
+                                bottom: '13',
+                                containLabel: true
+                            }
+                            ],
+                            xAxis: [
+                                {
+                                    gridIndex: 0,
+                                    boundaryGap: false,
+                                    type: 'category',
+                                    axisTick: { show: false },
+                                    axisLabel: {
+
+                                        color: '#eee',
+                                        show: true,
+
+                                        interval: 0
+
+                                    },
+                                    data: ['安居贷', '红商贷', '开薪贷', '融易贷', '薪居贷',]
+                                }
+
+                            ],
+                            yAxis: [
+                                {
+
+                                    type: 'value',
+                                    show: false,
+                                    position: 'right',
+                                    max: 'dataMax',
+
+                                },
+                                {
+                                    type: 'value',
+                                    show: false,
+
+
+                                },
+
+
+                            ],
+                            series: [
+
+                                {
+                                    name: '提醒客户数',
+                                    type: 'bar',
+                                    stack: '提醒客户数',
+                                    barCategoryGap: '40%',
+                                    label: {
+                                        normal: {
+                                            show: true
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: { color: '#6c890b', opacity: 0.9 },
+
+                                    },
+                                    data: [1748, 1512, 5568, 8204, 1488]
+                                },
+                                {
+                                    name: 'C-M1',
+                                    type: 'line',
+                                    yAxisIndex: 1,
+                                    stack: 'C-M1',
+                                    label: {
+                                        normal: {
+                                            show: true,
+
+
+                                        }
+
+                                    },
+                                    itemStyle: {
+                                        normal: { color: '#f01b2d' },
+
+                                    },
+                                    data: [2.9, 3.5, 4.4, 2.3, 4]
+                                },
+
+
+                            ]
+                        };
+
+
+
+                        myChart1.setOption(option1);
+
+
+
+
+                    </script>
+
+                </div>
+
+                
+
+
+
+            </div>
+
+            <div class="content">
+                <div align="center">累计签约额：</div>
+                <div class="ul_title">
+                    <ul id="mnoney_contract"></ul>
+
+
+                </div>
+
+
+                <script type="text/javascript">
+
+                    function ajax_get() {
+                        $.ajax({
+                            type: 'get',
+                            url: 'ajax_contract_money',//请求数据的地址
+                            dataType: 'html',        //返回数据形式为json
+                            success: function (result) {
+                                document.getElementById("mnoney_contract").innerHTML = result;
+                            },
+                        });
+                    }
+                    ajax_get()
+
+                    setInterval(function () {
+                        ajax_get()
+                    }, 9000)
+
+
+                </script>
+
+
+                <div id="first" style="position:relative;z-index:1;height:600px; width:800px;clear:both"></div>
+                <div id="message">
+                    <div style="position:absolute; z-index:3; top:62px; left:0; right:0; width:1920px; height:1000px; background:rgba(0, 0, 0,0.5) none repeat scroll !important; filter:Alpha(opacity=20); background:#000;">
+                        <p style="margin-top:300px; font-size:18px; text-align:center; ">首次加载的时间可能较长，预计需要30秒，请耐心等待</p>
+                    </div>
+                </div>
+
+                <script type="text/javascript"> 
+                    function aa() {
+                        document.getElementById("message").innerHTML = "";
+                    }
+  
+                        setTimeout(
+                            aa, 15000)
+  //--> 
+                </script>
+
+
+
+                <div>
+
+
+
+                    <script type="text/javascript">
+
+
+                        var myChart_map = echarts.init(document.getElementById('first'));
+
+                        myChart_map.setOption({
+                            backgroundColor: '',
+
+                            title: {
+                                text: '今日各城市进件量与客户来源分布',
+                                top: 20,
+                                subtext: '',
+                                sublink: '',
+                                left: 'center',
+                                textStyle: {
+                                    color: '#eee',
+                                    fontSize: 14
+                                }
+                            },
+                            visualMap: {
+                                min: 0,
+                                max: 40,
+                                left: 30,
+                                bottom: 40,
+                                seriesIndex: 0,
+                                show: true,
+
+                                calculable: true,
+                                inRange: {
+                                    color: ['#62abfd', '#047afe', '#016fea', '#0265d3'],
+                                    colorAlpha: 0.7,
+                                }
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: function (params) {
+                                    return params.name + ' : ' + params.value[2];
+                                }
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                y: 'bottom',
+                                x: 'right',
+                                data: [''],
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            geo: {
+                                map: 'china',
+
+
+                                itemStyle: {
+                                    normal: {
+                                        areaColor: '#5e8579',
+                                        opacity: 0.3,
+                                        borderColor: '#0395fb'
+                                    },
+                                    emphasis: {
+                                        areaColor: '',
+                                        show: false,
+                                    }
+                                }
+                            },
+
+                            series: [
+
+                                {
+                                    name: '',
+                                    type: 'map',
+                                    map: 'china',
+
+                                    data: [],
+
+                                    label: {
+                                        normal: {
+                                            formatter: '{b}:{c}',
+                                            position: 'right',
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            show: true,
+                                            formatter: '{b}:{c}',
+                                            position: 'right'
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            areaColor: '#5e8579',
+                                            opacity: 0.8,
+                                            borderColor: '#0395fb',
+                                            color: 'rgba(128, 128, 128, 0)',
+                                        },
+                                        emphasis: {
+                                            areaColor: ''
+                                        }
+                                    }
+
+                                },
+                                {
+                                    name: '',
+                                    type: 'scatter',
+                                    coordinateSystem: 'geo',
+                                    data: [],
+                                    symbolSize: function (val) {
+                                        return val[2] / 1;
+                                    },
+                                    label: {
+                                        normal: {
+                                            formatter: '{b}',
+                                            position: 'right',
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            show: true,
+                                            formatter: '{c}',
+                                            position: 'right'
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#ddb926'
+                                        }
+                                    }
+                                },
+                                {
+                                    name: '',
+                                    type: 'effectScatter',
+                                    coordinateSystem: 'geo',
+                                    data: [],
+                                    symbolSize: function (val) {
+                                        return val[2] / 1;
+                                    },
+                                    showEffectOn: 'render',
+                                    rippleEffect: {
+                                        brushType: 'stroke'
+                                    },
+                                    hoverAnimation: true,
+                                    label: {
+                                        normal: {
+                                            formatter: '{b}',
+                                            position: 'right',
+                                            show: true
+                                        }
+
+
+
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#f4e925',
+                                            shadowBlur: 10,
+                                            shadowColor: '#333'
+                                        }
+                                    },
+                                    zlevel: 1
+                                }
+                            ]
+                        });
+
+                        ajax_citymap('ajax_map');
+                        setInterval(function () {
+                            ajax_citymap('ajax_map');
+                        }, 3000)
+
+
+                    </script>
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+            <div class="sidebar2">
+                <div class="txt_box">
+                    <ul>
+                        <dd>今日</dd>
+                        <li>
+                            <span>进件： </span>
+                            <b id="contract_today1"></b>
+                            <span> 人</span>
+                        </li>
+                        <li>
+                            <span>审批通过： </span>
+                            <b id="contract_today4"></b>
+                            <span> 人</span>
+                        </li>
+                        <li>
+                            <span>签约： </span>
+                            <b id="contract_today2"></b>
+                            <span> 人</span>
+                        </li>
+                        <li>
+                            <span>签约金额： </span>
+                            <b id="contract_today3"></b>
+                            <span> 万元</span>
+                        </li>
+                    </ul>
+
+                    <script type="text/javascript">
+
+                        function ajax_get() {
+                            $.ajax({
+                                type: 'get',
+                                url: 'ajax_contract_today',//请求数据的地址
+                                dataType: 'json',        //返回数据形式为json
+                                success: function (result) {
+                                    document.getElementById("contract_today1").innerHTML = result.person_today_j;
+                                    document.getElementById("contract_today4").innerHTML = result.person_today_s;
+                                    document.getElementById("contract_today2").innerHTML = result.person_today_c;
+                                    document.getElementById("contract_today3").innerHTML = result.money_today_c;
+                                },
+                            });
+                        }
+                        ajax_get()
+
+                        setInterval(function () {
+                            ajax_get()
+                        }, 9000)
+
+
+                    </script>
+
+
+                </div>
+
+
+                <div id="hepi" class="echarts_box" style="height:235px; width:270px; float:left; margin-bottom:8px"></div>
+                <div style="float:left; width:1px; height:0">
+                    <script type="text/javascript">
+                        var myChart_hp = echarts.init(document.getElementById('hepi'));
+
+                        myChart_hp.setOption({
+
+                            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                            title: {
+                                text: '核批率与件均',
+                                left: 'center',
+                                textStyle: {
+                                    color: '#eee',
+                                    fontSize: 14,
+                                },
+
+                            },
+
+
+                            grid: {
+                                left: 0,
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+
+
+                                containLabel: false,
+                            },
+                            series: []
+
+
+
+                        });
+
+                        function loadOneColumn() {
+                            var series1 = 0;
+                            var series2 = 0;
+                            var series3 = 0;
+                            //类别数组（实际用来盛放X轴坐标值） 
+                            $.ajax({
+                                type: 'get',
+                                url: 'ajax_hp',//请求数据的地址
+                                dataType: "json",        //返回数据形式为json
+                                success: function (result) {
+                                    //请求成功时执行该函数内容，result即为服务器返回的json对象
+                                    series1 = result.hp.hp_today_ratio;
+                                    series2 = result.hp.hp_month_ratio;
+                                    series3 = result.hp.hp_year_ratio;
+
+                                    avg_series1 = result.avg.avg_today;
+                                    avg_series2 = result.avg.avg_month;
+                                    avg_series3 = result.avg.avg_year;
+
+                                    myChart_hp.hideLoading();    //隐藏加载动画
+                                    myChart_hp.setOption({        //加载数据图表
+
+                                        series: [
+                                            {
+                                                name: '今日核批率',
+                                                type: 'pie',
+                                                center: ['17%', '35%'],
+                                                avoidLabelOverlap: false,
+                                                selectedMode: 'single',
+                                                selectedOffset: 1,
+                                                radius: ['30%', '33%'],
+
+                                                label: {
+                                                    normal: {
+                                                        show: true,
+                                                        position: 'center',
+                                                        formatter: '{d}%',
+                                                        fontSize: 22
+                                                    }
+                                                },
+
+                                                itemStyle: {
+                                                    normal: {
+                                                        color: '#444'
+                                                    }
+                                                },
+                                                data: [
+                                                    {
+                                                        value: series1, name: '今日核批率', selected: true,
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: '#eacf02'
+                                                            }
+                                                        },
+                                                        label: {
+                                                            normal: {
+
+                                                                position: 'center',
+                                                                formatter: [
+                                                                    '{rr|{b}}',
+                                                                    '{d|{d}%}',
+                                                                ].join('\n'),
+
+                                                                color: '#000',
+                                                                rich: {
+                                                                    rr: {
+                                                                        fontSize: 12,
+                                                                        color: '#ddd'
+                                                                    },
+                                                                    d: {
+                                                                        fontSize: 22,
+                                                                    },
+                                                                }
+
+                                                            },
+
+
+                                                        },
+
+
+                                                    },
+                                                    {                                                        
+value: 100 - series1, name: '', label: {                                                            
+normal: {
+                                                                show: false
+                                                            }
+                                                        },
+                                                    },
+
+
+                                                ]
+                                            },
+                                            {
+                                                name: '',
+                                                type: 'pie',
+                                                center: ['50%', '35%'],
+                                                selectedMode: 'single',
+                                                selectedOffset: 1,
+                                                radius: ['30%', '33%'],
+                                                label: {
+                                                    normal: {
+                                                        position: 'inner',
+                                                        formatter: '{d}%'
+                                                    }
+                                                },
+                                                itemStyle: {
+                                                    normal: {
+                                                        color: '#444'
+                                                    }
+                                                },
+
+
+                                                data: [
+                                                    {
+                                                        value: series2,
+                                                        name: '本月核批率',
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: '#eacf02'
+                                                            }
+                                                        },
+                                                        label: {
+                                                            normal: {
+
+                                                                position: 'center',
+                                                                formatter: [
+                                                                    '{rr|{b}}',
+                                                                    '{d|{d}%}',
+                                                                ].join('\n'),
+
+                                                                color: '#000',
+                                                                rich: {
+                                                                    rr: {
+                                                                        fontSize: 12,
+                                                                        color: '#ddd'
+                                                                    },
+                                                                    d: {
+                                                                        fontSize: 22,
+                                                                    },
+                                                                }
+
+                                                            },
+
+                                                        }
+                                                    },
+
+
+
+                                                    { value: 100 - series2, name: '', label: { normal: { show: false } } },
+
+                                                ]
+                                            },
+
+                                            {
+                                                name: '',
+                                                type: 'pie',
+                                                center: ['82%', '35%'],
+                                                selectedMode: 'single',
+                                                selectedOffset: 1,
+                                                radius: ['30%', '33%'],
+                                                label: {
+                                                    normal: {
+                                                        position: 'inner',
+                                                        formatter: '{d}%'
+                                                    }
+                                                },
+                                                itemStyle: {
+                                                    normal: {
+                                                        color: '#444'
+                                                    }
+                                                },
+
+
+                                                data: [
+                                                    {                                                        
+value: series3, name: '本年核批率',
+                                                        itemStyle: {
+                                                            normal: {
+                                                                color: '#eacf02',
+                                                            }
+                                                        },
+
+                                                        label: {
+                                                            normal: {
+
+                                                                position: 'center',
+                                                                formatter: [
+                                                                    '{rr|{b}}',
+                                                                    '{d|{d}%}',
+                                                                ].join('\n'),
+
+                                                                color: '#000',
+                                                                rich: {
+                                                                    rr: {
+                                                                        fontSize: 12,
+                                                                        color: '#ddd'
+                                                                    },
+                                                                    d: {
+                                                                        fontSize: 22,
+                                                                    },
+                                                                }
+                                                                ,                                                            
+}                                                        
+}                                                    
+},
+                                                    { value: 100 - series3, name: '', label: { normal: { show: false } } },
+
+                                                ]
+                                            }
+
+                                            ,
+
+                                            {
+                                                name: '',
+                                                type: 'gauge',
+                                                center: ['16%', '80%'],
+                                                detail: { formatter: '{value}', color: '#abc327', fontSize: 25 },
+                                                radius: '32%',
+                                                min: 0,
+                                                max: 15,
+                                                axisLine: {
+                                                    lineStyle: {
+                                                        width: 6,
+                                                        color: [[0.15, '#ffe957'], [0.7, '#abc327'],
+                                                        [0.85, '#f29f3f'],
+                                                        [1, '#f2753f']]
+                                                    }
+                                                },
+                                                axisLabel: {
+                                                    distance: 0.1,
+                                                    show: false
+
+                                                },
+                                                splitLine: {
+                                                    show: false,
+                                                    length: 16
+
+                                                },
+                                                axisTick: {
+                                                    show: false
+                                                },
+                                                pointer: { width: 3 },
+                                                title: {
+
+                                                    color: '#ddd',
+                                                    fontSize: 12
+
+                                                },
+
+
+
+                                                data: [{ value: avg_series1, name: '今日件均', label: { normal: { color: '#eee' } } }]
+
+
+                                            },
+                                            {
+                                                name: '',
+                                                type: 'gauge',
+                                                center: ['50%', '80%'],
+                                                detail: { formatter: '{value}', color: '#abc327', fontSize: 25 },
+                                                radius: '32%',
+                                                min: 0,
+                                                max: 15,
+                                                axisLine: {
+                                                    lineStyle: {
+                                                        width: 6,
+                                                        color: [[0.15, '#ffe957'], [0.7, '#abc327'],
+                                                        [0.85, '#f29f3f'],
+                                                        [1, '#f2753f']]
+                                                    }
+                                                },
+                                                axisLabel: {
+                                                    distance: 0.1,
+                                                    show: false
+
+                                                },
+                                                splitLine: {
+                                                    show: false,
+                                                    length: 16
+
+                                                },
+                                                axisTick: {
+                                                    show: false
+                                                },
+                                                pointer: { width: 3 },
+                                                title: {
+
+                                                    color: '#ddd',
+                                                    fontSize: 12
+
+                                                },
+
+
+
+                                                data: [{ value: avg_series2, name: '本月件均', label: { normal: { color: '#eee' } } }]
+
+
+                                            },
+                                            {
+                                                name: '',
+                                                type: 'gauge',
+                                                center: ['84%', '80%'],
+                                                detail: { formatter: '{value}', color: '#abc327', fontSize: 25 },
+                                                radius: '32%',
+                                                min: 0,
+                                                max: 15,
+                                                axisLine: {
+                                                    lineStyle: {
+                                                        width: 6,
+                                                        color: [[0.15, '#ffe957'], [0.7, '#abc327'],
+                                                        [0.85, '#f29f3f'],
+                                                        [1, '#f2753f']]
+                                                    }
+                                                },
+                                                axisLabel: {
+                                                    distance: 0.1,
+                                                    show: false
+
+                                                },
+                                                splitLine: {
+                                                    show: false,
+                                                    length: 16
+
+                                                },
+                                                axisTick: {
+                                                    show: false
+                                                },
+                                                pointer: { width: 3 },
+                                                title: {
+
+                                                    color: '#ddd',
+                                                    fontSize: 12
+
+                                                },
+
+
+
+                                                data: [{ value: avg_series3, name: '本年件均', label: { normal: { color: '#eee' } } }]
+
+
+                                            },
+
+                                        ]
+                                    });
+                                },
+                                error: function (errorMsg) {
+                                    //请求失败时执行该函数
+                                    myChart.showLoading();
+                                    myChart.hideLoading();
+                                }
+                            });
+                        };
+
+                        loadOneColumn();
+                        setInterval(function () {
+                            loadOneColumn();
+                        }, 3000)
+
+
+                    </script>
+
+                </div>
+
+                <div id="leida" class="echarts_box" style="height:236px; width:270px; float:left"></div>
+                <div>
+                    <script type="text/javascript">
+                        var myChart = echarts.init(document.getElementById('leida'));
+
+                        option = {
+
+
+                            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                            title: {
+                                text: '智能风控',
+                                left: 'center',
+                                textStyle: {
+                                    color: '#eee',
+                                    fontSize: 14,
+                                },
+
+                            },
+
+
+                            tooltip: {},
+                            grid: {
+                                show: false,
+
+                            },
+
+                            radar: {
+                                // shape: 'circle',
+                                name: {
+                                    textStyle: {
+                                        color: '#fff',
+                                        backgroundColor: '#6c890b',
+                                        borderRadius: 3,
+                                        padding: [3, 5]
+                                    }
+                                },
+                                center: ['50%', '55%'],
+                                radius: 65,
+
+                                splitArea: {
+                                    areaStyle: {
+
+                                        color: ['rgba(171,195,35, 0.1)',
+
+                                            'rgba(171,195,35, 0.2)',
+                                            'rgba(171,195,35, 0.25)',
+
+                                        ],
+                                        shadowColor: 'rgba(0, 0, 0, 0.3)',
+                                        shadowBlur: 2
+                                    }
+                                },
+
+                                areaStyle: { normal: { color: '#eb3f2f' } },
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#444'
+                                    }
+                                },
+                                splitLine: {
+                                    show: false
+                                },
+
+
+                                indicator: [
+                                    { name: '黑名单', max: 15 },
+                                    { name: '反欺诈', max: 15 },
+                                    { name: '三方校验', max: 15 },
+                                    { name: '实名认证', max: 15 },
+                                    { name: '客户评级', max: 15 },
+                                    { name: '活体检测', max: 15 }
+                                ]
+                            },
+                            series: [{
+                                name: '',
+                                type: 'radar',
+                                // areaStyle: {normal: {}},
+                                data: [
+                                    {
+                                        value: [3.2, 4.6, 5.7, 7.5, 14.6, 5.8],
+                                        name: '智能',
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                color: '#eacf02'
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: { color: '#eacf02' }
+                                        }
+
+
+                                    }
+
+                                ]
+                            }]
+                        };
+
+                        myChart.setOption(option);
+
+
+                    </script>
+                </div>
+
+
+
+
+                <div class="small_box"></div>
+
+            </div>
+
+            <div class="center2">
+                <div class="center_b1">
+                    <div id="hp_month" class="echarts_box" style="height:315px; width:670px;"></div>
+                    <div>
+                        <script type="text/javascript">
+                            var myChart_hp2 = echarts.init(document.getElementById('hp_month'));
+                            myChart_hp2.setOption({
+                                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                                title: {
+                                    text: '近30天进件量与核批率',
+                                    left: 'center',
+                                    top: 5,
+                                    textStyle: {
+                                        color: '#eee',
+                                        fontSize: 14,
+                                    },
+
+                                },
+                                legend: {
+                                    show: true,
+                                    left: 20,
+                                    top: 30,
+                                    data: ['进件量', '核批率'],
+                                    textStyle: {
+                                        color: '#eee'
+                                    }
+                                },
+
+                                tooltip: {
+
+                                },
+                                grid: {
+                                    left: 30,
+                                    top: 90,
+                                    right: 20,
+
+                                },
+
+                                toolbox: {
+                                    show: false,
+                                    feature: {
+                                        dataView: { show: false, readOnly: false },
+                                        magicType: { show: true, type: ['line', 'bar'] },
+
+                                    }
+                                },
+                                calculable: true,
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        splitLine: { show: false },
+
+                                        data: [],
+                                        axisLabel: {
+                                            color: '#ddd',
+                                            rotate: 60,
+                                            interval: 0
+
+                                        },
+                                    }
+                                ],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        show: false,
+                                        max: 'dataMax',
+                                        splitLine: { show: false },
+                                    },
+                                    {
+                                        type: 'value',
+                                        show: false,
+                                        max: 80,
+                                        splitLine: { show: false },
+                                    }
+                                ],
+
+                                series: [
+                                    {
+                                        name: '进件量',
+                                        type: 'bar',
+                                        smooth: true,
+                                        areaStyle: { normal: { color: '#6c890b', opacity: 0.3 } },
+                                        itemStyle: { normal: { color: '#6c890b' } },
+
+                                        data: [],
+                                        markPoint: {
+                                            data: [
+
+                                                { type: 'max', name: '最大值' }
+                                            ]
+                                        }
+
+                                    },
+                                    {
+                                        name: '核批率',
+                                        type: 'line',
+                                        smooth: true,
+                                        yAxisIndex: 1,
+                                        areaStyle: { normal: { color: '#f01b2d', opacity: 0.5 } },
+                                        itemStyle: { normal: { color: '#f01b2d' } },
+
+
+                                        data: [],
+                                        markPoint: {
+                                            data: [
+
+                                                { type: 'max', name: '最大' }
+                                            ]
+                                        }
+
+                                    },
+
+                                ]
+                            });
+
+                            ajax_hp2('ajax_hp2', 'y');
+                            setInterval(function () {
+                                ajax_hp2('ajax_hp2', 'y');
+                            }, 3000)
+
+                        </script>
+
+                    </div>
+
+
+                </div>
+
+                <div class="center_b1">
+
+                    <div id="day" class="echarts_box" style="height:315px; width:660px; margin-left:10px"></div>
+                    <div>
+                        <script type="text/javascript">
+                            var myChart_hp3 = echarts.init(document.getElementById('day'));
+                            myChart_hp3.setOption({
+                                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                                title: {
+                                    text: '今日每时进件量与审批量',
+                                    left: 'center',
+                                    top: 5,
+                                    textStyle: {
+                                        color: '#eee',
+                                        fontSize: 14,
+                                    },
+
+                                },
+                                legend: {
+                                    show: true,
+                                    left: 20,
+                                    top: 30,
+                                    data: ['进件量', '审批量'],
+                                    textStyle: {
+                                        color: '#eee'
+                                    }
+                                },
+                                tooltip: {
+
+                                },
+                                grid: {
+                                    left: 30,
+                                    top: 80,
+                                    right: 20,
+
+                                },
+
+                                toolbox: {
+                                    show: false,
+                                    feature: {
+                                        dataView: { show: false, readOnly: false },
+                                        magicType: { show: true, type: ['line', 'bar'] },
+
+                                    }
+                                },
+                                calculable: true,
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        splitLine: { show: false },
+
+                                        data: [],
+                                        axisLabel: {
+                                            color: '#ddd',
+
+                                            interval: 0
+
+                                        },
+                                    }
+                                ],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        show: false,
+                                        max: 120,
+
+                                        splitLine: { show: false },
+                                    }
+
+                                ],
+
+                                series: [
+                                    {
+                                        name: '进件量',
+                                        type: 'line',
+                                        smooth: true,
+                                        areaStyle: { normal: { color: '#eacf02', opacity: 0.3 } },
+                                        itemStyle: { normal: { color: '#eacf02' } },
+
+                                        data: [],
+                                        markPoint: {
+                                            data: [
+                                                { type: 'max', name: '最大值' },
+
+                                            ]
+                                        }
+
+                                    },
+                                    {
+                                        name: '审批量',
+                                        type: 'line',
+                                        smooth: true,
+                                        areaStyle: { normal: { color: '#f01b2d', opacity: 0.5 } },
+                                        itemStyle: { normal: { color: '#f01b2d' } },
+
+                                        data: [],
+                                        markPoint: {
+                                            data: [
+                                                { type: 'max', name: '最大值' },
+
+                                            ]
+                                        }
+
+                                    },
+
+                                ]
+                            });
+                            ajax_hp3('ajax_hp3', 'y');
+                            setInterval(function () {
+                                ajax_hp3('ajax_hp3', 'y');
+                            }, 3000)
+
+
+                        </script>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="small_box"></div>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar3">
+            <div id="yingyebu" class="echarts_box" style="width:260px; height:960px;"></div>
+            <div>
+                <script type="text/javascript">
+                    var myChart = echarts.init(document.getElementById('yingyebu'));
+
+
+                    myChart.setOption({
+
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        title: {
+                            text: '本月各地进件与今日进件',
+                            left: 'center',
+                            textStyle: {
+                                color: '#eee',
+                                fontSize: 14,
+                            },
+
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['本月进件', '今日进件'],
+                            top: 30,
+                            height: 20,
+                            textStyle: {
+
+                                color: '#ddd'
+
+                            },
+                        },
+                        grid: {
+                            top: 60,
+                            left: '2%',
+                            right: 10,
+                            bottom: 0,
+                            containLabel: true
+                        },
+                        xAxis: [
+                            {
+                                type: 'value',
+                                splitLine: false,
+                                show: false,
+
+                                axisLabel: {
+                                    show: false,
+                                    color: '#ddd'
+                                }
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'category',
+                                axisTick: { show: false },
+                                splitLine: false,
+                                inverse: true,
+                                axisLabel: {
+                                    show: true,
+                                    color: '#ddd'
+                                },
+                                data: []
+                            }
+                        ],
+                        series: [
+
+                            {
+                                name: '本月进件',
+                                type: 'bar',
+                                stack: '总量',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#6c890b'
+                                    },
+                                },
+                                label: {
+                                    normal: {
+                                        show: true
+                                    }
+                                },
+                                data: []
+                            },
+                            {
+                                name: '今日进件',
+                                type: 'bar',
+                                stack: '总量',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#444'
+                                    },
+                                },
+                                label: {
+                                    normal: {
+                                        show: true,
+
+                                    }
+                                },
+                                data: []
+                            }
+                        ]
+                    });
+
+
+
+                    ajax_s3('ajax_city', 'x');
+                    setInterval(function () {
+                        ajax_s3('ajax_city', 'x');
+                    }, 3000)
+
+                </script>
+            </div>
+
+        </div>
+        <div class="footer">
+
+            <p align="center">红上集团版权所有 &copy; Copyright 2017</p>
+        </div>
+    </div>
+</body>
+
+</html>

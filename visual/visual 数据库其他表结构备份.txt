@@ -1,0 +1,607 @@
+class C3P0Testtable(models.Model):
+    a = models.CharField(max_length=1, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'c3p0testtable'
+
+
+class IsysDataindex(models.Model):
+    di_id = models.CharField(db_column='DI_ID', primary_key=True, max_length=20)  # Field name made lowercase.
+    di_key = models.CharField(db_column='DI_KEY', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    di_code = models.CharField(db_column='DI_CODE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    di_pycode = models.CharField(db_column='DI_PYCODE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    di_ywcode = models.CharField(db_column='DI_YWCODE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    di_name = models.CharField(db_column='DI_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    di_parent = models.CharField(db_column='DI_PARENT', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    di_haschildren = models.IntegerField(db_column='DI_HASCHILDREN', blank=True, null=True)  # Field name made lowercase.
+    di_order = models.IntegerField(db_column='DI_ORDER', blank=True, null=True)  # Field name made lowercase.
+    di_level = models.IntegerField(db_column='DI_LEVEL', blank=True, null=True)  # Field name made lowercase.
+    di_valid = models.IntegerField(db_column='DI_VALID', blank=True, null=True)  # Field name made lowercase.
+    di_status = models.IntegerField(db_column='DI_STATUS', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_dataindex'
+
+
+class IsysDataindexprop(models.Model):
+    dip_id = models.AutoField(db_column='DIP_ID', primary_key=True)  # Field name made lowercase.
+    di_id = models.IntegerField(db_column='DI_ID', blank=True, null=True)  # Field name made lowercase.
+    dip_name = models.CharField(db_column='DIP_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dip_label = models.CharField(db_column='DIP_LABEL', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    dip_value = models.CharField(db_column='DIP_VALUE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_dataindexprop'
+
+
+class IsysDepartment(models.Model):
+    id = models.CharField(db_column='ID', primary_key=True, max_length=20)  # Field name made lowercase.
+    name = models.CharField(db_column='NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    intro = models.CharField(db_column='INTRO', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    deptnumber = models.CharField(db_column='DEPTNUMBER', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    deptcode = models.CharField(db_column='DEPTCODE', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    area = models.CharField(db_column='AREA', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    rating = models.IntegerField(db_column='RATING', blank=True, null=True)  # Field name made lowercase.
+    isbranch = models.IntegerField(db_column='ISBRANCH', blank=True, null=True)  # Field name made lowercase.
+    temporary = models.IntegerField(db_column='TEMPORARY', blank=True, null=True)  # Field name made lowercase.
+    deptlevel = models.IntegerField(db_column='DEPTLEVEL', blank=True, null=True)  # Field name made lowercase.
+    parent_id = models.CharField(db_column='PARENT_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    disporder = models.IntegerField(db_column='DISPORDER', blank=True, null=True)  # Field name made lowercase.
+    flumeids = models.CharField(db_column='FLUMEIDS', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    flumenames = models.CharField(db_column='FLUMENAMES', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    store_prov_code = models.CharField(db_column='STORE_PROV_CODE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    store_prov_name = models.CharField(db_column='STORE_PROV_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    store_city_code = models.CharField(db_column='STORE_CITY_CODE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    store_city_name = models.CharField(db_column='STORE_CITY_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    store_area_code = models.CharField(db_column='STORE_AREA_CODE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    store_area_name = models.CharField(db_column='STORE_AREA_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    store_address_detail = models.CharField(db_column='STORE_ADDRESS_DETAIL', max_length=256, blank=True, null=True)  # Field name made lowercase.
+    email = models.CharField(db_column='EMAIL', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    tel = models.CharField(db_column='TEL', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    workstatus = models.IntegerField(db_column='WORKSTATUS', blank=True, null=True)  # Field name made lowercase.
+    workstatuslabel = models.CharField(db_column='WORKSTATUSLABEL', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_department'
+
+
+class IsysDeptUser(models.Model):
+    dept_id = models.CharField(db_column='DEPT_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    user_id = models.CharField(db_column='USER_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    parttime = models.IntegerField(db_column='PARTTIME', blank=True, null=True)  # Field name made lowercase.
+    partjob = models.CharField(db_column='PARTJOB', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    partrating = models.IntegerField(db_column='PARTRATING', blank=True, null=True)  # Field name made lowercase.
+    disporder = models.IntegerField(db_column='DISPORDER', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_dept_user'
+
+
+class IsysLog(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    logname = models.CharField(db_column='LOGNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    logtype = models.CharField(db_column='LOGTYPE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    logtime = models.CharField(db_column='LOGTIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    logip = models.CharField(db_column='LOGIP', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    logmac = models.CharField(db_column='LOGMAC', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    loghostname = models.CharField(db_column='LOGHOSTNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    logid = models.CharField(db_column='LOGID', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    logmemo = models.TextField(db_column='LOGMEMO', blank=True, null=True)  # Field name made lowercase.
+    logoper = models.CharField(db_column='LOGOPER', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_log'
+
+
+class IsysModule(models.Model):
+    id = models.CharField(db_column='ID', primary_key=True, max_length=10)  # Field name made lowercase.
+    name = models.CharField(db_column='NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    memo = models.CharField(db_column='MEMO', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    url = models.CharField(db_column='URL', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    sort = models.CharField(db_column='SORT', max_length=10, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_module'
+
+
+class IsysModuleMenu(models.Model):
+    id = models.CharField(db_column='ID', primary_key=True, max_length=10)  # Field name made lowercase.
+    name = models.CharField(db_column='NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    iconlabel = models.CharField(db_column='ICONLABEL', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    icon = models.CharField(db_column='ICON', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    memo = models.CharField(db_column='MEMO', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    sort = models.CharField(db_column='SORT', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    url = models.CharField(db_column='URL', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    parent_id = models.CharField(db_column='PARENT_ID', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    module_id = models.CharField(db_column='MODULE_ID', max_length=10, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_module_menu'
+
+
+class IsysObject(models.Model):
+    id = models.CharField(db_column='ID', primary_key=True, max_length=20)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_key = models.CharField(db_column='OBJ_KEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_creatorid = models.CharField(db_column='OBJ_CREATORID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_creatorname = models.CharField(db_column='OBJ_CREATORNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_unitid = models.CharField(db_column='OBJ_UNITID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_unitname = models.CharField(db_column='OBJ_UNITNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_unitnumber = models.CharField(db_column='OBJ_UNITNUMBER', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_createtime = models.CharField(db_column='OBJ_CREATETIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_updatetime = models.CharField(db_column='OBJ_UPDATETIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_remark = models.CharField(db_column='OBJ_REMARK', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    obj_keyword = models.CharField(db_column='OBJ_KEYWORD', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    obj_summary = models.CharField(db_column='OBJ_SUMMARY', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    obj_size = models.IntegerField(db_column='OBJ_SIZE', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_object'
+
+
+class IsysObjectRelation(models.Model):
+    id = models.CharField(db_column='ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_table = models.CharField(db_column='OBJ_TABLE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_pkid = models.CharField(db_column='OBJ_PKID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_object_relation'
+
+
+class IsysPost(models.Model):
+    pid = models.AutoField(db_column='PID', primary_key=True)  # Field name made lowercase.
+    pname = models.CharField(db_column='PNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    pdesc = models.CharField(db_column='PDESC', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    pkey = models.CharField(db_column='PKEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    psuportname = models.CharField(db_column='PSUPORTNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_post'
+
+
+class IsysPostObj(models.Model):
+    post_id = models.IntegerField(db_column='POST_ID', blank=True, null=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_type = models.CharField(db_column='OBJ_TYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_post_obj'
+
+
+class IsysPurview(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    role_id = models.CharField(db_column='ROLE_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    role_name = models.CharField(db_column='ROLE_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    role_type = models.CharField(db_column='ROLE_TYPE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    obj_type = models.CharField(db_column='OBJ_TYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    obj_table = models.CharField(db_column='OBJ_TABLE', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    purview = models.IntegerField(db_column='PURVIEW', blank=True, null=True)  # Field name made lowercase.
+    user_id = models.CharField(db_column='USER_ID', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    user_name = models.CharField(db_column='USER_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    purview_inherit = models.IntegerField(db_column='PURVIEW_INHERIT', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_purview'
+
+
+class IsysRole(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(db_column='NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    memo = models.CharField(db_column='MEMO', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    rv = models.IntegerField(db_column='RV', blank=True, null=True)  # Field name made lowercase.
+    rvtype = models.CharField(db_column='RVTYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    rvrating = models.IntegerField(db_column='RVRATING', blank=True, null=True)  # Field name made lowercase.
+    rolekey = models.CharField(db_column='ROLEKEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    accede = models.IntegerField(db_column='ACCEDE', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_role'
+
+
+class IsysRoleObj(models.Model):
+    role_id = models.IntegerField(db_column='ROLE_ID', blank=True, null=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_type = models.CharField(db_column='OBJ_TYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_role_obj'
+
+
+class IsysTableviewTrace(models.Model):
+    trace_id = models.AutoField(db_column='TRACE_ID', primary_key=True)  # Field name made lowercase.
+    tableviewid = models.CharField(db_column='TABLEVIEWID', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    primarytablekeyvalue = models.CharField(db_column='PRIMARYTABLEKEYVALUE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    fieldlabel = models.CharField(db_column='FIELDLABEL', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    fieldname = models.CharField(db_column='FIELDNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    columnname = models.CharField(db_column='COLUMNNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    tablename = models.CharField(db_column='TABLENAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    tablekeyvalue = models.CharField(db_column='TABLEKEYVALUE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    curvalue = models.TextField(db_column='CURVALUE', blank=True, null=True)  # Field name made lowercase.
+    modifytime = models.CharField(db_column='MODIFYTIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    userid = models.CharField(db_column='USERID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    username = models.CharField(db_column='USERNAME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    usernumber = models.CharField(db_column='USERNUMBER', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ip = models.CharField(db_column='IP', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_tableview_trace'
+
+
+class IsysUser(models.Model):
+    id = models.CharField(db_column='ID', primary_key=True, max_length=20)  # Field name made lowercase.
+    name = models.CharField(db_column='NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    logid = models.CharField(db_column='LOGID', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    password = models.CharField(db_column='PASSWORD', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    job = models.CharField(db_column='JOB', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    employeenumber = models.CharField(db_column='EMPLOYEENUMBER', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    phone = models.CharField(db_column='PHONE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    email = models.CharField(db_column='EMAIL', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    utype = models.CharField(db_column='UTYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    sex = models.CharField(db_column='SEX', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    birthday = models.CharField(db_column='BIRTHDAY', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    flag = models.IntegerField(db_column='FLAG', blank=True, null=True)  # Field name made lowercase.
+    rating = models.IntegerField(db_column='RATING', blank=True, null=True)  # Field name made lowercase.
+    disporder = models.IntegerField(db_column='DISPORDER', blank=True, null=True)  # Field name made lowercase.
+    workstatus = models.IntegerField(db_column='WORKSTATUS', blank=True, null=True)  # Field name made lowercase.
+    workstatuslabel = models.CharField(db_column='WORKSTATUSLABEL', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    fqz_status = models.CharField(db_column='FQZ_STATUS', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    fqz_statusname = models.CharField(db_column='FQZ_STATUSNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    cs_status = models.CharField(db_column='CS_STATUS', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    cs_statusname = models.CharField(db_column='CS_STATUSNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    pwd_update_time = models.CharField(db_column='PWD_UPDATE_TIME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    salt = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'isys_user'
+
+
+class IsysWordbook(models.Model):
+    wb_id = models.AutoField(db_column='WB_ID', primary_key=True)  # Field name made lowercase.
+    wb_key = models.CharField(db_column='WB_KEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    wb_desc = models.CharField(db_column='WB_DESC', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    wb_status = models.IntegerField(db_column='WB_STATUS', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_wordbook'
+
+
+class IsysWordbookitem(models.Model):
+    wbi_id = models.AutoField(db_column='WBI_ID', primary_key=True)  # Field name made lowercase.
+    wb_id = models.IntegerField(db_column='WB_ID', blank=True, null=True)  # Field name made lowercase.
+    wbi_name = models.CharField(db_column='WBI_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    wbi_value = models.CharField(db_column='WBI_VALUE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    wbi_desc = models.CharField(db_column='WBI_DESC', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    wbi_idx = models.IntegerField(db_column='WBI_IDX', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'isys_wordbookitem'
+
+
+class WfActivity(models.Model):
+    a_id = models.AutoField(db_column='A_ID', primary_key=True)  # Field name made lowercase.
+    ins_id = models.IntegerField(db_column='INS_ID', blank=True, null=True)  # Field name made lowercase.
+    s_id = models.IntegerField(db_column='S_ID', blank=True, null=True)  # Field name made lowercase.
+    a_title = models.CharField(db_column='A_TITLE', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    a_stime = models.CharField(db_column='A_STIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_etime = models.CharField(db_column='A_ETIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_ltime = models.CharField(db_column='A_LTIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_locktime = models.CharField(db_column='A_LOCKTIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_lock = models.IntegerField(db_column='A_LOCK', blank=True, null=True)  # Field name made lowercase.
+    a_lockid = models.CharField(db_column='A_LOCKID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_lockname = models.CharField(db_column='A_LOCKNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    a_process = models.CharField(db_column='A_PROCESS', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    a_group = models.CharField(db_column='A_GROUP', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    a_state = models.IntegerField(db_column='A_STATE', blank=True, null=True)  # Field name made lowercase.
+    a_type = models.IntegerField(db_column='A_TYPE', blank=True, null=True)  # Field name made lowercase.
+    a_lastid = models.IntegerField(db_column='A_LASTID', blank=True, null=True)  # Field name made lowercase.
+    a_laststep = models.CharField(db_column='A_LASTSTEP', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    a_laststepkey = models.CharField(db_column='A_LASTSTEPKEY', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    a_lastexecutorid = models.CharField(db_column='A_LASTEXECUTORID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_lastexecutor = models.CharField(db_column='A_LASTEXECUTOR', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    a_lastexecutorunitid = models.CharField(db_column='A_LASTEXECUTORUNITID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    a_lastexecutorunit = models.CharField(db_column='A_LASTEXECUTORUNIT', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    a_opinion = models.CharField(db_column='A_OPINION', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    a_opinionmemo = models.CharField(db_column='A_OPINIONMEMO', max_length=400, blank=True, null=True)  # Field name made lowercase.
+    back_memo = models.CharField(db_column='BACK_MEMO', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    user_id = models.CharField(db_column='USER_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    user_name = models.CharField(db_column='USER_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    unit_id = models.CharField(db_column='UNIT_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    unit_name = models.CharField(db_column='UNIT_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    post_id = models.CharField(db_column='POST_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    post_name = models.CharField(db_column='POST_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    e_ip = models.CharField(db_column='E_IP', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    e_hostname = models.CharField(db_column='E_HOSTNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    e_mac = models.CharField(db_column='E_MAC', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_activity'
+
+
+class WfActivityObj(models.Model):
+    a_id = models.IntegerField(db_column='A_ID')  # Field name made lowercase.
+    ins_id = models.IntegerField(db_column='INS_ID', blank=True, null=True)  # Field name made lowercase.
+    obj_key = models.CharField(db_column='OBJ_KEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    tableview = models.CharField(db_column='TABLEVIEW', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    tablename = models.CharField(db_column='TABLENAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    keyvalue = models.CharField(db_column='KEYVALUE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_activity_obj'
+
+
+class WfBywhat(models.Model):
+    f_stepid = models.CharField(db_column='F_STEPID', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    t_stepid = models.IntegerField(db_column='T_STEPID', blank=True, null=True)  # Field name made lowercase.
+    trendname = models.CharField(db_column='TRENDNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    bywhat = models.CharField(db_column='BYWHAT', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    yesorno = models.CharField(db_column='YESORNO', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ynresponse = models.CharField(db_column='YNRESPONSE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_bywhat'
+
+
+class WfCategory(models.Model):
+    cg_id = models.AutoField(db_column='CG_ID', primary_key=True)  # Field name made lowercase.
+    cg_key = models.CharField(db_column='CG_KEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    cg_name = models.CharField(db_column='CG_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    cg_memo = models.CharField(db_column='CG_MEMO', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    cg_js = models.CharField(db_column='CG_JS', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    cg_css = models.CharField(db_column='CG_CSS', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    opinion_table = models.CharField(db_column='OPINION_TABLE', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    opinion_tablequery = models.CharField(db_column='OPINION_TABLEQUERY', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    cg_keepdata = models.IntegerField(db_column='CG_KEEPDATA', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_category'
+
+
+class WfCc(models.Model):
+    a_id = models.IntegerField(db_column='A_ID', blank=True, null=True)  # Field name made lowercase.
+    wobject = models.CharField(db_column='WOBJECT', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    obj_type = models.CharField(db_column='OBJ_TYPE', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    cc_date = models.CharField(db_column='CC_DATE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    cc_status = models.IntegerField(db_column='CC_STATUS', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_cc'
+
+
+class WfDoctemp(models.Model):
+    temp_id = models.AutoField(db_column='TEMP_ID', primary_key=True)  # Field name made lowercase.
+    cg_id = models.CharField(db_column='CG_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    temp_name = models.CharField(db_column='TEMP_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    temp_desc = models.CharField(db_column='TEMP_DESC', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    user_id = models.CharField(db_column='USER_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    user_name = models.CharField(db_column='USER_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    temp_used = models.IntegerField(db_column='TEMP_USED', blank=True, null=True)  # Field name made lowercase.
+    temp_type = models.IntegerField(db_column='TEMP_TYPE', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_doctemp'
+
+
+class WfHandle(models.Model):
+    s_id = models.IntegerField(db_column='S_ID', blank=True, null=True)  # Field name made lowercase.
+    obj_item = models.CharField(db_column='OBJ_ITEM', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    h_type = models.IntegerField(db_column='H_TYPE', blank=True, null=True)  # Field name made lowercase.
+    obj_table = models.CharField(db_column='OBJ_TABLE', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    h_id = models.AutoField(db_column='H_ID', primary_key=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_handle'
+
+
+class WfInstance(models.Model):
+    ins_id = models.AutoField(db_column='INS_ID', primary_key=True)  # Field name made lowercase.
+    cg_id = models.IntegerField(db_column='CG_ID', blank=True, null=True)  # Field name made lowercase.
+    ins_start = models.CharField(db_column='INS_START', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_update = models.CharField(db_column='INS_UPDATE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_end = models.CharField(db_column='INS_END', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_limit = models.CharField(db_column='INS_LIMIT', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_state = models.IntegerField(db_column='INS_STATE', blank=True, null=True)  # Field name made lowercase.
+    ins_yesorno = models.CharField(db_column='INS_YESORNO', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ins_currentstatusid = models.CharField(db_column='INS_CURRENTSTATUSID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_currentstatus = models.CharField(db_column='INS_CURRENTSTATUS', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ins_creatorid = models.CharField(db_column='INS_CREATORID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_creatorname = models.CharField(db_column='INS_CREATORNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ins_cunitid = models.CharField(db_column='INS_CUNITID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ins_cunitname = models.CharField(db_column='INS_CUNITNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ins_cpostid = models.IntegerField(db_column='INS_CPOSTID', blank=True, null=True)  # Field name made lowercase.
+    ins_cpostname = models.CharField(db_column='INS_CPOSTNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ins_sequence = models.CharField(db_column='INS_SEQUENCE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ins_type = models.CharField(db_column='INS_TYPE', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    ins_object = models.CharField(db_column='INS_OBJECT', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ins_empty = models.IntegerField(db_column='INS_EMPTY', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_instance'
+
+
+class WfInstanceObj(models.Model):
+    ins_id = models.IntegerField(db_column='INS_ID')  # Field name made lowercase.
+    obj_key = models.CharField(db_column='OBJ_KEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    tableview = models.CharField(db_column='TABLEVIEW', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    tablename = models.CharField(db_column='TABLENAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    keyvalue = models.CharField(db_column='KEYVALUE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_instance_obj'
+
+
+class WfNumber(models.Model):
+    ins_id = models.IntegerField(db_column='INS_ID', blank=True, null=True)  # Field name made lowercase.
+    pkid = models.IntegerField(db_column='PKID', blank=True, null=True)  # Field name made lowercase.
+    num_value = models.IntegerField(db_column='NUM_VALUE', blank=True, null=True)  # Field name made lowercase.
+    num_prefix = models.CharField(db_column='NUM_PREFIX', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    num_suffix = models.CharField(db_column='NUM_SUFFIX', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    onuse = models.IntegerField(db_column='ONUSE', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_number'
+
+
+class WfNumberType(models.Model):
+    pkid = models.AutoField(db_column='PKID', primary_key=True)  # Field name made lowercase.
+    number_name = models.CharField(db_column='NUMBER_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    number_key = models.CharField(db_column='NUMBER_KEY', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    obj_id = models.CharField(db_column='OBJ_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    obj_name = models.CharField(db_column='OBJ_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    obj_type = models.CharField(db_column='OBJ_TYPE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    wobject = models.CharField(db_column='WOBJECT', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_number_type'
+
+
+class WfPh(models.Model):
+    ph_id = models.AutoField(db_column='PH_ID', primary_key=True)  # Field name made lowercase.
+    ph_number = models.CharField(db_column='PH_NUMBER', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ph_name = models.CharField(db_column='PH_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    ph_ztc = models.CharField(db_column='PH_ZTC', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    ph_size = models.CharField(db_column='PH_SIZE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_year = models.CharField(db_column='PH_YEAR', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_date = models.CharField(db_column='PH_DATE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_sdate = models.CharField(db_column='PH_SDATE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_edate = models.CharField(db_column='PH_EDATE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_mj = models.CharField(db_column='PH_MJ', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_lb = models.CharField(db_column='PH_LB', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_type = models.CharField(db_column='PH_TYPE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    ph_ins = models.CharField(db_column='PH_INS', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    ph_insname = models.CharField(db_column='PH_INSNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_ph'
+
+
+class WfReadtrace(models.Model):
+    a_id = models.IntegerField(db_column='A_ID', blank=True, null=True)  # Field name made lowercase.
+    user_id = models.CharField(db_column='USER_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    user_name = models.CharField(db_column='USER_NAME', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    read_time = models.CharField(db_column='READ_TIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_readtrace'
+
+
+class WfStep(models.Model):
+    s_id = models.AutoField(db_column='S_ID', primary_key=True)  # Field name made lowercase.
+    s_name = models.CharField(db_column='S_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    trend_name = models.CharField(db_column='TREND_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    s_memo = models.CharField(db_column='S_MEMO', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    cg_id = models.IntegerField(db_column='CG_ID', blank=True, null=True)  # Field name made lowercase.
+    s_no = models.IntegerField(db_column='S_NO', blank=True, null=True)  # Field name made lowercase.
+    s_key = models.CharField(db_column='S_KEY', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    s_xc = models.IntegerField(db_column='S_XC', blank=True, null=True)  # Field name made lowercase.
+    s_yc = models.IntegerField(db_column='S_YC', blank=True, null=True)  # Field name made lowercase.
+    s_type = models.IntegerField(db_column='S_TYPE', blank=True, null=True)  # Field name made lowercase.
+    s_rangetype = models.IntegerField(db_column='S_RANGETYPE', blank=True, null=True)  # Field name made lowercase.
+    s_roleid = models.TextField(db_column='S_ROLEID', blank=True, null=True)  # Field name made lowercase.
+    s_rolename = models.TextField(db_column='S_ROLENAME', blank=True, null=True)  # Field name made lowercase.
+    s_guid = models.TextField(db_column='S_GUID', blank=True, null=True)  # Field name made lowercase.
+    s_guname = models.TextField(db_column='S_GUNAME', blank=True, null=True)  # Field name made lowercase.
+    s_corr = models.IntegerField(db_column='S_CORR', blank=True, null=True)  # Field name made lowercase.
+    s_para = models.IntegerField(db_column='S_PARA', blank=True, null=True)  # Field name made lowercase.
+    s_paravalue = models.IntegerField(db_column='S_PARAVALUE', blank=True, null=True)  # Field name made lowercase.
+    s_inner = models.IntegerField(db_column='S_INNER', blank=True, null=True)  # Field name made lowercase.
+    s_trans = models.IntegerField(db_column='S_TRANS', blank=True, null=True)  # Field name made lowercase.
+    s_senders = models.IntegerField(db_column='S_SENDERS', blank=True, null=True)  # Field name made lowercase.
+    s_cc = models.IntegerField(db_column='S_CC', blank=True, null=True)  # Field name made lowercase.
+    s_opinion = models.IntegerField(db_column='S_OPINION', blank=True, null=True)  # Field name made lowercase.
+    s_opinionview = models.CharField(db_column='S_OPINIONVIEW', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    s_opinionquery = models.IntegerField(db_column='S_OPINIONQUERY', blank=True, null=True)  # Field name made lowercase.
+    s_red = models.IntegerField(db_column='S_RED', blank=True, null=True)  # Field name made lowercase.
+    s_stamp = models.IntegerField(db_column='S_STAMP', blank=True, null=True)  # Field name made lowercase.
+    s_print = models.IntegerField(db_column='S_PRINT', blank=True, null=True)  # Field name made lowercase.
+    s_back = models.IntegerField(db_column='S_BACK', blank=True, null=True)  # Field name made lowercase.
+    s_backstep = models.CharField(db_column='S_BACKSTEP', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    s_sd = models.IntegerField(db_column='S_SD', blank=True, null=True)  # Field name made lowercase.
+    plugxml = models.TextField(db_column='PLUGXML', blank=True, null=True)  # Field name made lowercase.
+    s_status = models.IntegerField(db_column='S_STATUS', blank=True, null=True)  # Field name made lowercase.
+    s_tableview = models.TextField(db_column='S_TABLEVIEW', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_step'
+
+
+class WfTrend(models.Model):
+    s_id = models.IntegerField(db_column='S_ID', blank=True, null=True)  # Field name made lowercase.
+    trend_id = models.IntegerField(db_column='TREND_ID', blank=True, null=True)  # Field name made lowercase.
+    trend_name = models.CharField(db_column='TREND_NAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    trend_sort = models.IntegerField(db_column='TREND_SORT', blank=True, null=True)  # Field name made lowercase.
+    trend_select = models.IntegerField(db_column='TREND_SELECT', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'wf_trend'
+
+
+class XsystemAnnex(models.Model):
+    xsystem_annex_id = models.CharField(db_column='XSYSTEM_ANNEX_ID', primary_key=True, max_length=20)  # Field name made lowercase.
+    fk_annex_id = models.CharField(db_column='FK_ANNEX_ID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    annex_name = models.CharField(db_column='ANNEX_NAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_cname = models.CharField(db_column='ANNEX_CNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_folder = models.CharField(db_column='ANNEX_FOLDER', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_path = models.CharField(db_column='ANNEX_PATH', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_memo = models.CharField(db_column='ANNEX_MEMO', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_style = models.CharField(db_column='ANNEX_STYLE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    annex_object = models.CharField(db_column='ANNEX_OBJECT', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_object_field = models.CharField(db_column='ANNEX_OBJECT_FIELD', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_content = models.TextField(db_column='ANNEX_CONTENT', blank=True, null=True)  # Field name made lowercase.
+    annex_location = models.CharField(db_column='ANNEX_LOCATION', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    annex_systime = models.CharField(db_column='ANNEX_SYSTIME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    annex_thumb = models.CharField(db_column='ANNEX_THUMB', max_length=50, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'xsystem_annex'
+
+
+class XsystemKeystore(models.Model):
+    tablename = models.CharField(db_column='TABLENAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    keyname = models.CharField(db_column='KEYNAME', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    keyvalue = models.IntegerField(db_column='KEYVALUE', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'xsystem_keystore'

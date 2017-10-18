@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<div id="yue" style="width:260px; height:920px"></div>
+<div>
+    	<script type="text/javascript">
+			var myChart = echarts.init(document.getElementById('yue'));
+			
+
+option = {
+    
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['审批通过件量', '审批未通过件量'],
+		height:20,
+        textStyle: {
+            
+                color:'#eee'
+   
+        },
+    },
+    grid: {
+        top:30,
+		left: '2%',
+        right: 0,
+        bottom: 0,
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'value',
+            splitLine: false,
+			show:false,
+			inverse: true,
+			
+            axisLabel: {
+                show: false,
+				color: '#eee'
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'category',
+			position: 'right',
+            axisTick : {show: false},
+            splitLine: false,
+			inverse: true,
+			axisLabel: {
+                show: true,
+				color: '#eee'
+            },
+            data : ['成都','南宁','兰州','上海','石家庄','昆明','无锡','西安','泰安','咸阳','潍坊','济宁','保定','苏州','银川','钦州','郑州','淄博','襄阳','济南','合肥','西宁','贵阳','镇江','南通','遵义','临沂','滨州','玉林','宁波','烟台','汉中','柳州','宝鸡','安康','拉萨','台州','青岛','南京','东营']
+        }
+    ],
+    series : [
+        
+        {
+            name:'审批通过件量',
+            type:'bar',
+            stack: '总量',
+            itemStyle: {
+                normal:{
+                    color: '#6c890b'
+                },
+            },
+            label: {
+                normal: {
+                    show: true
+                }
+            },
+            data:[47,40,36,35,29,28,27,23,20,19,17,17,17,16,16,16,16,16,15,15,15,15,14,14,12,11,11,11,11,10,9,8,8,8,8,7,7,6,5,1]
+        },
+        {
+            name:'审批未通过件量',
+            type:'line',
+            stack: '总量',
+            itemStyle:{
+                normal:{
+                    color:'#444'
+                },
+            },
+            smooth: true,
+            label: {
+                normal: {
+                    show: true,
+                    
+                }
+            },
+            data:[47,40,36,35,29,28,27,23,20,19,17,17,17,16,16,16,16,16,15,15,15,15,14,14,12,11,11,11,11,10,9,8,8,8,8,7,7,6,5,1]
+        }
+    ]
+};
+    
+    
+    	myChart.setOption(option);
+		
+        
+        </script>
+    </div>
+
+<body>
+</body>
+</html>

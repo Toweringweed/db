@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="../js/echarts.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div id="chanpin" style="width:270px; height:250px"></div>
+        
+        <div>
+            <script type="text/javascript" language="javascript">
+            var myChart = echarts.init(document.getElementById('chanpin'));
+  myChart.setOption({
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+});
+
+// 异步加载数据
+$.get('E:/hoomsun_data/db/datago/static/json/data.json').done(function (data) {
+    // 填入数据
+    myChart.setOption({
+        xAxis: {
+            data: data.name
+        },
+        series: [{
+            // 根据名字对应到相应的系列
+            name: '销量',
+            data: data.value
+        }]
+    });
+});
+
+    
+    
+            
+            </script>
+        
+        </div>
+
+
+</body>
+</html>

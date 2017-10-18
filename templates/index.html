@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>红上数据中心</title>
+
+
+{% load staticfiles %}
+<link type="text/css" href="{% static 'css/layout.css' %}" rel="stylesheet" />
+
+<script type="text/javascript" src="{% static 'js/echarts.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/china.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/city.js' %}" ></script>
+
+<link type="text/css" href="../datago/static/css/layout.css" rel="stylesheet" />
+<link type="text/css" href="/static/css/layout.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+   	<h1>红上数据中心</h1>
+  </div>
+  <div class="sidebar1">
+  
+  	<div>
+    	
+    </div>
+   
+  	<div id="chanpin" style="width:300px; height:300px"></div>
+    
+    <div>
+    	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('chanpin'));
+			option = {
+    title : {
+        text: '产品',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore : {show: true},
+            
+        }
+    },
+    calculable : true,
+    series : [
+        
+        {
+            name:'',
+            type:'pie',
+            radius : [50, 80],
+            
+            
+            data:
+                {{data_product.name_data | safe}}
+            
+        }
+    ]
+};
+myChart.setOption(option);
+		
+        </script>
+    
+    </div>
+    
+    
+    <div id="chanpin2" style="width:300px; height:300px"></div>
+    <div>
+    	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('chanpin2'));
+			option = {
+    title : {
+        text: '产品期限',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore : {show: true},
+            
+        }
+    },
+    calculable : true,
+    series : [
+        
+        {
+            name:'',
+            type:'pie',
+            radius : [50, 80],
+            
+            
+            data:
+                {{data_product_month.name_data | safe}}
+            
+        }
+    ]
+};
+myChart.setOption(option);
+		
+        </script>
+    
+    </div>
+    
+  
+  
+   </div>
+   
+  <div class="content" >
+  	 <div style="text-align:center; background:#82ECDC; opacity:0.3"><span style="font-size:12px; opacity:1">累计签约额：</span><span style="font-size:22px; color:#F30; font-family:Arial, Helvetica, sans-serif">{{money_contract | safe}}</span>
+  </div>
+  	
+    <div id="first" style="height:600px; width:800px"></div>
+    <div>
+    <script type="text/javascript">
+    	var myChart = echarts.init(document.getElementById('first'));
+    var data = {{data_city.name_data | safe}};
+
+	var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push({
+                name: data[i].name,
+                value: geoCoord.concat(data[i].value)
+            });
+        }
+    }
+    return res;
+};
+
+option = {
+    backgroundColor: '',
+    title: {
+        text: '',
+        subtext: '',
+        sublink: '',
+        left: 'center',
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    tooltip : {
+        trigger: 'item',
+		formatter: function (params) {
+            return params.name + ' : ' + params.value[2];
+        }
+    },
+    legend: {
+        orient: 'vertical',
+        y: 'bottom',
+        x:'right',
+        data:[''],
+        textStyle: {
+            color: '#fff'
+        }
+    },
+    geo: {
+        map: 'china',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        
+        itemStyle: {
+            normal: {
+                areaColor: '#5e8579',
+				opacity: 0.5,
+                borderColor: '#0395fb'
+            },
+            emphasis: {
+                areaColor: ''
+            }
+        }
+    },
+    series : [
+        {
+            name: '',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            data: convertData(data),
+            symbolSize: function (val) {
+                return val[2] / 2;
+            },
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: false
+                },
+                emphasis: {
+                    show: true,
+					formatter: '{c}',
+                    position: 'right'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ddb926'
+                }
+            }
+        },
+        {
+            name: '',
+            type: 'effectScatter',
+            coordinateSystem: 'geo',
+            data: convertData(data.sort(function (a, b) {
+                return b.value - a.value;
+            }).slice(0, 6)),
+            symbolSize: function (val) {
+                return val[2] / 2;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: true
+                }
+
+
+
+            },
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        }
+    ]
+};
+myChart.setOption(option);
+    </script>
+    </div>
+    
+    
+    <div id="month" style="height:400px; width:800px"></div>
+    <div>
+    	<script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('month'));
+        option = {
+    title : {
+        text: '',
+        subtext: ''
+    },
+    tooltip : {
+        
+    },
+  
+    toolbox: {
+        show : false,
+        feature : {
+            dataView : {show: false, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+                        
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+			splitLine: {show: false},
+			
+            data : {{data_month.name | safe}},
+			axisLabel: {
+				color: '#ddd',
+				rotate: -90,
+				interval: 0
+		
+			},
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+			splitLine: {show: false},
+        }
+    ],
+	
+    series : [
+        {
+            name:'放款规模',
+            type:'bar',
+            data: {{ data_month.data}},
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            }
+           
+        },
+        
+    ]
+};
+myChart.setOption(option);
+        
+        
+        </script>
+    
+    </div>
+    
+    
+  </div>
+  
+  	
+  
+  <div class="sidebar2">
+  	<table style="margin:0 0 20px 20px">
+        	<tr>
+            	<td>今日签约人次：</td>
+                <td class="num1">231</td>
+                
+            </tr>
+            <tr>
+            	<td>今日签约金额：</td>
+                <td class="num1">{{money_contract_today}}</td>
+            </tr>
+            <tr>
+            	<td>历史签约人次：</td>
+                <td class="num1">{{order_sum}}</td>
+            	
+                
+            </tr>
+            <tr>
+            	<td>历史签约金额：</td>
+                <td class="num1">{{money_contract}}</td>
+            </tr>
+            
+        </table>
+        
+        
+  	<div id="hepi" style="height:200px; width:180px; float:left"></div>
+    <div style="float:left; width:1px; height:1px">
+    	<script type="text/javascript">
+			var myChart = echarts.init(document.getElementById('hepi'));
+			
+			option = {
+    legend:{
+        show:true,
+        orient: 'horizontal',
+        x: 'center',
+		y: 'bottom',
+		
+        data: ['今日批核率', '历史批核率'],
+		 textStyle: {
+            color:'#eee'
+        }
+		
+    },
+	grid:{
+        left: 0,
+        top:0,
+        right:0,
+        bottom:0,
+
+        containLabel:false,
+    },
+
+    series: [
+        {
+            name:'',
+            type:'pie',
+			center:['50%', '40%'],
+            
+            selectedMode: 'single',
+            selectedOffset: 1,
+            radius: [0, '50%'],
+
+            label: {
+                normal: {
+                    position: 'inner',
+                    formatter:'{d}%'
+                }
+            },
+          
+            itemStyle: {
+                normal: {
+                    color: '#444'
+                }
+            },
+            data:[
+                {value:43, name:'今日批核率', selected:true,
+                itemStyle: {
+                        normal: {
+                            color: '#eacf02'
+                        }
+            },},
+                {value:57, name:''},
+                
+                
+            ]
+        },
+        {
+            name:'',
+            type:'pie',
+			center:['50%', '40%'],
+            selectedMode: 'single',
+            selectedOffset: 1,
+            radius: ['58%', '80%'],
+            label: {
+                normal: {
+                    position: 'inner',
+                    formatter:'{d}%'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#444'
+                }
+            },
+            
+            
+            data:[
+                {value:41, name:'历史批核率', selected:true,
+                    itemStyle: {
+                        normal: {
+                            color: '#6c890b'
+                        }
+                },},
+                {value:59, name:''},
+
+            ]
+        }
+    ]
+};
+			
+			myChart.setOption(option);
+		
+        
+        </script>
+    
+    </div>
+  	<div id="jianjun" style="height:200px; width:180px; float:left"></div>
+    
+    <div>
+    	<script type="text/javascript">
+			var myChart = echarts.init(document.getElementById('jianjun'));
+			
+			option = {
+    legend:{
+        show:true,
+        orient: 'vertial',
+        x: 'center',
+		y: 'bottom',
+		
+        data: ['今日件均(万元)', '历史件均(万元)'],
+		 textStyle: {
+            color:'#eee'
+        }
+		
+    },
+	grid:{
+        left: 0,
+        top:0,
+        right:0,
+        bottom:0,
+
+        containLabel:false,
+    },
+
+    series: [
+        {
+            name:'',
+            type:'pie',
+			center:['50%', '40%'],
+            
+            selectedMode: 'single',
+            selectedOffset: 1,
+            radius: [0, '50%'],
+
+            label: {
+                normal: {
+                    position: 'inner',
+                    formatter:'{c}'
+                }
+            },
+          
+            itemStyle: {
+                normal: {
+                    color: '#444'
+                }
+            },
+            data:[
+                {value:5.1, name:'今日件均(万元)', selected:true,
+                itemStyle: {
+                        normal: {
+                            color: '#eacf02'
+                        }
+            },},
+                {value:4.9, name:''},
+                
+                
+            ]
+        },
+        {
+            name:'',
+            type:'pie',
+			center:['50%', '40%'],
+            selectedMode: 'single',
+            selectedOffset: 1,
+            radius: ['58%', '80%'],
+            label: {
+                normal: {
+                    position: 'inner',
+                    formatter:'{c}'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#444'
+                }
+            },
+            
+            
+            data:[
+                {value:4.8, name:'历史件均(万元)', selected:true,
+                    itemStyle: {
+                        normal: {
+                            color: '#6c890b'
+                        }
+                },},
+                {value:5.2, name:''},
+
+            ]
+        }
+    ]
+};
+			
+			myChart.setOption(option);
+		
+        
+        </script>
+    
+    </div>
+    <div id="loudou" style="height:300px; width:380px; float:left"></div>
+    <div>
+    	<script type="text/javascript">
+			var myChart = echarts.init(document.getElementById('loudou'));
+			
+			option = {
+    title: {
+        text: '',
+        
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{b} : {c}%"
+    },
+
+    series: [
+        {
+            name: '',
+            type: 'funnel',
+            left: '10%',
+            width: '80%',
+            min: -50,
+            max: 100,
+            label: {
+                normal: {
+                    show: false
+                    
+                },
+                emphasis: {
+                    position:'inside',
+                    formatter: '{b}: {c}%'
+                }
+            },
+
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    opacity: 0.7
+                }
+            },
+             data: [
+                {value: 97.2, name: '黑名单', itemStyle: {
+                        normal: {
+                            color: '#eacf02'
+                        }
+            },},
+                {value: 92.8, name: '反欺诈', itemStyle: {
+                        normal: {
+                            color: '#6c890b'
+                        }
+            },},
+                {value: 87.6, name: '三方校验',
+                    itemStyle: {
+                        normal: {
+                            color: '#abc327'
+                        }
+            },
+                },
+                {value: 59.4, name: '智能评级', itemStyle: {
+                        normal: {
+                            color: '#dfb5b7'
+                        }
+            },},
+                {value: 51.2, name: '人工审核', itemStyle: {
+                        normal: {
+                            color: '#7f1874'
+                        }
+            },}
+               
+            ]
+        },
+        {
+            name: '',
+            type: 'funnel',
+            left: '15%',
+            width: '70%',
+            maxSize: '80%',
+			min: -50,
+            max: 100,
+			
+            label: {
+                normal: {
+                    position: 'inside',
+                    formatter: '{b}:  {c}%',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                emphasis: {
+                    position:'inside',
+                    formatter: '{b}: {c}%'
+                }
+            },
+            itemStyle: {
+                normal: {
+                    opacity: 0.9,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }
+            },
+            data: [
+                {value: 97.2, name: '黑名单', itemStyle: {
+                        normal: {
+                            color: '#eacf02'
+                        }
+            },},
+                {value: 92.8, name: '反欺诈', itemStyle: {
+                        normal: {
+                            color: '#6c890b'
+                        }
+            },},
+                {value: 87.6, name: '三方校验',
+                    itemStyle: {
+                        normal: {
+                            color: '#abc327'
+                        }
+            },
+                },
+                {value: 59.4, name: '智能评级', itemStyle: {
+                        normal: {
+                            color: '#dfb5b7'
+                        }
+            },},
+                {value: 51.2, name: '人工审核', itemStyle: {
+                        normal: {
+                            color: '#7f1874'
+                        }
+            },}
+               
+               
+            ]
+        }
+    ]
+};
+
+
+
+
+			myChart.setOption(option);
+		
+        
+        </script>
+    </div>
+    
+   
+  </div>
+  <div class="footer">
+    <p></p>
+ </div>
+ </div>
+</body>
+</html>
