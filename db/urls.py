@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^ajax_hp/$', visual_view.ajax_hp),
     url(r'^ajax_hp2/$', visual_view.ajax_hp2),
     url(r'^ajax_hp3/$', visual_view.ajax_hp3),
-    url(r'^ajax_contract_today/$', visual_view.ajax_contract_today)
+    url(r'^ajax_contract_today/$', visual_view.ajax_contract_today),
+
 
 ]
 

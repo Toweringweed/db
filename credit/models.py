@@ -8,7 +8,7 @@ class basic(models.Model):  # 基本信息表
     order_id = models.CharField('订单流水号', max_length=30, primary_key=True)
     name = models.CharField('客户姓名', max_length=10, default='')
     IDcard = models.CharField('身份证号', max_length=19, default='')
-    adress = models.CharField('征信影印件', max_length=150)
+    luruyuan = models.CharField('录入员', max_length=20, default='')
 
     type_list = (
         ('简版', '简版征信'),
@@ -17,7 +17,7 @@ class basic(models.Model):  # 基本信息表
     type = models.CharField('征信类型', max_length=6, choices=type_list)
 
     kongbai = models.BooleanField('征信空白', default=False)
-    luruyuan = models.CharField('录入员', default='', null=True, max_length=15)
+
     luru = models.BooleanField('录入完成', default=False)
     update_time = models.DateTimeField('更新时间', auto_now=True, blank=True)
 
@@ -72,7 +72,8 @@ class card(models.Model):  # 信用卡信息表
     state_list = (
         ('正常', '正常'),
         ('销户', '销户'),
-        ('未激活', '未激活')
+        ('未激活', '未激活'),
+        ('降额', '降额')
     )
     account_state = models.CharField('账户状态', choices=state_list, max_length=10)
     five_years_overdue = models.IntegerField('近五年内逾期月数', null=True)
@@ -84,8 +85,8 @@ class card(models.Model):  # 信用卡信息表
 
 class loan(models.Model):  # 贷款信息表
     class Meta:
-        verbose_name = '贷款信息（最多添加30条，不录放款金额在5000元以下的贷款）'
-        verbose_name_plural = '贷款信息（最多添加30条，不录放款金额在5000元以下的贷款）'
+        verbose_name = '贷款信息（最多添加30条，不录放款金额在3000元以下的贷款）'
+        verbose_name_plural = '贷款信息（最多添加30条，不录放款金额在3000元以下的贷款）'
     order = models.ForeignKey(basic)
     loan_type = (
         ('房贷', '房贷'),
@@ -114,10 +115,20 @@ class loan(models.Model):  # 贷款信息表
     def __str__(self):
         return self.institution
 
+class ggjl(models.Model):   # 公共记录
+    class Meta:
+        verbose_name = '公共记录'
+        verbose_name_plural = '公共记录'
+    order = models.ForeignKey(basic)
+    public_record = models.TextField('公共记录', default='无', blank=True)
+
+    def __str__(self):
+        return '%s' % self.public_record
+
 class chaxun1(models.Model):  # 机构查询记录表
     class Meta:
-        verbose_name = '机构征信查询'
-        verbose_name_plural = '机构征信查询'
+        verbose_name = '征信查询-机构'
+        verbose_name_plural = '征信查询-机构'
     order = models.ForeignKey(basic)
     chaxun_date = models.DateField('查询日期', null=True, blank=True)
     caozuoyuan = models.CharField('查询操作员', default='', max_length=50)
@@ -125,6 +136,7 @@ class chaxun1(models.Model):  # 机构查询记录表
         ('贷后管理', '贷后管理'),
         ('信用卡审批', '信用卡审批'),
         ('贷款审批', '贷款审批'),
+        ('保前审查', '保前审查'),
         ('担保资格审查', '担保资格审查'),
         ('特约商户实名审查', '特约商户实名审查'),
         ('其他', '其他')
@@ -135,10 +147,12 @@ class chaxun1(models.Model):  # 机构查询记录表
     def __str__(self):
         return '%s' % self.reason
 
+
+
 class chaxun2(models.Model):  # 个人查询记录表
     class Meta:
-        verbose_name = '个人征信查询'
-        verbose_name_plural = '个人征信查询'
+        verbose_name = '征信查询-个人'
+        verbose_name_plural = '征信查询-个人'
     order = models.ForeignKey(basic)
     chaxun_date = models.DateField('查询日期', null=True, blank=True)
     reason_list = (

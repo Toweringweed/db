@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.forms import ModelForm, TextInput
-from .models import basic, card, loan, chaxun1, chaxun2, summary
+from .models import basic, card, loan, chaxun1, chaxun2, summary, ggjl
 
 
 class cardInline(admin.TabularInline):
@@ -23,6 +23,16 @@ class loanInline(admin.TabularInline):
         max_num = 30
         return max_num
     model = loan
+
+class ggjlInline(admin.TabularInline):
+    model = ggjl
+    def get_extra(self, request, obj=None, **kwargs):
+        extra = 1
+        return extra
+
+    def get_max_num(self, request, obj=None, **kwargs):
+        max_num = 1
+        return max_num
 
 class chaxun1Inline(admin.TabularInline):
     model = chaxun1
@@ -70,13 +80,23 @@ class summaryInline(admin.StackedInline):
 class basicAdmin(admin.ModelAdmin):
     admin.site.disable_action('delete_selected')
     list_display = ('order_id', 'name', 'IDcard', 'type', 'kongbai', 'luruyuan', 'luru')
-    search_fields = ['name']
-    readonly_fields = ('order_id', 'name', 'IDcard', 'adress')
+    search_fields = ['order_id', 'name']
+
     list_editable = ['luru']
-    fields = (('name', 'IDcard', 'type', 'kongbai'),
-              ('adress')
+    fields = (('order_id', 'name', 'IDcard', 'type', 'kongbai'),
+
               )
+    # readonly_fields = ['luruyuan']
+
     ordering = ['luru']
+
+    def save_model(self, request, obj, form, change):
+
+        if getattr(obj, 'luruyuan', None) == '':
+            obj.luruyuan = str(request.user)
+        obj.last_modified_by = request.user
+        obj.save()
+
     def get_queryset(self, request):
         qs = super(basicAdmin, self).get_queryset(request)
         if request.user.is_superuser:
@@ -84,15 +104,17 @@ class basicAdmin(admin.ModelAdmin):
         else:
             return qs.filter(luruyuan=request.user)
 
+
+
     save_on_top = True
 
     list_per_page = 10
     inlines = [
-        summaryInline, cardInline, loanInline, chaxun1Inline, chaxun2Inline
+        summaryInline, cardInline, loanInline, ggjlInline, chaxun1Inline, chaxun2Inline
     ]
 
     class Media:
-        css = {"all": ("/static/css/my_style.css",)}
+        css = {"all": ("/static/css/my_style3.css",)}
 
 admin.site.register(basic, basicAdmin)
 admin.site.site_header = '红上征信录入'

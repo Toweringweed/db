@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q, Avg, Sum, Max, Min, Count, F
-from .models import  ZhbCdLoanInfo, ZhbCdLoanbal, ZhbCdLoanCreditInfo, ZhbCdBorrowerInfo
+from .models import  ZhbCdLoanInfo, ZhbCdLoanbal, ZhbCdLoanCreditInfo, ZhbCdBorrowerInfo, ZhbCdProtoinfo
 from datetime import datetime, timedelta
 import time
 from django.http import JsonResponse
 import json
 from dateutil.parser import parse
 from itertools import chain
+
 
 today_str = '^20170914'
 this_month = '^201710'
@@ -46,11 +47,11 @@ def ajax_contract_money(request):
 def ajax_contract_today(request):
     person_today_j = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str2).count()
     person_today_s = ZhbCdLoanCreditInfo.objects.filter(Q(final_primary_opinion='01') & Q(apprvfinaltime__regex=today_str2)).count()
-    person_today_c = ZhbCdLoanbal.objects.filter(signdate__regex=today_str2).count()
+    person_today_c = ZhbCdProtoinfo.objects.filter(signdate__regex=today_str2).count()
 
-    money_today_cc = ZhbCdLoanbal.objects.filter(signdate__regex=today_str2).aggregate(money_today_c=Sum('signtotalamt'))
+    money_today_cc = ZhbCdProtoinfo.objects.filter(signdate__regex=today_str2).aggregate(money_today_c=Sum('signtotalamt'))
     try:
-        money_today_c = '{:,}'.format(float(money_today_cc['money_today_c']))
+        money_today_c = '{:,.1f}'.format(float(money_today_cc['money_today_c']/10000))
     except TypeError:
         money_today_c = 0
 
@@ -255,7 +256,6 @@ def ajax_hp2(request):
         hp2.append(dp)
 
     return JsonResponse(hp2, safe=False)
-
 
 def ajax_hp3(request):
     today = datetime.today()

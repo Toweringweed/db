@@ -349,6 +349,24 @@ class ZhbCdPropertyInfo(models.Model):
         db_table = 'zhb_cd_property_info'
 
 
+class ZhbCdProtoinfo(models.Model):
+    protoinfo_id = models.CharField(db_column='PROTOINFO_ID', primary_key=True, max_length=20)  # Field name made lowercase.
+    loanid = models.CharField(db_column='LOANID', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    contno = models.CharField(db_column='CONTNO', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    custname = models.CharField(db_column='CUSTNAME', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    paperid = models.CharField(db_column='PAPERID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    prodid = models.CharField(db_column='PRODID', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    prodname = models.CharField(db_column='PRODNAME', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    tterm = models.CharField(db_column='TTERM', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    tcapi = models.DecimalField(db_column='TCAPI', max_digits=15, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    signtotalamt = models.DecimalField(db_column='SIGNTOTALAMT', max_digits=15, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    signdate = models.CharField(db_column='SIGNDATE', max_length=20, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'zhb_cd_protoinfo'
+
+
 class ZkbcCdExcelexpSetting(models.Model):
     pk_id = models.CharField(db_column='PK_ID', primary_key=True, max_length=20)  # Field name made lowercase.
     user_id = models.CharField(db_column='USER_ID', max_length=64, blank=True, null=True)  # Field name made lowercase.

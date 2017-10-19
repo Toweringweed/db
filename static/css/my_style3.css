@@ -1,9 +1,15 @@
 /*
     DJANGO Admin styles
 */
+
+#id_order_id{width:150px}
+#id_name{width: 100px} 
+#id_IDcard{width:100px}
+#id_ggjl_set-0-public_record{height: 80px}
+
 .aligned label{ width:100px}
 
-#id_card_set-0-bank{width:180px} /* CSS Document */
+#id_card_set-0-bank{width:180px}
 .field-overdue{width:30px}
 #id_card_set-0-overdue{ width:30px}
 #id_card_set-0-credit_Line{ width:80px}
@@ -14,7 +20,7 @@
 
 
 
-#id_card_set-1-bank{width:180px} /* CSS Document */
+#id_card_set-1-bank{width:180px}
 .field-overdue{width:30px}
 #id_card_set-1-overdue{ width:30px}
 #id_card_set-1-credit_Line{ width:80px}
@@ -23,7 +29,7 @@
 #id_card_set-1-account_state{ width:65px}
 #id_card_set-1-overdue_money {width:80px}
 
-
+#id_card_set-2-bank{width:180px}
 #id_card_set-2-overdue{ width:30px}
 #id_card_set-2-credit_Line{ width:80px}
 #id_card_set-2-account_category{width:80px}
@@ -31,7 +37,7 @@
 #id_card_set-2-account_state{ width:65px}
 #id_card_set-2-overdue_money {width:80px}
 
-
+#id_card_set-3-bank{width:180px}
 #id_card_set-3-overdue{ width:30px}
 #id_card_set-3-credit_Line{ width:80px}
 #id_card_set-3-account_category{width:80px}
@@ -39,6 +45,7 @@
 #id_card_set-3-account_state{ width:65px}
 #id_card_set-3-overdue_money {width:80px}
 
+#id_card_set-4-bank{width:180px}
 #id_card_set-4-overdue{ width:30px}
 #id_card_set-4-credit_Line{ width:80px}
 #id_card_set-4-account_category{width:80px}
@@ -46,6 +53,7 @@
 #id_card_set-4-account_state{ width:65px}
 #id_card_set-4-overdue_money {width:80px}
 
+#id_card_set-5-bank{width:180px}
 #id_card_set-5-overdue{ width:30px}
 #id_card_set-5-credit_Line{ width:80px}
 #id_card_set-5-account_category{width:80px}
@@ -53,7 +61,7 @@
 #id_card_set-5-account_state{ width:65px}
 #id_card_set-5-overdue_money {width:80px}
 
-
+#id_card_set-5-bank{width:180px}
 #id_card_set-6-overdue{ width:30px}
 #id_card_set-6-credit_Line{ width:80px}
 #id_card_set-6-account_category{width:80px}
@@ -61,7 +69,7 @@
 #id_card_set-6-account_state{ width:65px}
 #id_card_set-6-overdue_money {width:80px}
 
-
+#id_card_set-7-bank{width:180px}
 #id_card_set-7-overdue{ width:30px}
 #id_card_set-7-credit_Line{ width:80px}
 #id_card_set-7-account_category{width:80px}
@@ -69,7 +77,7 @@
 #id_card_set-7-account_state{ width:65px}
 #id_card_set-7-overdue_money {width:80px}
 
-
+#id_card_set-7-bank{width:180px}
 #id_card_set-8-overdue{ width:30px}
 #id_card_set-8-credit_Line{ width:80px}
 #id_card_set-8-account_category{width:80px}
@@ -78,7 +86,7 @@
 #id_card_set-8-overdue_money {width:80px}
 
 
-
+#id_card_set-9-bank{width:180px}
 #id_card_set-9-overdue{ width:30px}
 #id_card_set-9-credit_Line{ width:80px}
 #id_card_set-9-account_category{width:80px}
@@ -86,7 +94,7 @@
 #id_card_set-9-account_state{ width:65px}
 #id_card_set-9-overdue_money {width:80px}
 
-
+#id_card_set-10-bank{width:180px}
 #id_card_set-10-overdue{ width:30px}
 #id_card_set-10-credit_Line{ width:80px}
 #id_card_set-10-account_category{width:80px}
@@ -94,7 +102,7 @@
 #id_card_set-10-account_state{ width:65px}
 #id_card_set-10-overdue_money {width:80px}
 
-
+#id_card_set-11-bank{width:180px}
 #id_card_set-11-overdue{ width:30px}
 #id_card_set-11-credit_Line{ width:80px}
 #id_card_set-11-account_category{width:80px}
@@ -102,6 +110,7 @@
 #id_card_set-11-account_state{ width:65px}
 #id_card_set-11-overdue_money {width:80px}
 
+#id_card_set-12-bank{width:180px}
 #id_card_set-12-overdue{ width:30px}
 #id_card_set-12-credit_Line{ width:80px}
 #id_card_set-12-account_category{width:80px}
@@ -109,6 +118,7 @@
 #id_card_set-12-account_state{ width:65px}
 #id_card_set-12-overdue_money {width:80px}
 
+#id_card_set-13-bank{width:180px}
 #id_card_set-13-overdue{ width:30px}
 #id_card_set-13-credit_Line{ width:80px}
 #id_card_set-13-account_category{width:80px}
@@ -116,6 +126,7 @@
 #id_card_set-13-account_state{ width:65px}
 #id_card_set-13-overdue_money {width:80px}
 
+#id_card_set-14-bank{width:180px}
 #id_card_set-14-overdue{ width:30px}
 #id_card_set-14-credit_Line{ width:80px}
 #id_card_set-14-account_category{width:80px}
@@ -123,6 +134,7 @@
 #id_card_set-14-account_state{ width:65px}
 #id_card_set-14-overdue_money {width:80px}
 
+#id_card_set-15-bank{width:180px}
 #id_card_set-15-overdue{ width:30px}
 #id_card_set-15-credit_Line{ width:80px}
 #id_card_set-15-account_category{width:80px}
@@ -130,6 +142,7 @@
 #id_card_set-15-account_state{ width:65px}
 #id_card_set-15-overdue_money {width:80px}
 
+#id_card_set-16-bank{width:180px}
 #id_card_set-16-overdue{ width:30px}
 #id_card_set-16-credit_Line{ width:80px}
 #id_card_set-16-account_category{width:80px}
@@ -137,7 +150,7 @@
 #id_card_set-16-account_state{ width:65px}
 #id_card_set-16-overdue_money {width:80px}
 
-
+#id_card_set-17-bank{width:180px}
 #id_card_set-17-overdue{ width:30px}
 #id_card_set-17-credit_Line{ width:80px}
 #id_card_set-17-account_category{width:80px}
@@ -145,6 +158,7 @@
 #id_card_set-17-account_state{ width:65px}
 #id_card_set-17-overdue_money {width:80px}
 
+#id_card_set-18-bank{width:180px}
 #id_card_set-18-overdue{ width:30px}
 #id_card_set-18-credit_Line{ width:80px}
 #id_card_set-18-account_category{width:80px}
@@ -152,7 +166,7 @@
 #id_card_set-18-account_state{ width:65px}
 #id_card_set-18-overdue_money {width:80px}
 
-
+#id_card_set-19-bank{width:180px}
 #id_card_set-19-overdue{ width:30px}
 #id_card_set-19-credit_Line{ width:80px}
 #id_card_set-19-account_category{width:80px}
@@ -160,7 +174,7 @@
 #id_card_set-19-account_state{ width:65px}
 #id_card_set-19-overdue_money {width:80px}
 
-
+#id_card_set-20-bank{width:180px}
 #id_card_set-20-overdue{ width:30px}
 #id_card_set-20-credit_Line{ width:80px}
 #id_card_set-20-account_category{width:80px}
@@ -168,7 +182,7 @@
 #id_card_set-20-account_state{ width:65px}
 #id_card_set-20-overdue_money {width:80px}
 
-
+#id_card_set-21-bank{width:180px}
 #id_card_set-21-overdue{ width:30px}
 #id_card_set-21-credit_Line{ width:80px}
 #id_card_set-21-account_category{width:80px}
@@ -176,7 +190,7 @@
 #id_card_set-21-account_state{ width:65px}
 #id_card_set-21-overdue_money {width:80px}
 
-
+#id_card_set-22-bank{width:180px}
 #id_card_set-22-overdue{ width:30px}
 #id_card_set-22-credit_Line{ width:80px}
 #id_card_set-22-account_category{width:80px}
@@ -184,7 +198,7 @@
 #id_card_set-22-account_state{ width:65px}
 #id_card_set-22-overdue_money {width:80px}
 
-
+#id_card_set-23-bank{width:180px}
 #id_card_set-23-overdue{ width:30px}
 #id_card_set-23-credit_Line{ width:80px}
 #id_card_set-23-account_category{width:80px}
@@ -192,7 +206,7 @@
 #id_card_set-23-account_state{ width:65px}
 #id_card_set-23-overdue_money {width:80px}
 
-
+#id_card_set-24-bank{width:180px}
 #id_card_set-24-overdue{ width:30px}
 #id_card_set-24-credit_Line{ width:80px}
 #id_card_set-24-account_category{width:80px}
@@ -200,7 +214,7 @@
 #id_card_set-24-account_state{ width:65px}
 #id_card_set-24-overdue_money {width:80px}
 
-
+#id_card_set-25-bank{width:180px}
 #id_card_set-25-overdue{ width:30px}
 #id_card_set-25-credit_Line{ width:80px}
 #id_card_set-25-account_category{width:80px}
@@ -208,6 +222,7 @@
 #id_card_set-25-account_state{ width:65px}
 #id_card_set-25-overdue_money {width:80px}
 
+#id_card_set-26-bank{width:180px}
 #id_card_set-26-overdue{ width:30px}
 #id_card_set-26-credit_Line{ width:80px}
 #id_card_set-26-account_category{width:80px}
@@ -215,7 +230,7 @@
 #id_card_set-26-account_state{ width:65px}
 #id_card_set-26-overdue_money {width:80px}
 
-
+#id_card_set-27-bank{width:180px}
 #id_card_set-27-overdue{ width:30px}
 #id_card_set-27-credit_Line{ width:80px}
 #id_card_set-27-account_category{width:80px}
@@ -223,7 +238,7 @@
 #id_card_set-27-account_state{ width:65px}
 #id_card_set-27-overdue_money {width:80px}
 
-
+#id_card_set-28-bank{width:180px}
 #id_card_set-28-overdue{ width:30px}
 #id_card_set-28-credit_Line{ width:80px}
 #id_card_set-28-account_category{width:80px}
@@ -231,6 +246,7 @@
 #id_card_set-28-account_state{ width:65px}
 #id_card_set-28-overdue_money {width:80px}
 
+#id_card_set-29-bank{width:180px}
 #id_card_set-29-overdue{ width:30px}
 #id_card_set-29-credit_Line{ width:80px}
 #id_card_set-29-account_category{width:80px}
@@ -238,6 +254,7 @@
 #id_card_set-29-account_state{ width:65px}
 #id_card_set-29-overdue_money {width:80px}
 
+#id_card_set-30-bank{width:180px}
 #id_card_set-30-overdue{ width:30px}
 #id_card_set-30-credit_Line{ width:80px}
 #id_card_set-30-account_category{width:80px}
