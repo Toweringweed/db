@@ -6,18 +6,22 @@ from datetime import datetime, timedelta
 import time
 from django.http import JsonResponse
 import json
-from dateutil.parser import parse
+
 from itertools import chain
+from django.views.decorators.cache import cache_page
 
 
 today_str = '^20170914'
-this_month = '^201710'
+this_month = '^201711'
 this_year = '^2017'
 today = datetime.today()
 today_str2 = str(datetime.strftime(today, '%Y%m%d'))
 today_30 = today - timedelta(days=40)
 today_30_str = str(datetime.strftime(today_30, '%Y%m%d')) + '000000'
+
+
 # today_str2 = '20171016'
+@cache_page(60 * 15)
 def default(request):
     return render(request, 'default.html')
 
@@ -28,12 +32,14 @@ def ajax_time(request):
 
 # 合同额计算
 def ajax_contract_money(request):
-    old_money = 119057679.93   # 旧数据库中合同金额总和
+    # old_money = 119057679.93   # 旧数据库中合同金额总和
     old_orders = 1691   # 旧数据库中订单量
-    whole_money = ZhbCdLoanbal.objects.aggregate(whole_money=Sum('signtotalamt'))
-    whole_money = "{:,}".format(float(whole_money['whole_money']) + old_money)
+    # whole_money = ZhbCdProtoinfo.objects.aggregate(whole_money=Sum('signtotalamt'))
+    # whole_money = "{:,}".format(float(whole_money['whole_money']) + old_money)
+    whole_money_thisyear = ZhbCdProtoinfo.objects.filter(signdate__regex=this_year).aggregate(whole_money=Sum('signtotalamt'))
+    whole_money_thisyear =  "{:,}".format(float(whole_money_thisyear['whole_money']))
     mm = []
-    for i in str(whole_money):
+    for i in str(whole_money_thisyear):
         if i == ',' or i == '.':
             ii = '<dd>' + i + '</dd>'
         else:
@@ -224,9 +230,13 @@ def ajax_hp(request):
         .aggregate(avg_today=Avg('apptcapi'))
     avg_year = ZhbCdLoanCreditInfo.objects.filter(Q(apprvfinaltime__regex=this_year) & Q(final_primary_opinion='01')) \
         .aggregate(avg_year=Avg('apptcapi'))
+    try:
+        avg_today = round(avg_today['avg_today']/10000, 2)
+    except TypeError:
+        avg_today = 0
 
     avg = {'avg_month': round(avg_month['avg_month']/10000, 2),
-           'avg_today': round(avg_today['avg_today']/10000, 2) if avg_today!=0 else 0,
+           'avg_today': avg_today,
            'avg_year': round(avg_year['avg_year']/10000, 2)}
 
     return JsonResponse({'hp':hp, 'avg': avg}, safe=False)

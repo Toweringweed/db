@@ -69,7 +69,7 @@ sql = ToMysql(kwargs)
 #         'product_name': p[1],
 #         'update_time': time.localtime()
 #     }
-#     sql.into('datago_product', **p_dict)
+    sql.into('datago_product', **p_dict)
 
 # product_month = [
 #     ['12', 12],
