@@ -1,0 +1,39 @@
+/*
+    DJANGO Admin styles
+*/
+.aligned label{ width:100px}
+
+#id_card_set-0-bank{width:180px} /* CSS Document */
+.field-overdue{width:30px}
+#id_card_set-0-overdue{ width:30px}
+#id_card_set-0-credit_Line{ width:80px}
+#id_card_set-0-account_category{width:80px}
+#id_card_set-0-used_line{ width:80px}
+#id_card_set-0-account_state{ width:65px}
+#id_card_set-0-overdue_money {width:80px}
+
+
+
+#id_card_set-1-bank{width:180px} /* CSS Document */
+.field-overdue{width:30px}
+#id_card_set-1-overdue{ width:30px}
+#id_card_set-1-credit_Line{ width:80px}
+#id_card_set-1-account_category{width:80px}
+#id_card_set-1-used_line{ width:80px}
+#id_card_set-1-account_state{ width:65px}
+#id_card_set-1-overdue_money {width:80px}
+
+
+.delete{ width:60px}
+
+#id_loan_set-0-overdue{width: 30px}
+#id_loan_set-0-type{ width:80px}
+#id_loan_set-0-institution{width: 180px}
+#id_loan_set-0-grant_date{ width:60px;}
+#id_loan_set-0-money{ width:60px}
+#id_loan_set-0-account_category{ width:100px}
+#id_loan_set-0-figure{width:60px}
+#id_loan_set-0-yuqi_money{ width:50px}
+#id_loan_set-0-years5_overdue{width:50px}
+#id_loan_set-0-days90_overdue{ width:50px}
+

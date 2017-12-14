@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style type="text/css">
+*{margin:0 auto;}
+body{ background: #0C3 }
+.div{
+background:rgba(0, 0, 0, 0.4) none repeat scroll 0 0 !important;/*实现FF背景透明，文字不透明*/
+filter:Alpha(opacity=40); background:#000000;/*实现IE背景透明*/
+color:#FFF;
+width:500px;
+height:500px;
+border:1px solid #FF0;
+font-size:18px;
+text-align:center;
+font-weight:bold;
+margin-top:120px;
+}
+.div p{position:relative;}
+</style>
+</head>
+<body>
+<div class="div"><p>{{ll.name| safe}}</p></div>
+</body>
+</html>

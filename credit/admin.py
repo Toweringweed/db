@@ -49,7 +49,7 @@ class guaranteeInline(admin.TabularInline):
         return extra
 
     def get_max_num(self, request, obj=None, **kwargs):
-        max_num = 10
+        max_num = 20
         return max_num
     model = guarantee
 

@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^visual/$', visual_view.default),
     url(r'^visual/ajax_time/$', visual_view.ajax_time),
-    url(r'^visual/test/$', visual_view.test),
     url(r'^visual/ajax_contract_money/$', visual_view.ajax_contract_money),
     url(r'^visual/ajax_city/$', visual_view.ajax_city),
     url(r'^visual/ajax_map/$', visual_view.ajax_map),
@@ -30,6 +29,8 @@ urlpatterns = [
     url(r'^visual/ajax_hp2/$', visual_view.ajax_hp2),
     url(r'^visual/ajax_hp3/$', visual_view.ajax_hp3),
     url(r'^visual/ajax_contract_today/$', visual_view.ajax_contract_today),
+    url(r'^visual/ajax_in_year/$', visual_view.ajax_in_year),
+    url(r'^visual/ajax_city_all/$', visual_view.ajax_city_all)
 
 
 ]

@@ -14,7 +14,13 @@ from django.views.decorators.cache import cache_page
 today_str = '^20170914'
 this_month = '^201711'
 this_year = '^2017'
+today = datetime.today()
+today_str2 = str(datetime.strftime(today, '%Y%m%d'))
+today_30 = today - timedelta(days=40)
+today_30_str = str(datetime.strftime(today_30, '%Y%m%d')) + '000000'
 
+
+# today_str2 = '20171016'
 @cache_page(60 * 15)
 def default(request):
     return render(request, 'default.html')
@@ -24,17 +30,14 @@ def ajax_time(request):
     tt = datetime.strftime(t1, '%Y-%m-%d %H:%M:%S')
     return HttpResponse(tt)
 
-# 总合同额计算
+# 合同额计算
 def ajax_contract_money(request):
     # old_money = 119057679.93   # 旧数据库中合同金额总和
     old_orders = 1691   # 旧数据库中订单量
     # whole_money = ZhbCdProtoinfo.objects.aggregate(whole_money=Sum('signtotalamt'))
     # whole_money = "{:,}".format(float(whole_money['whole_money']) + old_money)
-
-    money_20171030 = 1341734958.07
-
-    whole_money_thisyear = ZhbCdProtoinfo.objects.filter(signdate__regex=this_month).aggregate(whole_money=Sum('signtotalamt'))
-    whole_money_thisyear =  "{:,}".format(float(whole_money_thisyear['whole_money'])+ money_20171030)
+    whole_money_thisyear = ZhbCdProtoinfo.objects.filter(signdate__regex=this_year).aggregate(whole_money=Sum('signtotalamt'))
+    whole_money_thisyear =  "{:,}".format(float(whole_money_thisyear['whole_money']))
     mm = []
     for i in str(whole_money_thisyear):
         if i == ',' or i == '.':
@@ -46,22 +49,13 @@ def ajax_contract_money(request):
 
     return HttpResponse(money_contract)
 
-def ajax_in_year(request):
-    # 本年进件
-    jj_year = ZhbCdLoanInfo.objects.filter(apply_date__regex=this_year).count()
-    hp_year = ZhbCdLoanCreditInfo.objects.filter(Q(final_primary_opinion='01') & Q(apprvfinaltime__regex=this_year)).count()
-
-    in_year = {'jj_year': jj_year,  'hp_year': hp_year}
-    return JsonResponse(in_year, safe=False)
-
 # 今日合同额计算
 def ajax_contract_today(request):
-    today_str = str(datetime.strftime(datetime.today(), '%Y%m%d'))
-    person_today_j = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str).count()   # 今日进件数量
-    person_today_s = ZhbCdLoanCreditInfo.objects.filter(Q(final_primary_opinion='01') & Q(apprvfinaltime__regex=today_str)).count()  # 今日核批数量
-    person_today_c = ZhbCdProtoinfo.objects.filter(signdate__regex=today_str).count()   # 今日签约数量
+    person_today_j = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str2).count()
+    person_today_s = ZhbCdLoanCreditInfo.objects.filter(Q(final_primary_opinion='01') & Q(apprvfinaltime__regex=today_str2)).count()
+    person_today_c = ZhbCdProtoinfo.objects.filter(signdate__regex=today_str2).count()
 
-    money_today_cc = ZhbCdProtoinfo.objects.filter(signdate__regex=today_str).aggregate(money_today_c=Sum('signtotalamt'))   # 今日签约金额
+    money_today_cc = ZhbCdProtoinfo.objects.filter(signdate__regex=today_str2).aggregate(money_today_c=Sum('signtotalamt'))
     try:
         money_today_c = '{:,.1f}'.format(float(money_today_cc['money_today_c']/10000))
     except TypeError:
@@ -74,7 +68,7 @@ def ajax_contract_today(request):
 
 city_list = ['安康','宝鸡','保定','滨州','成都','东营','贵阳','汉中','合肥','济南','济宁','昆明','拉萨','兰州',
              '临沂','柳州','南京','南宁','南通','宁波','钦州','青岛','上海','石家庄','苏州','台州','泰安','潍坊',
-             '无锡','西安','西宁','咸阳','襄阳','烟台','银川','玉林','镇江','郑州','淄博','遵义', '重庆'
+             '无锡','西安','西安','西宁','咸阳','襄阳','烟台','银川','玉林','镇江','郑州','淄博','遵义'
             ]
 department_list = ['安康汉城国际',
             '宝鸡天同国际',
@@ -116,14 +110,11 @@ department_list = ['安康汉城国际',
             '郑州盛润白宫',
             '淄博潘城国际',
             '遵义航天大厦',
-            '重庆大都会营业部'
             ]
 
 def ajax_city(request):
-    today_str = str(datetime.strftime(datetime.today(), '%Y%m%d'))
-
     dcc = []
-    de_j_d = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str).values('store_name').annotate(value2=Count('store_name'))
+    de_j_d = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str2).values('store_name').annotate(value2=Count('store_name'))
     de_j_m = ZhbCdLoanInfo.objects.filter(apply_date__regex=this_month).values('store_name').annotate(value1=Count('store_name')).order_by('-value1')
 
     de_j_d = list(de_j_d)
@@ -135,50 +126,64 @@ def ajax_city(request):
     city = {'name_data1': dcc}
     return JsonResponse(city, safe=False)
 
-
-def ajax_city_all(request):
-    today_str = str(datetime.strftime(datetime.today(), '%Y%m%d'))
-
+def test(request):
     dcc = []
+    de_j_d = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str).values('store_name').annotate(value2=Count('store_name'))
+    de_j_m = ZhbCdLoanInfo.objects.filter(apply_date__regex=this_month).values('store_name').annotate(value1=Count('store_name')).order_by('-value1')
 
-    de_j_y = ZhbCdLoanInfo.objects.filter(apply_date__regex=this_year).values('store_name').annotate(value1=Count('store_name'))
-
-    de_j_y = list(de_j_y)
-
-    for i in de_j_y:
-        dc = {'name': i['store_name'].replace('营业部', ''), 'value1': i['value1']}
+    de_j_d = list(de_j_d)
+    de_j_m = list(de_j_m)
+    j = ''
+    for i in de_j_m:
+        dc = {'name': i['store_name'].replace('营业部', ''), 'value1': i['value1'], 'value2': [j['value2'] for j in de_j_d][0] if j==i else 0}
         dcc.append(dc)
-    city_all = {'name_data1': dcc}
-    return JsonResponse(city_all, safe=False)
+    return JsonResponse(dcc, safe=False)
 
-# def ajax_chanpin(request):
-#
-#     dcc = []
-#     chanpin_year =  ZhbCdLoanCreditInfo.objects.filter(apply_date__regex=this_year).values('apprvfinaltime').annotate(value2=Count('apprvfinaltime'))
-#     chanpin_year_in = ZhbCdLoanCreditInfo.objects.filter(
-#         Q(apprvfinaltime__regex=this_year) & Q(final_primary_opinion='01')).values('apprvfinaltime').annotate(value2=Count('apprvfinaltime'))
-#
-#     chanpin_year = list(de_j_d)
-#     de_j_m = list(de_j_m)
-#     j = {'store_name': '', 'value2': 0}
-#     for i in de_j_m:
-#         dc = {'name': i['store_name'].replace('营业部', ''), 'value1': i['value1'], 'value2': [j['value2'] for j in de_j_d if j['store_name']==i['store_name']][0] if [j['value2'] for j in de_j_d if j['store_name']==i['store_name']] else 0}
-#         dcc.append(dc)
-#     city_all = {'name_data1': dcc}
-#     return JsonResponse(city_all, safe=False)
-
-
+province = ["台湾",
+"河北",
+"山西",
+"辽宁",
+"吉林",
+"黑龙江",
+"江苏",
+"浙江",
+"安徽",
+"福建",
+"江西",
+"山东",
+"河南",
+"湖北",
+"湖南",
+"广东",
+"海南",
+"四川",
+"贵州",
+"云南",
+"陕西",
+"甘肃",
+"青海",
+"新疆",
+"广西",
+"内蒙古",
+"宁夏",
+"西藏",
+"北京",
+"天津",
+"上海",
+"重庆",
+"香港",
+"澳门",
+]
 def ajax_map(request):
-    today_str = str(datetime.strftime(datetime.today(), '%Y%m%d'))
     dcc = []
     for i in city_list:
-        city_j_d = ZhbCdLoanInfo.objects.filter(Q(apply_date__regex=today_str) & Q(store_name__contains=i)).count()
+        city_j_d = ZhbCdLoanInfo.objects.filter(Q(apply_date__regex=today_str2) & Q(store_name__contains=i)).count()
         # city_j_m = ZhbCdLoanInfo.objects.filter(Q(apply_date__regex=this_month) & Q(store_name__contains=i)).count()
 
         dc = {'name': i, 'value': city_j_d}
         dcc.append(dc)
 
-    province_j_d = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str)\
+    province_j_d = ZhbCdLoanInfo.objects.filter(apply_date__regex=today_str2)\
         .extra(select={'prov': 'select rresidence_prov_name from zhb_cd_borrower_info where zhb_cd_borrower_info.LOAN_PK_ID=zhb_cd_loan_info.LOAN_PK_ID'})\
         .values_list('prov')
 
@@ -200,19 +205,15 @@ def ajax_map(request):
 
     return JsonResponse(city_map, safe=False)
 
-# 批核率计算
 def ajax_hp(request):
-
-    today_str = str(datetime.strftime(datetime.today(), '%Y%m%d'))
-    today_30 = datetime.today() - timedelta(days=40)
-
+    # 批核率计算
     hp_month = ZhbCdLoanCreditInfo.objects.filter(apprvfinaltime__regex=this_month).count()
     hp_month_s = ZhbCdLoanCreditInfo.objects.filter(Q(apprvfinaltime__regex=this_month) & Q(final_primary_opinion='01')).count()
     hp_month_ratio = round(hp_month_s/hp_month*100, 1) if hp_month!=0 else 0
 
-    hp_today = ZhbCdLoanCreditInfo.objects.filter(apprvfinaltime__regex=today_str).count()
+    hp_today = ZhbCdLoanCreditInfo.objects.filter(apprvfinaltime__regex=today_str2).count()
     hp_today_s = ZhbCdLoanCreditInfo.objects.filter(
-        Q(apprvfinaltime__regex=today_str) & Q(final_primary_opinion='01')).count()
+        Q(apprvfinaltime__regex=today_str2) & Q(final_primary_opinion='01')).count()
     hp_today_ratio = round(hp_today_s/hp_today*100, 1) if hp_today!=0 else 0
 
     hp_year = ZhbCdLoanCreditInfo.objects.filter(apprvfinaltime__regex=this_year).count()
@@ -225,7 +226,7 @@ def ajax_hp(request):
     # 件均计算
     avg_month = ZhbCdLoanCreditInfo.objects.filter(Q(apprvfinaltime__regex=this_month) & Q(final_primary_opinion='01'))\
         .aggregate(avg_month=Avg('apptcapi'))
-    avg_today = ZhbCdLoanCreditInfo.objects.filter(Q(apprvfinaltime__regex=today_str) & Q(final_primary_opinion='01')) \
+    avg_today = ZhbCdLoanCreditInfo.objects.filter(Q(apprvfinaltime__regex=today_str2) & Q(final_primary_opinion='01')) \
         .aggregate(avg_today=Avg('apptcapi'))
     avg_year = ZhbCdLoanCreditInfo.objects.filter(Q(apprvfinaltime__regex=this_year) & Q(final_primary_opinion='01')) \
         .aggregate(avg_year=Avg('apptcapi'))
@@ -240,11 +241,8 @@ def ajax_hp(request):
 
     return JsonResponse({'hp':hp, 'avg': avg}, safe=False)
 
-# 近30天进件
 def ajax_hp2(request):
-
-    today_30 = datetime.today() - timedelta(days=40)
-    today_30_str = str(datetime.strftime(today_30, '%Y%m%d')) + '000000'
+    # 近30天进件
     hp2_month = ZhbCdLoanInfo.objects.extra(select={'name': 'round(apply_date/1000000,0)'}). \
         values_list('name').filter(apply_date__gte=today_30_str)
 
@@ -274,33 +272,34 @@ def ajax_hp3(request):
     today_str2 = str(datetime.strftime(today, '%Y%m%d'))
     today_30 = datetime.today() - timedelta(days=40)
     today_30_str = str(datetime.strftime(today_30, '%Y%m%d')) + '000000'
-    hp3_today = ZhbCdLoanCreditInfo.objects.extra(select={'name': 'round(apprvfinaltime/10000,0)'}). \
+    hp3_today = ZhbCdLoanCreditInfo.objects.extra(select={'name': 'round(apprvfinaltime/10000,0)'}).\
         filter(apprvfinaltime__regex=today_str2).values_list('name')
 
     # 近30天审批通过件
-    hp3_today_s = ZhbCdLoanCreditInfo.objects.extra(select={'name': 'round(apprvfinaltime/10000,0)'}). \
+    hp3_today_s = ZhbCdLoanCreditInfo.objects.extra(select={'name': 'round(apprvfinaltime/10000,0)'}).\
         filter(Q(final_primary_opinion='01') & Q(apprvfinaltime__regex=today_30_str)).values_list('name')
 
     # 今日进件
-    jj_today = ZhbCdLoanInfo.objects.extra(select={'name': 'round(apply_date/10000,0)'}). \
+    jj_today = ZhbCdLoanInfo.objects.extra(select={'name': 'round(apply_date/10000,0)'}).\
         filter(apply_date__regex=today_str2).values_list('name')
 
     hp3_today = list(chain(*hp3_today))
     hp3_today_s = list(chain(*hp3_today_s))
     jj_today = list(chain(*jj_today))
 
+
     hp3 = []
     h4 = []
     # 计算今日进件
     for i in range(0, 24):
-        if len(str(i)) == 1:
+        if len(str(i))==1:
             today_str = round(float(str(today_str2).replace('^', '') + '0' + str(i)), 0)
             dp = {'name': str(i), 'value1': jj_today.count(today_str),
-                  'value2': hp3_today.count(today_str)}
-        if len(str(i)) == 2:
+              'value2': hp3_today.count(today_str)}
+        if len(str(i))==2:
             today_str = round(float(str(today_str2).replace('^', '') + str(i)), 0)
             dp = {'name': str(i), 'value1': jj_today.count(today_str),
-                  'value2': hp3_today.count(today_str)}
+              'value2': hp3_today.count(today_str)}
 
         hp3.append(dp)
 
