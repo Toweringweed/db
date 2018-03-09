@@ -92,4 +92,3 @@ def ajax_map(request):
         filter(apply_date__regex=today_str).exclude(store_name='').annotate(value=Count('store_name')).order_by('value')
     city_j_m = ZhbCdLoanInfo.objects.extra(select={'name': 'store_name'}).values('store_name', 'name').\
         filter(apply_date__regex=this_month).exclude(store_name='').annotate(value=Count('store_name')).order_by('value')
-

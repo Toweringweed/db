@@ -445,21 +445,20 @@ sql = ToMysql(kwargs)
 #     }
 #     sql.into('datago_repayment', **repay_dict)
 
-read_path = r'E:\hoomsun_data\数据源\规整数据-去重8.28.csv'
+read_path = r'E:\hoomsun_data\规整数据-去重8.28.csv'
 df = pd.read_csv(read_path, dtype='unicode', encoding='gbk')
-df = df[0:10]
 
 for index, row in df.iterrows():
     print(index)
     order_id = str(row['合同编号'])
     repayment_id = order_id + str(row['报表日期'])
     repay_month = float(row['月还款额'])
-    yuqi_qici = int(str(row['逾期期数']).strip()) if str(row['逾期期数']).strip() != 'nan' else 0
 
-    # sql_t = "update datago_repayment set repay_month=%.2f where repayment_id='%s'" % (repay_month, repayment_id)
-    sql_y = "update datago_repayment set yuqi_qici=%d, repay_month=%.2f where repayment_id='%s'" % (yuqi_qici,repay_month, repayment_id)
-    print(index, sql_y)
-    sql.updates(sql_y)
+    sql_t = "update datago_repayment set repay_month=%.2f where repayment_id='%s'" % (repay_month, repayment_id)
+
+    print(sql_t)
+
+    sql.updates(sql_t)
 
 
 

@@ -16,19 +16,23 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from visual import views as visual_view
+from credit import views as credit_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', visual_view.default),
-    url(r'^ajax_time/$', visual_view.ajax_time),
-    url(r'^test/$', visual_view.test),
-    url(r'^ajax_contract_money/$', visual_view.ajax_contract_money),
-    url(r'^ajax_city/$', visual_view.ajax_city),
-    url(r'^ajax_map/$', visual_view.ajax_map),
-    url(r'^ajax_hp/$', visual_view.ajax_hp),
-    url(r'^ajax_hp2/$', visual_view.ajax_hp2),
-    url(r'^ajax_hp3/$', visual_view.ajax_hp3),
-    url(r'^ajax_contract_today/$', visual_view.ajax_contract_today)
+    url(r'^visual/$', visual_view.default),
+    url(r'^visual/ajax_time/$', visual_view.ajax_time),
+    url(r'^visual/ajax_contract_money/$', visual_view.ajax_contract_money),
+    url(r'^visual/ajax_city/$', visual_view.ajax_city),
+    url(r'^visual/ajax_map/$', visual_view.ajax_map),
+    url(r'^visual/ajax_hp/$', visual_view.ajax_hp),
+    url(r'^visual/ajax_hp2/$', visual_view.ajax_hp2),
+    url(r'^visual/ajax_hp3/$', visual_view.ajax_hp3),
+    url(r'^visual/ajax_contract_today/$', visual_view.ajax_contract_today),
+    url(r'^visual/ajax_in_year/$', visual_view.ajax_in_year),
+    url(r'^visual/ajax_city_all/$', visual_view.ajax_city_all),
+    url(r'^visual/ajax_test/$', visual_view.ajax_test)
+
 
 ]
 

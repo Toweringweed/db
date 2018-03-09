@@ -1,0 +1,1344 @@
+/*
+    DJANGO Admin styles
+*/
+
+#id_order_id{width:180px}
+#id_name{width: 100px} 
+/* #id_IDcard{width:100px} */
+#id_ggjl_set-0-public_record{height: 80px}
+
+.aligned label{ width:100px;}
+#id_check_describe{height:50px}
+
+#id_card_set-0-bank{width:180px}
+.field-overdue{width:30px}
+#id_card_set-0-overdue{ width:30px}
+#id_card_set-0-credit_Line{ width:80px}
+#id_card_set-0-account_category{width:80px}
+#id_card_set-0-used_line{ width:80px}
+#id_card_set-0-account_state{ width:65px}
+#id_card_set-0-overdue_money {width:80px}
+
+
+
+#id_card_set-1-bank{width:180px}
+.field-overdue{width:30px}
+#id_card_set-1-overdue{ width:30px}
+#id_card_set-1-credit_Line{ width:80px}
+#id_card_set-1-account_category{width:80px}
+#id_card_set-1-used_line{ width:80px}
+#id_card_set-1-account_state{ width:65px}
+#id_card_set-1-overdue_money {width:80px}
+
+#id_card_set-2-bank{width:180px}
+#id_card_set-2-overdue{ width:30px}
+#id_card_set-2-credit_Line{ width:80px}
+#id_card_set-2-account_category{width:80px}
+#id_card_set-2-used_line{ width:80px}
+#id_card_set-2-account_state{ width:65px}
+#id_card_set-2-overdue_money {width:80px}
+
+#id_card_set-3-bank{width:180px}
+#id_card_set-3-overdue{ width:30px}
+#id_card_set-3-credit_Line{ width:80px}
+#id_card_set-3-account_category{width:80px}
+#id_card_set-3-used_line{ width:80px}
+#id_card_set-3-account_state{ width:65px}
+#id_card_set-3-overdue_money {width:80px}
+
+#id_card_set-4-bank{width:180px}
+#id_card_set-4-overdue{ width:30px}
+#id_card_set-4-credit_Line{ width:80px}
+#id_card_set-4-account_category{width:80px}
+#id_card_set-4-used_line{ width:80px}
+#id_card_set-4-account_state{ width:65px}
+#id_card_set-4-overdue_money {width:80px}
+
+#id_card_set-5-bank{width:180px}
+#id_card_set-5-overdue{ width:30px}
+#id_card_set-5-credit_Line{ width:80px}
+#id_card_set-5-account_category{width:80px}
+#id_card_set-5-used_line{ width:80px}
+#id_card_set-5-account_state{ width:65px}
+#id_card_set-5-overdue_money {width:80px}
+
+#id_card_set-5-bank{width:180px}
+#id_card_set-6-overdue{ width:30px}
+#id_card_set-6-credit_Line{ width:80px}
+#id_card_set-6-account_category{width:80px}
+#id_card_set-6-used_line{ width:80px}
+#id_card_set-6-account_state{ width:65px}
+#id_card_set-6-overdue_money {width:80px}
+
+#id_card_set-7-bank{width:180px}
+#id_card_set-7-overdue{ width:30px}
+#id_card_set-7-credit_Line{ width:80px}
+#id_card_set-7-account_category{width:80px}
+#id_card_set-7-used_line{ width:80px}
+#id_card_set-7-account_state{ width:65px}
+#id_card_set-7-overdue_money {width:80px}
+
+#id_card_set-8-bank{width:180px}
+#id_card_set-8-overdue{ width:30px}
+#id_card_set-8-credit_Line{ width:80px}
+#id_card_set-8-account_category{width:80px}
+#id_card_set-8-used_line{ width:80px}
+#id_card_set-8-account_state{ width:65px}
+#id_card_set-8-overdue_money {width:80px}
+
+
+#id_card_set-9-bank{width:180px}
+#id_card_set-9-overdue{ width:30px}
+#id_card_set-9-credit_Line{ width:80px}
+#id_card_set-9-account_category{width:80px}
+#id_card_set-9-used_line{ width:80px}
+#id_card_set-9-account_state{ width:65px}
+#id_card_set-9-overdue_money {width:80px}
+
+#id_card_set-10-bank{width:180px}
+#id_card_set-10-overdue{ width:30px}
+#id_card_set-10-credit_Line{ width:80px}
+#id_card_set-10-account_category{width:80px}
+#id_card_set-10-used_line{ width:80px}
+#id_card_set-10-account_state{ width:65px}
+#id_card_set-10-overdue_money {width:80px}
+
+#id_card_set-11-bank{width:180px}
+#id_card_set-11-overdue{ width:30px}
+#id_card_set-11-credit_Line{ width:80px}
+#id_card_set-11-account_category{width:80px}
+#id_card_set-11-used_line{ width:80px}
+#id_card_set-11-account_state{ width:65px}
+#id_card_set-11-overdue_money {width:80px}
+
+#id_card_set-12-bank{width:180px}
+#id_card_set-12-overdue{ width:30px}
+#id_card_set-12-credit_Line{ width:80px}
+#id_card_set-12-account_category{width:80px}
+#id_card_set-12-used_line{ width:80px}
+#id_card_set-12-account_state{ width:65px}
+#id_card_set-12-overdue_money {width:80px}
+
+#id_card_set-13-bank{width:180px}
+#id_card_set-13-overdue{ width:30px}
+#id_card_set-13-credit_Line{ width:80px}
+#id_card_set-13-account_category{width:80px}
+#id_card_set-13-used_line{ width:80px}
+#id_card_set-13-account_state{ width:65px}
+#id_card_set-13-overdue_money {width:80px}
+
+#id_card_set-14-bank{width:180px}
+#id_card_set-14-overdue{ width:30px}
+#id_card_set-14-credit_Line{ width:80px}
+#id_card_set-14-account_category{width:80px}
+#id_card_set-14-used_line{ width:80px}
+#id_card_set-14-account_state{ width:65px}
+#id_card_set-14-overdue_money {width:80px}
+
+#id_card_set-15-bank{width:180px}
+#id_card_set-15-overdue{ width:30px}
+#id_card_set-15-credit_Line{ width:80px}
+#id_card_set-15-account_category{width:80px}
+#id_card_set-15-used_line{ width:80px}
+#id_card_set-15-account_state{ width:65px}
+#id_card_set-15-overdue_money {width:80px}
+
+#id_card_set-16-bank{width:180px}
+#id_card_set-16-overdue{ width:30px}
+#id_card_set-16-credit_Line{ width:80px}
+#id_card_set-16-account_category{width:80px}
+#id_card_set-16-used_line{ width:80px}
+#id_card_set-16-account_state{ width:65px}
+#id_card_set-16-overdue_money {width:80px}
+
+#id_card_set-17-bank{width:180px}
+#id_card_set-17-overdue{ width:30px}
+#id_card_set-17-credit_Line{ width:80px}
+#id_card_set-17-account_category{width:80px}
+#id_card_set-17-used_line{ width:80px}
+#id_card_set-17-account_state{ width:65px}
+#id_card_set-17-overdue_money {width:80px}
+
+#id_card_set-18-bank{width:180px}
+#id_card_set-18-overdue{ width:30px}
+#id_card_set-18-credit_Line{ width:80px}
+#id_card_set-18-account_category{width:80px}
+#id_card_set-18-used_line{ width:80px}
+#id_card_set-18-account_state{ width:65px}
+#id_card_set-18-overdue_money {width:80px}
+
+#id_card_set-19-bank{width:180px}
+#id_card_set-19-overdue{ width:30px}
+#id_card_set-19-credit_Line{ width:80px}
+#id_card_set-19-account_category{width:80px}
+#id_card_set-19-used_line{ width:80px}
+#id_card_set-19-account_state{ width:65px}
+#id_card_set-19-overdue_money {width:80px}
+
+#id_card_set-20-bank{width:180px}
+#id_card_set-20-overdue{ width:30px}
+#id_card_set-20-credit_Line{ width:80px}
+#id_card_set-20-account_category{width:80px}
+#id_card_set-20-used_line{ width:80px}
+#id_card_set-20-account_state{ width:65px}
+#id_card_set-20-overdue_money {width:80px}
+
+#id_card_set-21-bank{width:180px}
+#id_card_set-21-overdue{ width:30px}
+#id_card_set-21-credit_Line{ width:80px}
+#id_card_set-21-account_category{width:80px}
+#id_card_set-21-used_line{ width:80px}
+#id_card_set-21-account_state{ width:65px}
+#id_card_set-21-overdue_money {width:80px}
+
+#id_card_set-22-bank{width:180px}
+#id_card_set-22-overdue{ width:30px}
+#id_card_set-22-credit_Line{ width:80px}
+#id_card_set-22-account_category{width:80px}
+#id_card_set-22-used_line{ width:80px}
+#id_card_set-22-account_state{ width:65px}
+#id_card_set-22-overdue_money {width:80px}
+
+#id_card_set-23-bank{width:180px}
+#id_card_set-23-overdue{ width:30px}
+#id_card_set-23-credit_Line{ width:80px}
+#id_card_set-23-account_category{width:80px}
+#id_card_set-23-used_line{ width:80px}
+#id_card_set-23-account_state{ width:65px}
+#id_card_set-23-overdue_money {width:80px}
+
+#id_card_set-24-bank{width:180px}
+#id_card_set-24-overdue{ width:30px}
+#id_card_set-24-credit_Line{ width:80px}
+#id_card_set-24-account_category{width:80px}
+#id_card_set-24-used_line{ width:80px}
+#id_card_set-24-account_state{ width:65px}
+#id_card_set-24-overdue_money {width:80px}
+
+#id_card_set-25-bank{width:180px}
+#id_card_set-25-overdue{ width:30px}
+#id_card_set-25-credit_Line{ width:80px}
+#id_card_set-25-account_category{width:80px}
+#id_card_set-25-used_line{ width:80px}
+#id_card_set-25-account_state{ width:65px}
+#id_card_set-25-overdue_money {width:80px}
+
+#id_card_set-26-bank{width:180px}
+#id_card_set-26-overdue{ width:30px}
+#id_card_set-26-credit_Line{ width:80px}
+#id_card_set-26-account_category{width:80px}
+#id_card_set-26-used_line{ width:80px}
+#id_card_set-26-account_state{ width:65px}
+#id_card_set-26-overdue_money {width:80px}
+
+#id_card_set-27-bank{width:180px}
+#id_card_set-27-overdue{ width:30px}
+#id_card_set-27-credit_Line{ width:80px}
+#id_card_set-27-account_category{width:80px}
+#id_card_set-27-used_line{ width:80px}
+#id_card_set-27-account_state{ width:65px}
+#id_card_set-27-overdue_money {width:80px}
+
+#id_card_set-28-bank{width:180px}
+#id_card_set-28-overdue{ width:30px}
+#id_card_set-28-credit_Line{ width:80px}
+#id_card_set-28-account_category{width:80px}
+#id_card_set-28-used_line{ width:80px}
+#id_card_set-28-account_state{ width:65px}
+#id_card_set-28-overdue_money {width:80px}
+
+#id_card_set-29-bank{width:180px}
+#id_card_set-29-overdue{ width:30px}
+#id_card_set-29-credit_Line{ width:80px}
+#id_card_set-29-account_category{width:80px}
+#id_card_set-29-used_line{ width:80px}
+#id_card_set-29-account_state{ width:65px}
+#id_card_set-29-overdue_money {width:80px}
+
+#id_card_set-30-bank{width:180px}
+#id_card_set-30-overdue{ width:30px}
+#id_card_set-30-credit_Line{ width:80px}
+#id_card_set-30-account_category{width:80px}
+#id_card_set-30-used_line{ width:80px}
+#id_card_set-30-account_state{ width:65px}
+#id_card_set-30-overdue_money {width:80px}
+
+
+
+
+.delete{ width:60px}
+
+#id_loan_set-0-overdue{width: 30px}
+#id_loan_set-0-type{ width:80px}
+#id_loan_set-0-institution{width: 180px}
+#id_loan_set-0-grant_date{ width:60px;}
+#id_loan_set-0-money{ width:90px}
+#id_loan_set-0-account_category{ width:100px}
+#id_loan_set-0-figure{width:80px}
+#id_loan_set-0-yuqi_money{ width:80px}
+#id_loan_set-0-years5_overdue{width:50px}
+#id_loan_set-0-days90_overdue{ width:50px}
+
+#id_loan_set-1-overdue{width: 30px}
+#id_loan_set-1-type{ width:80px}
+#id_loan_set-1-institution{width: 180px}
+#id_loan_set-1-grant_date{ width:60px;}
+#id_loan_set-1-money{ width:90px}
+#id_loan_set-1-account_category{ width:100px}
+#id_loan_set-1-figure{width:80px}
+#id_loan_set-1-yuqi_money{ width:80px}
+#id_loan_set-1-years5_overdue{width:50px}
+#id_loan_set-1-days90_overdue{ width:50px}
+
+#id_loan_set-2-overdue{width: 30px}
+#id_loan_set-2-type{ width:80px}
+#id_loan_set-2-institution{width: 180px}
+#id_loan_set-2-grant_date{ width:60px;}
+#id_loan_set-2-money{ width:90px}
+#id_loan_set-2-account_category{ width:100px}
+#id_loan_set-2-figure{width:80px}
+#id_loan_set-2-yuqi_money{ width:80px}
+#id_loan_set-2-years5_overdue{width:50px}
+#id_loan_set-2-days90_overdue{ width:50px}
+
+#id_loan_set-3-overdue{width: 30px}
+#id_loan_set-3-type{ width:80px}
+#id_loan_set-3-institution{width: 180px}
+#id_loan_set-3-grant_date{ width:60px;}
+#id_loan_set-3-money{ width:90px}
+#id_loan_set-3-account_category{ width:100px}
+#id_loan_set-3-figure{width:80px}
+#id_loan_set-3-yuqi_money{ width:80px}
+#id_loan_set-3-years5_overdue{width:50px}
+#id_loan_set-3-days90_overdue{ width:50px}
+
+#id_loan_set-4-overdue{width: 30px}
+#id_loan_set-4-type{ width:80px}
+#id_loan_set-4-institution{width: 180px}
+#id_loan_set-4-grant_date{ width:60px;}
+#id_loan_set-4-money{ width:90px}
+#id_loan_set-4-account_category{ width:100px}
+#id_loan_set-4-figure{width:80px}
+#id_loan_set-4-yuqi_money{ width:80px}
+#id_loan_set-4-years5_overdue{width:50px}
+#id_loan_set-4-days90_overdue{ width:50px}
+
+
+#id_loan_set-5-overdue{width: 30px}
+#id_loan_set-5-type{ width:80px}
+#id_loan_set-5-institution{width: 180px}
+#id_loan_set-5-grant_date{ width:60px;}
+#id_loan_set-5-money{ width:90px}
+#id_loan_set-5-account_category{ width:100px}
+#id_loan_set-5-figure{width:80px}
+#id_loan_set-5-yuqi_money{ width:80px}
+#id_loan_set-5-years5_overdue{width:50px}
+#id_loan_set-5-days90_overdue{ width:50px}
+
+#id_loan_set-6-overdue{width: 30px}
+#id_loan_set-6-type{ width:80px}
+#id_loan_set-6-institution{width: 180px}
+#id_loan_set-6-grant_date{ width:60px;}
+#id_loan_set-6-money{ width:90px}
+#id_loan_set-6-account_category{ width:100px}
+#id_loan_set-6-figure{width:80px}
+#id_loan_set-6-yuqi_money{ width:80px}
+#id_loan_set-6-years5_overdue{width:50px}
+#id_loan_set-6-days90_overdue{ width:50px}
+
+#id_loan_set-7-overdue{width: 30px}
+#id_loan_set-7-type{ width:80px}
+#id_loan_set-7-institution{width: 180px}
+#id_loan_set-7-grant_date{ width:60px;}
+#id_loan_set-7-money{ width:90px}
+#id_loan_set-7-account_category{ width:100px}
+#id_loan_set-7-figure{width:80px}
+#id_loan_set-7-yuqi_money{ width:80px}
+#id_loan_set-7-years5_overdue{width:50px}
+#id_loan_set-7-days90_overdue{ width:50px}
+
+#id_loan_set-8-overdue{width: 30px}
+#id_loan_set-8-type{ width:80px}
+#id_loan_set-8-institution{width: 180px}
+#id_loan_set-8-grant_date{ width:60px;}
+#id_loan_set-8-money{ width:90px}
+#id_loan_set-8-account_category{ width:100px}
+#id_loan_set-8-figure{width:80px}
+#id_loan_set-8-yuqi_money{ width:80px}
+#id_loan_set-8-years5_overdue{width:50px}
+#id_loan_set-8-days90_overdue{ width:50px}
+
+#id_loan_set-9-overdue{width: 30px}
+#id_loan_set-9-type{ width:80px}
+#id_loan_set-9-institution{width: 180px}
+#id_loan_set-9-grant_date{ width:60px;}
+#id_loan_set-9-money{ width:90px}
+#id_loan_set-9-account_category{ width:100px}
+#id_loan_set-9-figure{width:80px}
+#id_loan_set-9-yuqi_money{ width:80px}
+#id_loan_set-9-years5_overdue{width:50px}
+#id_loan_set-9-days90_overdue{ width:50px}
+
+#id_loan_set-10-overdue{width: 30px}
+#id_loan_set-10-type{ width:80px}
+#id_loan_set-10-institution{width: 180px}
+#id_loan_set-10-grant_date{ width:60px;}
+#id_loan_set-10-money{ width:90px}
+#id_loan_set-10-account_category{ width:100px}
+#id_loan_set-10-figure{width:80px}
+#id_loan_set-10-yuqi_money{ width:80px}
+#id_loan_set-10-years5_overdue{width:50px}
+#id_loan_set-10-days90_overdue{ width:50px}
+
+#id_loan_set-11-overdue{width: 30px}
+#id_loan_set-11-type{ width:80px}
+#id_loan_set-11-institution{width: 180px}
+#id_loan_set-11-grant_date{ width:60px;}
+#id_loan_set-11-money{ width:90px}
+#id_loan_set-11-account_category{ width:100px}
+#id_loan_set-11-figure{width:80px}
+#id_loan_set-11-yuqi_money{ width:80px}
+#id_loan_set-11-years5_overdue{width:50px}
+#id_loan_set-11-days90_overdue{ width:50px}
+
+
+#id_loan_set-12-overdue{width: 30px}
+#id_loan_set-12-type{ width:80px}
+#id_loan_set-12-institution{width: 180px}
+#id_loan_set-12-grant_date{ width:60px;}
+#id_loan_set-12-money{ width:90px}
+#id_loan_set-12-account_category{ width:100px}
+#id_loan_set-12-figure{width:80px}
+#id_loan_set-12-yuqi_money{ width:80px}
+#id_loan_set-12-years5_overdue{width:50px}
+#id_loan_set-12-days90_overdue{ width:50px}
+
+
+#id_loan_set-13-overdue{width: 30px}
+#id_loan_set-13-type{ width:80px}
+#id_loan_set-13-institution{width: 180px}
+#id_loan_set-13-grant_date{ width:60px;}
+#id_loan_set-13-money{ width:90px}
+#id_loan_set-13-account_category{ width:100px}
+#id_loan_set-13-figure{width:80px}
+#id_loan_set-13-yuqi_money{ width:80px}
+#id_loan_set-13-years5_overdue{width:50px}
+#id_loan_set-13-days90_overdue{ width:50px}
+
+#id_loan_set-14-overdue{width: 30px}
+#id_loan_set-14-type{ width:80px}
+#id_loan_set-14-institution{width: 180px}
+#id_loan_set-14-grant_date{ width:60px;}
+#id_loan_set-14-money{ width:90px}
+#id_loan_set-14-account_category{ width:100px}
+#id_loan_set-14-figure{width:80px}
+#id_loan_set-14-yuqi_money{ width:80px}
+#id_loan_set-14-years5_overdue{width:50px}
+#id_loan_set-14-days90_overdue{ width:50px}
+
+#id_loan_set-15-overdue{width: 30px}
+#id_loan_set-15-type{ width:80px}
+#id_loan_set-15-institution{width: 180px}
+#id_loan_set-15-grant_date{ width:60px;}
+#id_loan_set-15-money{ width:90px}
+#id_loan_set-15-account_category{ width:100px}
+#id_loan_set-15-figure{width:80px}
+#id_loan_set-15-yuqi_money{ width:80px}
+#id_loan_set-15-years5_overdue{width:50px}
+#id_loan_set-15-days90_overdue{ width:50px}
+
+#id_loan_set-16-overdue{width: 30px}
+#id_loan_set-16-type{ width:80px}
+#id_loan_set-16-institution{width: 180px}
+#id_loan_set-16-grant_date{ width:60px;}
+#id_loan_set-16-money{ width:90px}
+#id_loan_set-16-account_category{ width:100px}
+#id_loan_set-16-figure{width:80px}
+#id_loan_set-16-yuqi_money{ width:80px}
+#id_loan_set-16-years5_overdue{width:50px}
+#id_loan_set-16-days90_overdue{ width:50px}
+
+#id_loan_set-17-overdue{width: 30px}
+#id_loan_set-17-type{ width:80px}
+#id_loan_set-17-institution{width: 180px}
+#id_loan_set-17-grant_date{ width:60px;}
+#id_loan_set-17-money{ width:90px}
+#id_loan_set-17-account_category{ width:100px}
+#id_loan_set-17-figure{width:80px}
+#id_loan_set-17-yuqi_money{ width:80px}
+#id_loan_set-17-years5_overdue{width:50px}
+#id_loan_set-17-days90_overdue{ width:50px}
+
+#id_loan_set-18-overdue{width: 30px}
+#id_loan_set-18-type{ width:80px}
+#id_loan_set-18-institution{width: 180px}
+#id_loan_set-18-grant_date{ width:60px;}
+#id_loan_set-18-money{ width:90px}
+#id_loan_set-18-account_category{ width:100px}
+#id_loan_set-18-figure{width:80px}
+#id_loan_set-18-yuqi_money{ width:80px}
+#id_loan_set-18-years5_overdue{width:50px}
+#id_loan_set-18-days90_overdue{ width:50px}
+
+
+#id_loan_set-19-overdue{width: 30px}
+#id_loan_set-19-type{ width:80px}
+#id_loan_set-19-institution{width: 180px}
+#id_loan_set-19-grant_date{ width:60px;}
+#id_loan_set-19-money{ width:90px}
+#id_loan_set-19-account_category{ width:100px}
+#id_loan_set-19-figure{width:80px}
+#id_loan_set-19-yuqi_money{ width:80px}
+#id_loan_set-19-years5_overdue{width:50px}
+#id_loan_set-19-days90_overdue{ width:50px}
+
+
+#id_loan_set-20-overdue{width: 30px}
+#id_loan_set-20-type{ width:80px}
+#id_loan_set-20-institution{width: 180px}
+#id_loan_set-20-grant_date{ width:60px;}
+#id_loan_set-20-money{ width:90px}
+#id_loan_set-20-account_category{ width:100px}
+#id_loan_set-20-figure{width:80px}
+#id_loan_set-20-yuqi_money{ width:80px}
+#id_loan_set-20-years5_overdue{width:50px}
+#id_loan_set-20-days90_overdue{ width:50px}
+
+#id_loan_set-21-overdue{width: 30px}
+#id_loan_set-21-type{ width:80px}
+#id_loan_set-21-institution{width: 180px}
+#id_loan_set-21-grant_date{ width:60px;}
+#id_loan_set-21-money{ width:90px}
+#id_loan_set-21-account_category{ width:100px}
+#id_loan_set-21-figure{width:80px}
+#id_loan_set-21-yuqi_money{ width:80px}
+#id_loan_set-21-years5_overdue{width:50px}
+#id_loan_set-21-days90_overdue{ width:50px}
+
+#id_loan_set-22-overdue{width: 30px}
+#id_loan_set-22-type{ width:80px}
+#id_loan_set-22-institution{width: 180px}
+#id_loan_set-22-grant_date{ width:60px;}
+#id_loan_set-22-money{ width:90px}
+#id_loan_set-22-account_category{ width:100px}
+#id_loan_set-22-figure{width:80px}
+#id_loan_set-22-yuqi_money{ width:80px}
+#id_loan_set-22-years5_overdue{width:50px}
+#id_loan_set-22-days90_overdue{ width:50px}
+
+#id_loan_set-23-overdue{width: 30px}
+#id_loan_set-23-type{ width:80px}
+#id_loan_set-23-institution{width: 180px}
+#id_loan_set-23-grant_date{ width:60px;}
+#id_loan_set-23-money{ width:90px}
+#id_loan_set-23-account_category{ width:100px}
+#id_loan_set-23-figure{width:80px}
+#id_loan_set-23-yuqi_money{ width:80px}
+#id_loan_set-23-years5_overdue{width:50px}
+#id_loan_set-23-days90_overdue{ width:50px}
+
+#id_loan_set-24-overdue{width: 30px}
+#id_loan_set-24-type{ width:80px}
+#id_loan_set-24-institution{width: 180px}
+#id_loan_set-24-grant_date{ width:60px;}
+#id_loan_set-24-money{ width:90px}
+#id_loan_set-24-account_category{ width:100px}
+#id_loan_set-24-figure{width:80px}
+#id_loan_set-24-yuqi_money{ width:80px}
+#id_loan_set-24-years5_overdue{width:50px}
+#id_loan_set-24-days90_overdue{ width:50px}
+
+#id_loan_set-25-overdue{width: 30px}
+#id_loan_set-25-type{ width:80px}
+#id_loan_set-25-institution{width: 180px}
+#id_loan_set-25-grant_date{ width:60px;}
+#id_loan_set-25-money{ width:90px}
+#id_loan_set-25-account_category{ width:100px}
+#id_loan_set-25-figure{width:80px}
+#id_loan_set-25-yuqi_money{ width:80px}
+#id_loan_set-25-years5_overdue{width:50px}
+#id_loan_set-25-days90_overdue{ width:50px}
+
+#id_loan_set-26-overdue{width: 30px}
+#id_loan_set-26-type{ width:80px}
+#id_loan_set-26-institution{width: 180px}
+#id_loan_set-26-grant_date{ width:60px;}
+#id_loan_set-26-money{ width:90px}
+#id_loan_set-26-account_category{ width:100px}
+#id_loan_set-26-figure{width:80px}
+#id_loan_set-26-yuqi_money{ width:80px}
+#id_loan_set-26-years5_overdue{width:50px}
+#id_loan_set-26-days90_overdue{ width:50px}
+
+#id_loan_set-27-overdue{width: 30px}
+#id_loan_set-27-type{ width:80px}
+#id_loan_set-27-institution{width: 180px}
+#id_loan_set-27-grant_date{ width:60px;}
+#id_loan_set-27-money{ width:90px}
+#id_loan_set-27-account_category{ width:100px}
+#id_loan_set-27-figure{width:80px}
+#id_loan_set-27-yuqi_money{ width:80px}
+#id_loan_set-27-years5_overdue{width:50px}
+#id_loan_set-27-days90_overdue{ width:50px}
+
+
+#id_loan_set-28-overdue{width: 30px}
+#id_loan_set-28-type{ width:80px}
+#id_loan_set-28-institution{width: 180px}
+#id_loan_set-28-grant_date{ width:60px;}
+#id_loan_set-28-money{ width:90px}
+#id_loan_set-28-account_category{ width:100px}
+#id_loan_set-28-figure{width:80px}
+#id_loan_set-28-yuqi_money{ width:80px}
+#id_loan_set-28-years5_overdue{width:50px}
+#id_loan_set-28-days90_overdue{ width:50px}
+
+
+#id_loan_set-29-overdue{width: 30px}
+#id_loan_set-29-type{ width:80px}
+#id_loan_set-29-type{ width:80px}
+#id_loan_set-29-institution{width: 180px}
+#id_loan_set-29-institution{width: 180px}
+#id_loan_set-29-grant_date{ width:60px;}
+#id_loan_set-29-money{ width:90px}
+#id_loan_set-29-account_category{ width:100px}
+#id_loan_set-29-figure{width:80px}
+#id_loan_set-29-yuqi_money{ width:80px}
+#id_loan_set-29-years5_overdue{width:50px}
+#id_loan_set-29-days90_overdue{ width:50px}
+
+#id_loan_set-30-overdue{width: 30px}
+#id_loan_set-30-type{ width:80px}
+#id_loan_set-30-institution{width: 180px}
+#id_loan_set-30-grant_date{ width:60px;}
+#id_loan_set-30-money{ width:90px}
+#id_loan_set-30-account_category{ width:100px}
+#id_loan_set-30-figure{width:80px}
+#id_loan_set-30-yuqi_money{ width:80px}
+#id_loan_set-30-years5_overdue{width:50px}
+#id_loan_set-30-days90_overdue{ width:50px}
+
+#id_loan_set-31-overdue{width: 30px}
+#id_loan_set-31-type{ width:80px}
+#id_loan_set-31-institution{width: 180px}
+#id_loan_set-31-grant_date{ width:60px;}
+#id_loan_set-31-money{ width:90px}
+#id_loan_set-31-account_category{ width:100px}
+#id_loan_set-31-figure{width:80px}
+#id_loan_set-31-yuqi_money{ width:80px}
+#id_loan_set-31-years5_overdue{width:50px}
+#id_loan_set-31-days90_overdue{ width:50px}
+
+#id_loan_set-32-overdue{width: 30px}
+#id_loan_set-32-type{ width:80px}
+#id_loan_set-32-institution{width: 180px}
+#id_loan_set-32-grant_date{ width:60px;}
+#id_loan_set-32-money{ width:90px}
+#id_loan_set-32-account_category{ width:100px}
+#id_loan_set-32-figure{width:80px}
+#id_loan_set-32-yuqi_money{ width:80px}
+#id_loan_set-32-years5_overdue{width:50px}
+#id_loan_set-32-days90_overdue{ width:50px}
+
+#id_loan_set-33-overdue{width: 30px}
+#id_loan_set-33-type{ width:80px}
+#id_loan_set-33-institution{width: 180px}
+#id_loan_set-33-grant_date{ width:60px;}
+#id_loan_set-33-money{ width:90px}
+#id_loan_set-33-account_category{ width:100px}
+#id_loan_set-33-figure{width:80px}
+#id_loan_set-33-yuqi_money{ width:80px}
+#id_loan_set-33-years5_overdue{width:50px}
+#id_loan_set-33-days90_overdue{ width:50px}
+
+
+#id_loan_set-34-overdue{width: 30px}
+#id_loan_set-34-type{ width:80px}
+#id_loan_set-34-institution{width: 180px}
+#id_loan_set-34-grant_date{ width:60px;}
+#id_loan_set-34-money{ width:90px}
+#id_loan_set-34-account_category{ width:100px}
+#id_loan_set-34-figure{width:80px}
+#id_loan_set-34-yuqi_money{ width:80px}
+#id_loan_set-34-years5_overdue{width:50px}
+#id_loan_set-34-days90_overdue{ width:50px}
+
+#id_loan_set-35-overdue{width: 30px}
+#id_loan_set-35-type{ width:80px}
+#id_loan_set-35-institution{width: 180px}
+#id_loan_set-35-grant_date{ width:60px;}
+#id_loan_set-35-money{ width:90px}
+#id_loan_set-35-account_category{ width:100px}
+#id_loan_set-35-figure{width:80px}
+#id_loan_set-35-yuqi_money{ width:80px}
+#id_loan_set-35-years5_overdue{width:50px}
+#id_loan_set-35-days90_overdue{ width:50px}
+
+#id_loan_set-36-overdue{width: 30px}
+#id_loan_set-36-type{ width:80px}
+#id_loan_set-36-institution{width: 180px}
+#id_loan_set-36-grant_date{ width:60px;}
+#id_loan_set-36-money{ width:90px}
+#id_loan_set-36-account_category{ width:100px}
+#id_loan_set-36-figure{width:80px}
+#id_loan_set-36-yuqi_money{ width:80px}
+#id_loan_set-36-years5_overdue{width:50px}
+#id_loan_set-36-days90_overdue{ width:50px}
+
+#id_loan_set-37-overdue{width: 30px}
+#id_loan_set-37-type{ width:80px}
+#id_loan_set-37-institution{width: 180px}
+#id_loan_set-37-grant_date{ width:60px;}
+#id_loan_set-37-money{ width:90px}
+#id_loan_set-37-account_category{ width:100px}
+#id_loan_set-37-figure{width:80px}
+#id_loan_set-37-yuqi_money{ width:80px}
+#id_loan_set-37-years5_overdue{width:50px}
+#id_loan_set-37-days90_overdue{ width:50px}
+
+#id_loan_set-38-overdue{width: 30px}
+#id_loan_set-38-type{ width:80px}
+#id_loan_set-38-institution{width: 180px}
+#id_loan_set-38-grant_date{ width:60px;}
+#id_loan_set-38-money{ width:90px}
+#id_loan_set-38-account_category{ width:100px}
+#id_loan_set-38-figure{width:80px}
+#id_loan_set-38-yuqi_money{ width:80px}
+#id_loan_set-38-years5_overdue{width:50px}
+#id_loan_set-38-days90_overdue{ width:50px}
+
+#id_loan_set-39-overdue{width: 30px}
+#id_loan_set-39-type{ width:80px}
+#id_loan_set-39-institution{width: 180px}
+#id_loan_set-39-grant_date{ width:60px;}
+#id_loan_set-39-money{ width:90px}
+#id_loan_set-39-account_category{ width:100px}
+#id_loan_set-39-figure{width:80px}
+#id_loan_set-39-yuqi_money{ width:80px}
+#id_loan_set-39-years5_overdue{width:50px}
+#id_loan_set-39-days90_overdue{ width:50px}
+
+#id_loan_set-40-overdue{width: 30px}
+#id_loan_set-40-type{ width:80px}
+#id_loan_set-40-institution{width: 180px}
+#id_loan_set-40-grant_date{ width:60px;}
+#id_loan_set-40-money{ width:90px}
+#id_loan_set-40-account_category{ width:100px}
+#id_loan_set-40-figure{width:80px}
+#id_loan_set-40-yuqi_money{ width:80px}
+#id_loan_set-40-years5_overdue{width:50px}
+#id_loan_set-40-days90_overdue{ width:50px}
+
+#id_loan_set-41-overdue{width: 30px}
+#id_loan_set-41-type{ width:80px}
+#id_loan_set-41-institution{width: 180px}
+#id_loan_set-41-grant_date{ width:60px;}
+#id_loan_set-41-money{ width:90px}
+#id_loan_set-41-account_category{ width:100px}
+#id_loan_set-41-figure{width:80px}
+#id_loan_set-41-yuqi_money{ width:80px}
+#id_loan_set-41-years5_overdue{width:50px}
+#id_loan_set-41-days90_overdue{ width:50px}
+
+#id_loan_set-42-overdue{width: 30px}
+#id_loan_set-42-type{ width:80px}
+#id_loan_set-42-institution{width: 180px}
+#id_loan_set-42-grant_date{ width:60px;}
+#id_loan_set-42-money{ width:90px}
+#id_loan_set-42-account_category{ width:100px}
+#id_loan_set-42-figure{width:80px}
+#id_loan_set-42-yuqi_money{ width:80px}
+#id_loan_set-42-years5_overdue{width:50px}
+#id_loan_set-42-days90_overdue{ width:50px}
+
+#id_loan_set-43-overdue{width: 30px}
+#id_loan_set-43-type{ width:80px}
+#id_loan_set-43-institution{width: 180px}
+#id_loan_set-43-grant_date{ width:60px;}
+#id_loan_set-43-money{ width:90px}
+#id_loan_set-43-account_category{ width:100px}
+#id_loan_set-43-figure{width:80px}
+#id_loan_set-43-yuqi_money{ width:80px}
+#id_loan_set-43-years5_overdue{width:50px}
+#id_loan_set-43-days90_overdue{ width:50px}
+
+
+#id_loan_set-44-overdue{width: 30px}
+#id_loan_set-44-type{ width:80px}
+#id_loan_set-44-institution{width: 180px}
+#id_loan_set-44-grant_date{ width:60px;}
+#id_loan_set-44-money{ width:90px}
+#id_loan_set-44-account_category{ width:100px}
+#id_loan_set-44-figure{width:80px}
+#id_loan_set-44-yuqi_money{ width:80px}
+#id_loan_set-44-years5_overdue{width:50px}
+#id_loan_set-44-days90_overdue{ width:50px}
+
+
+#id_loan_set-45-overdue{width: 30px}
+#id_loan_set-45-type{ width:80px}
+#id_loan_set-45-institution{width: 180px}
+#id_loan_set-45-grant_date{ width:60px;}
+#id_loan_set-45-money{ width:90px}
+#id_loan_set-45-account_category{ width:100px}
+#id_loan_set-45-figure{width:80px}
+#id_loan_set-45-yuqi_money{ width:80px}
+#id_loan_set-45-years5_overdue{width:50px}
+#id_loan_set-45-days90_overdue{ width:50px}
+
+#id_loan_set-46-overdue{width: 30px}
+#id_loan_set-46-type{ width:80px}
+#id_loan_set-46-institution{width: 180px}
+#id_loan_set-46-grant_date{ width:60px;}
+#id_loan_set-46-money{ width:90px}
+#id_loan_set-46-account_category{ width:100px}
+#id_loan_set-46-figure{width:80px}
+#id_loan_set-46-yuqi_money{ width:80px}
+#id_loan_set-46-years5_overdue{width:50px}
+#id_loan_set-46-days90_overdue{ width:50px}
+
+
+#id_loan_set-47-overdue{width: 30px}
+#id_loan_set-47-type{ width:80px}
+#id_loan_set-47-institution{width: 180px}
+#id_loan_set-47-grant_date{ width:60px;}
+#id_loan_set-47-money{ width:90px}
+#id_loan_set-47-account_category{ width:100px}
+#id_loan_set-47-figure{width:80px}
+#id_loan_set-47-yuqi_money{ width:80px}
+#id_loan_set-47-years5_overdue{width:50px}
+#id_loan_set-47-days90_overdue{ width:50px}
+
+#id_loan_set-48-overdue{width: 30px}
+#id_loan_set-48-type{ width:80px}
+#id_loan_set-48-institution{width: 180px}
+#id_loan_set-48-grant_date{ width:60px;}
+#id_loan_set-48-money{ width:90px}
+#id_loan_set-48-account_category{ width:100px}
+#id_loan_set-48-figure{width:80px}
+#id_loan_set-48-yuqi_money{ width:80px}
+#id_loan_set-48-years5_overdue{width:50px}
+#id_loan_set-48-days90_overdue{ width:50px}
+
+#id_loan_set-49-overdue{width: 30px}
+#id_loan_set-49-type{ width:80px}
+#id_loan_set-49-institution{width: 180px}
+#id_loan_set-49-grant_date{ width:60px;}
+#id_loan_set-49-money{ width:90px}
+#id_loan_set-49-account_category{ width:100px}
+#id_loan_set-49-figure{width:80px}
+#id_loan_set-49-yuqi_money{ width:80px}
+#id_loan_set-49-years5_overdue{width:50px}
+#id_loan_set-49-days90_overdue{ width:50px}
+
+#id_loan_set-50-overdue{width: 30px}
+#id_loan_set-50-type{ width:80px}
+#id_loan_set-50-institution{width: 180px}
+#id_loan_set-50-grant_date{ width:60px;}
+#id_loan_set-50-money{ width:90px}
+#id_loan_set-50-account_category{ width:100px}
+#id_loan_set-50-figure{width:80px}
+#id_loan_set-50-yuqi_money{ width:80px}
+#id_loan_set-50-years5_overdue{width:50px}
+#id_loan_set-50-days90_overdue{ width:50px}
+
+#id_loan_set-51-overdue{width: 30px}
+#id_loan_set-51-type{ width:80px}
+#id_loan_set-51-institution{width: 180px}
+#id_loan_set-51-grant_date{ width:60px;}
+#id_loan_set-51-money{ width:90px}
+#id_loan_set-51-account_category{ width:100px}
+#id_loan_set-51-figure{width:80px}
+#id_loan_set-51-yuqi_money{ width:80px}
+#id_loan_set-51-years5_overdue{width:50px}
+#id_loan_set-51-days90_overdue{ width:50px}
+
+#id_loan_set-52-overdue{width: 30px}
+#id_loan_set-52-type{ width:80px}
+#id_loan_set-52-institution{width: 180px}
+#id_loan_set-52-grant_date{ width:60px;}
+#id_loan_set-52-money{ width:90px}
+#id_loan_set-52-account_category{ width:100px}
+#id_loan_set-52-figure{width:80px}
+#id_loan_set-52-yuqi_money{ width:80px}
+#id_loan_set-52-years5_overdue{width:50px}
+#id_loan_set-52-days90_overdue{ width:50px}
+
+#id_loan_set-53-overdue{width: 30px}
+#id_loan_set-53-type{ width:80px}
+#id_loan_set-53-institution{width: 180px}
+#id_loan_set-53-grant_date{ width:60px;}
+#id_loan_set-53-money{ width:90px}
+#id_loan_set-53-account_category{ width:100px}
+#id_loan_set-53-figure{width:80px}
+#id_loan_set-53-yuqi_money{ width:80px}
+#id_loan_set-53-years5_overdue{width:50px}
+#id_loan_set-53-days90_overdue{ width:50px}
+
+#id_loan_set-54-overdue{width: 30px}
+#id_loan_set-54-type{ width:80px}
+#id_loan_set-54-institution{width: 180px}
+#id_loan_set-54-grant_date{ width:60px;}
+#id_loan_set-54-money{ width:90px}
+#id_loan_set-54-account_category{ width:100px}
+#id_loan_set-54-figure{width:80px}
+#id_loan_set-54-yuqi_money{ width:80px}
+#id_loan_set-54-years5_overdue{width:50px}
+#id_loan_set-54-days90_overdue{ width:50px}
+
+#id_loan_set-55-overdue{width: 30px}
+#id_loan_set-55-type{ width:80px}
+#id_loan_set-55-institution{width: 180px}
+#id_loan_set-55-grant_date{ width:60px;}
+#id_loan_set-55-money{ width:90px}
+#id_loan_set-55-account_category{ width:100px}
+#id_loan_set-55-figure{width:80px}
+#id_loan_set-55-yuqi_money{ width:80px}
+#id_loan_set-55-years5_overdue{width:50px}
+#id_loan_set-55-days90_overdue{ width:50px}
+
+#id_loan_set-56-overdue{width: 30px}
+#id_loan_set-56-type{ width:80px}
+#id_loan_set-56-institution{width: 180px}
+#id_loan_set-56-grant_date{ width:60px;}
+#id_loan_set-56-money{ width:90px}
+#id_loan_set-56-account_category{ width:100px}
+#id_loan_set-56-figure{width:80px}
+#id_loan_set-56-yuqi_money{ width:80px}
+#id_loan_set-56-years5_overdue{width:50px}
+#id_loan_set-56-days90_overdue{ width:50px}
+
+
+#id_loan_set-57-overdue{width: 30px}
+#id_loan_set-57-type{ width:80px}
+#id_loan_set-57-institution{width: 180px}
+#id_loan_set-57-grant_date{ width:60px;}
+#id_loan_set-57-money{ width:90px}
+#id_loan_set-57-account_category{ width:100px}
+#id_loan_set-57-figure{width:80px}
+#id_loan_set-57-yuqi_money{ width:80px}
+#id_loan_set-57-years5_overdue{width:50px}
+#id_loan_set-57-days90_overdue{ width:50px}
+
+#id_loan_set-58-overdue{width: 30px}
+#id_loan_set-58-type{ width:80px}
+#id_loan_set-58-institution{width: 180px}
+#id_loan_set-58-grant_date{ width:60px;}
+#id_loan_set-58-money{ width:90px}
+#id_loan_set-58-account_category{ width:100px}
+#id_loan_set-58-figure{width:80px}
+#id_loan_set-58-yuqi_money{ width:80px}
+#id_loan_set-58-years5_overdue{width:50px}
+#id_loan_set-58-days90_overdue{ width:50px}
+
+#id_loan_set-59-overdue{width: 30px}
+#id_loan_set-59-type{ width:80px}
+#id_loan_set-59-institution{width: 180px}
+#id_loan_set-59-grant_date{ width:60px;}
+#id_loan_set-59-money{ width:90px}
+#id_loan_set-59-account_category{ width:100px}
+#id_loan_set-59-figure{width:80px}
+#id_loan_set-59-yuqi_money{ width:80px}
+#id_loan_set-59-years5_overdue{width:50px}
+#id_loan_set-59-days90_overdue{ width:50px}
+
+#id_loan_set-60-overdue{width: 30px}
+#id_loan_set-60-type{ width:80px}
+#id_loan_set-60-institution{width: 180px}
+#id_loan_set-60-grant_date{ width:60px;}
+#id_loan_set-60-money{ width:90px}
+#id_loan_set-60-account_category{ width:100px}
+#id_loan_set-60-figure{width:80px}
+#id_loan_set-60-yuqi_money{ width:80px}
+#id_loan_set-60-years5_overdue{width:50px}
+#id_loan_set-60-days90_overdue{ width:50px}
+
+#id_loan_set-61-overdue{width: 30px}
+#id_loan_set-61-type{ width:80px}
+#id_loan_set-61-institution{width: 180px}
+#id_loan_set-61-grant_date{ width:60px;}
+#id_loan_set-61-money{ width:90px}
+#id_loan_set-61-account_category{ width:100px}
+#id_loan_set-61-figure{width:80px}
+#id_loan_set-61-yuqi_money{ width:80px}
+#id_loan_set-61-years5_overdue{width:50px}
+#id_loan_set-61-days90_overdue{ width:50px}
+
+#id_loan_set-62-overdue{width: 30px}
+#id_loan_set-62-type{ width:80px}
+#id_loan_set-62-institution{width: 180px}
+#id_loan_set-62-grant_date{ width:60px;}
+#id_loan_set-62-money{ width:90px}
+#id_loan_set-62-account_category{ width:100px}
+#id_loan_set-62-figure{width:80px}
+#id_loan_set-62-yuqi_money{ width:80px}
+#id_loan_set-62-years5_overdue{width:50px}
+#id_loan_set-62-days90_overdue{ width:50px}
+
+#id_loan_set-63-overdue{width: 30px}
+#id_loan_set-63-type{ width:80px}
+#id_loan_set-63-institution{width: 180px}
+#id_loan_set-63-grant_date{ width:60px;}
+#id_loan_set-63-money{ width:90px}
+#id_loan_set-63-account_category{ width:100px}
+#id_loan_set-63-figure{width:80px}
+#id_loan_set-63-yuqi_money{ width:80px}
+#id_loan_set-63-years5_overdue{width:50px}
+#id_loan_set-63-days90_overdue{ width:50px}
+
+#id_loan_set-64-overdue{width: 30px}
+#id_loan_set-64-type{ width:80px}
+#id_loan_set-64-institution{width: 180px}
+#id_loan_set-64-grant_date{ width:60px;}
+#id_loan_set-64-money{ width:90px}
+#id_loan_set-64-account_category{ width:100px}
+#id_loan_set-64-figure{width:80px}
+#id_loan_set-64-yuqi_money{ width:80px}
+#id_loan_set-64-years5_overdue{width:50px}
+#id_loan_set-64-days90_overdue{ width:50px}
+
+#id_loan_set-65-overdue{width: 30px}
+#id_loan_set-65-type{ width:80px}
+#id_loan_set-65-institution{width: 180px}
+#id_loan_set-65-grant_date{ width:60px;}
+#id_loan_set-65-money{ width:90px}
+#id_loan_set-65-account_category{ width:100px}
+#id_loan_set-65-figure{width:80px}
+#id_loan_set-65-yuqi_money{ width:80px}
+#id_loan_set-65-years5_overdue{width:50px}
+#id_loan_set-65-days90_overdue{ width:50px}
+
+#id_loan_set-66-overdue{width: 30px}
+#id_loan_set-66-type{ width:80px}
+#id_loan_set-66-institution{width: 180px}
+#id_loan_set-66-grant_date{ width:60px;}
+#id_loan_set-66-money{ width:90px}
+#id_loan_set-66-account_category{ width:100px}
+#id_loan_set-66-figure{width:80px}
+#id_loan_set-66-yuqi_money{ width:80px}
+#id_loan_set-66-years5_overdue{width:50px}
+#id_loan_set-66-days90_overdue{ width:50px}
+
+#id_loan_set-67-overdue{width: 30px}
+#id_loan_set-67-type{ width:80px}
+#id_loan_set-67-institution{width: 180px}
+#id_loan_set-67-grant_date{ width:60px;}
+#id_loan_set-67-money{ width:90px}
+#id_loan_set-67-account_category{ width:100px}
+#id_loan_set-67-figure{width:80px}
+#id_loan_set-67-yuqi_money{ width:80px}
+#id_loan_set-67-years5_overdue{width:50px}
+#id_loan_set-67-days90_overdue{ width:50px}
+
+#id_loan_set-68-overdue{width: 30px}
+#id_loan_set-68-type{ width:80px}
+#id_loan_set-68-institution{width: 180px}
+#id_loan_set-68-grant_date{ width:60px;}
+#id_loan_set-68-money{ width:90px}
+#id_loan_set-68-account_category{ width:100px}
+#id_loan_set-68-figure{width:80px}
+#id_loan_set-68-yuqi_money{ width:80px}
+#id_loan_set-68-years5_overdue{width:50px}
+#id_loan_set-68-days90_overdue{ width:50px}
+
+#id_loan_set-69-overdue{width: 30px}
+#id_loan_set-69-type{ width:80px}
+#id_loan_set-69-institution{width: 180px}
+#id_loan_set-69-grant_date{ width:60px;}
+#id_loan_set-69-money{ width:90px}
+#id_loan_set-69-account_category{ width:100px}
+#id_loan_set-69-figure{width:80px}
+#id_loan_set-69-yuqi_money{ width:80px}
+#id_loan_set-69-years5_overdue{width:50px}
+#id_loan_set-69-days90_overdue{ width:50px}
+
+#id_loan_set-70-overdue{width: 30px}
+#id_loan_set-70-type{ width:80px}
+#id_loan_set-70-institution{width: 180px}
+#id_loan_set-70-grant_date{ width:60px;}
+#id_loan_set-70-money{ width:90px}
+#id_loan_set-70-account_category{ width:100px}
+#id_loan_set-70-figure{width:80px}
+#id_loan_set-70-yuqi_money{ width:80px}
+#id_loan_set-70-years5_overdue{width:50px}
+#id_loan_set-70-days90_overdue{ width:50px}
+
+#id_loan_set-71-overdue{width: 30px}
+#id_loan_set-71-type{ width:80px}
+#id_loan_set-71-institution{width: 180px}
+#id_loan_set-71-grant_date{ width:60px;}
+#id_loan_set-71-money{ width:90px}
+#id_loan_set-71-account_category{ width:100px}
+#id_loan_set-71-figure{width:80px}
+#id_loan_set-71-yuqi_money{ width:80px}
+#id_loan_set-71-years5_overdue{width:50px}
+#id_loan_set-71-days90_overdue{ width:50px}
+
+#id_loan_set-72-overdue{width: 30px}
+#id_loan_set-72-type{ width:80px}
+#id_loan_set-72-institution{width: 180px}
+#id_loan_set-72-grant_date{ width:60px;}
+#id_loan_set-72-money{ width:90px}
+#id_loan_set-72-account_category{ width:100px}
+#id_loan_set-72-figure{width:80px}
+#id_loan_set-72-yuqi_money{ width:80px}
+#id_loan_set-72-years5_overdue{width:50px}
+#id_loan_set-72-days90_overdue{ width:50px}
+
+#id_loan_set-73-overdue{width: 30px}
+#id_loan_set-73-type{ width:80px}
+#id_loan_set-73-institution{width: 180px}
+#id_loan_set-73-grant_date{ width:60px;}
+#id_loan_set-73-money{ width:90px}
+#id_loan_set-73-account_category{ width:100px}
+#id_loan_set-73-figure{width:80px}
+#id_loan_set-73-yuqi_money{ width:80px}
+#id_loan_set-73-years5_overdue{width:50px}
+#id_loan_set-73-days90_overdue{ width:50px}
+
+#id_loan_set-74-overdue{width: 30px}
+#id_loan_set-74-type{ width:80px}
+#id_loan_set-74-institution{width: 180px}
+#id_loan_set-74-grant_date{ width:60px;}
+#id_loan_set-74-money{ width:90px}
+#id_loan_set-74-account_category{ width:100px}
+#id_loan_set-74-figure{width:80px}
+#id_loan_set-74-yuqi_money{ width:80px}
+#id_loan_set-74-years5_overdue{width:50px}
+#id_loan_set-74-days90_overdue{ width:50px}
+
+#id_loan_set-75-overdue{width: 30px}
+#id_loan_set-75-type{ width:80px}
+#id_loan_set-75-institution{width: 180px}
+#id_loan_set-75-grant_date{ width:60px;}
+#id_loan_set-75-money{ width:90px}
+#id_loan_set-75-account_category{ width:100px}
+#id_loan_set-75-figure{width:80px}
+#id_loan_set-75-yuqi_money{ width:80px}
+#id_loan_set-75-years5_overdue{width:50px}
+#id_loan_set-75-days90_overdue{ width:50px}
+
+#id_loan_set-76-overdue{width: 30px}
+#id_loan_set-76-type{ width:80px}
+#id_loan_set-76-institution{width: 180px}
+#id_loan_set-76-grant_date{ width:60px;}
+#id_loan_set-76-money{ width:90px}
+#id_loan_set-76-account_category{ width:100px}
+#id_loan_set-76-figure{width:80px}
+#id_loan_set-76-yuqi_money{ width:80px}
+#id_loan_set-76-years5_overdue{width:50px}
+#id_loan_set-76-days90_overdue{ width:50px}
+
+#id_loan_set-77-overdue{width: 30px}
+#id_loan_set-77-type{ width:80px}
+#id_loan_set-77-institution{width: 180px}
+#id_loan_set-77-grant_date{ width:60px;}
+#id_loan_set-77-money{ width:90px}
+#id_loan_set-77-account_category{ width:100px}
+#id_loan_set-77-figure{width:80px}
+#id_loan_set-77-yuqi_money{ width:80px}
+#id_loan_set-77-years5_overdue{width:50px}
+#id_loan_set-77-days90_overdue{ width:50px}
+
+#id_loan_set-78-overdue{width: 30px}
+#id_loan_set-78-type{ width:80px}
+#id_loan_set-78-institution{width: 180px}
+#id_loan_set-78-grant_date{ width:60px;}
+#id_loan_set-78-money{ width:90px}
+#id_loan_set-78-account_category{ width:100px}
+#id_loan_set-78-figure{width:80px}
+#id_loan_set-78-yuqi_money{ width:80px}
+#id_loan_set-78-years5_overdue{width:50px}
+#id_loan_set-78-days90_overdue{ width:50px}
+
+#id_loan_set-79-overdue{width: 30px}
+#id_loan_set-79-type{ width:80px}
+#id_loan_set-79-institution{width: 180px}
+#id_loan_set-79-grant_date{ width:60px;}
+#id_loan_set-79-money{ width:90px}
+#id_loan_set-79-account_category{ width:100px}
+#id_loan_set-79-figure{width:80px}
+#id_loan_set-79-yuqi_money{ width:80px}
+#id_loan_set-79-years5_overdue{width:50px}
+#id_loan_set-79-days90_overdue{ width:50px}
+
+#id_loan_set-80-overdue{width: 30px}
+#id_loan_set-80-type{ width:80px}
+#id_loan_set-80-institution{width: 180px}
+#id_loan_set-80-grant_date{ width:60px;}
+#id_loan_set-80-money{ width:90px}
+#id_loan_set-80-account_category{ width:100px}
+#id_loan_set-80-figure{width:80px}
+#id_loan_set-80-yuqi_money{ width:80px}
+#id_loan_set-80-years5_overdue{width:50px}
+#id_loan_set-80-days90_overdue{ width:50px}
+
+
+#id_guarantee_set-0-name_loan{width:100px}
+#id_guarantee_set-0-card_loan{width:80px}
+#id_guarantee_set-0-institution{width: 180px}
+#id_guarantee_set-0-money{width:80px}
+#id_guarantee_set-0-money2{width:80px}
+#id_guarantee_set-0-figure{width:80px}
+#id_guarantee_set-0-yuqi_money{width: 80px}
+
+#id_guarantee_set-1-name_loan{width:100px}
+#id_guarantee_set-1-card_loan{width:80px}
+#id_guarantee_set-1-institution{width: 180px}
+#id_guarantee_set-1-money{width:80px}
+#id_guarantee_set-1-money2{width:80px}
+#id_guarantee_set-1-figure{width:80px}
+#id_guarantee_set-1-yuqi_money{width: 80px}
+
+#id_guarantee_set-2-name_loan{width:100px}
+#id_guarantee_set-2-card_loan{width:80px}
+#id_guarantee_set-2-institution{width: 180px}
+#id_guarantee_set-2-money{width:80px}
+#id_guarantee_set-2-money2{width:80px}
+#id_guarantee_set-2-figure{width:80px}
+#id_guarantee_set-2-yuqi_money{width: 80px}
+
+#id_guarantee_set-3-name_loan{width:100px}
+#id_guarantee_set-3-card_loan{width:80px}
+#id_guarantee_set-3-institution{width: 180px}
+#id_guarantee_set-3-money{width:80px}
+#id_guarantee_set-3-money2{width:80px}
+#id_guarantee_set-3-figure{width:80px}
+#id_guarantee_set-3-yuqi_money{width: 80px}
+
+#id_guarantee_set-4-name_loan{width:100px}
+#id_guarantee_set-4-card_loan{width:80px}
+#id_guarantee_set-4-institution{width: 180px}
+#id_guarantee_set-4-money{width:80px}
+#id_guarantee_set-4-money2{width:80px}
+#id_guarantee_set-4-figure{width:80px}
+#id_guarantee_set-4-yuqi_money{width: 80px}
+
+#id_guarantee_set-5-name_loan{width:100px}
+#id_guarantee_set-5-card_loan{width:80px}
+#id_guarantee_set-5-institution{width: 180px}
+#id_guarantee_set-5-money{width:80px}
+#id_guarantee_set-5-money2{width:80px}
+#id_guarantee_set-5-figure{width:80px}
+#id_guarantee_set-5-yuqi_money{width: 80px}
+
+#id_guarantee_set-6-name_loan{width:100px}
+#id_guarantee_set-6-card_loan{width:80px}
+#id_guarantee_set-6-institution{width: 180px}
+#id_guarantee_set-6-money{width:80px}
+#id_guarantee_set-6-money2{width:80px}
+#id_guarantee_set-6-figure{width:80px}
+#id_guarantee_set-6-yuqi_money{width: 80px}
+
+#id_guarantee_set-7-name_loan{width:100px}
+#id_guarantee_set-7-card_loan{width:80px}
+#id_guarantee_set-7-institution{width: 180px}
+#id_guarantee_set-7-money{width:80px}
+#id_guarantee_set-7-money2{width:80px}
+#id_guarantee_set-7-figure{width:80px}
+#id_guarantee_set-7-yuqi_money{width: 80px}
+
+#id_guarantee_set-8-name_loan{width:100px}
+#id_guarantee_set-8-card_loan{width:80px}
+#id_guarantee_set-8-institution{width: 180px}
+#id_guarantee_set-8-money{width:80px}
+#id_guarantee_set-8-money2{width:80px}
+#id_guarantee_set-8-figure{width:80px}
+#id_guarantee_set-8-yuqi_money{width: 80px}
+
+#id_guarantee_set-9-name_loan{width:100px}
+#id_guarantee_set-9-card_loan{width:80px}
+#id_guarantee_set-9-institution{width: 180px}
+#id_guarantee_set-9-money{width:80px}
+#id_guarantee_set-9-money2{width:80px}
+#id_guarantee_set-9-figure{width:80px}
+#id_guarantee_set-9-yuqi_money{width: 80px}
+
+#id_guarantee_set-10-name_loan{width:100px}
+#id_guarantee_set-10-card_loan{width:80px}
+#id_guarantee_set-10-institution{width: 180px}
+#id_guarantee_set-10-money{width:80px}
+#id_guarantee_set-10-money2{width:80px}
+#id_guarantee_set-10-figure{width:80px}
+#id_guarantee_set-10-yuqi_money{width: 80px}
+
+#id_guarantee_set-11-name_loan{width:100px}
+#id_guarantee_set-11-card_loan{width:80px}
+#id_guarantee_set-11-institution{width: 180px}
+#id_guarantee_set-11-money{width:80px}
+#id_guarantee_set-11-money2{width:80px}
+#id_guarantee_set-11-figure{width:80px}
+#id_guarantee_set-11-yuqi_money{width: 80px}
+
+#id_guarantee_set-12-name_loan{width:100px}
+#id_guarantee_set-12-card_loan{width:80px}
+#id_guarantee_set-12-institution{width: 180px}
+#id_guarantee_set-12-money{width:80px}
+#id_guarantee_set-12-money2{width:80px}
+#id_guarantee_set-12-figure{width:80px}
+#id_guarantee_set-12-yuqi_money{width: 80px}
+
+#id_guarantee_set-13-name_loan{width:100px}
+#id_guarantee_set-13-card_loan{width:80px}
+#id_guarantee_set-13-institution{width: 180px}
+#id_guarantee_set-13-money{width:80px}
+#id_guarantee_set-13-money2{width:80px}
+#id_guarantee_set-13-figure{width:80px}
+#id_guarantee_set-13-yuqi_money{width: 80px}
+
+#id_guarantee_set-14-name_loan{width:100px}
+#id_guarantee_set-14-card_loan{width:80px}
+#id_guarantee_set-14-institution{width: 180px}
+#id_guarantee_set-14-money{width:80px}
+#id_guarantee_set-14-money2{width:80px}
+#id_guarantee_set-14-figure{width:80px}
+#id_guarantee_set-14-yuqi_money{width: 80px}
+
+#id_guarantee_set-15-name_loan{width:100px}
+#id_guarantee_set-15-card_loan{width:80px}
+#id_guarantee_set-15-institution{width: 180px}
+#id_guarantee_set-15-money{width:80px}
+#id_guarantee_set-15-money2{width:80px}
+#id_guarantee_set-15-figure{width:80px}
+#id_guarantee_set-15-yuqi_money{width: 80px}
+
+#id_guarantee_set-16-name_loan{width:100px}
+#id_guarantee_set-16-card_loan{width:80px}
+#id_guarantee_set-16-institution{width: 180px}
+#id_guarantee_set-16-money{width:80px}
+#id_guarantee_set-16-money2{width:80px}
+#id_guarantee_set-16-figure{width:80px}
+#id_guarantee_set-16-yuqi_money{width: 80px}
+
+#id_guarantee_set-17-name_loan{width:100px}
+#id_guarantee_set-17-card_loan{width:80px}
+#id_guarantee_set-17-institution{width: 180px}
+#id_guarantee_set-17-money{width:80px}
+#id_guarantee_set-17-money2{width:80px}
+#id_guarantee_set-17-figure{width:80px}
+#id_guarantee_set-17-yuqi_money{width: 80px}
+
+#id_guarantee_set-18-name_loan{width:100px}
+#id_guarantee_set-18-card_loan{width:80px}
+#id_guarantee_set-18-institution{width: 180px}
+#id_guarantee_set-18-money{width:80px}
+#id_guarantee_set-18-money2{width:80px}
+#id_guarantee_set-18-figure{width:80px}
+#id_guarantee_set-18-yuqi_money{width: 80px}
+
+#id_guarantee_set-19-name_loan{width:100px}
+#id_guarantee_set-19-card_loan{width:80px}
+#id_guarantee_set-19-institution{width: 180px}
+#id_guarantee_set-19-money{width:80px}
+#id_guarantee_set-19-money2{width:80px}
+#id_guarantee_set-19-figure{width:80px}
+#id_guarantee_set-19-yuqi_money{width: 80px}
+
+#id_guarantee_set-20-name_loan{width:100px}
+#id_guarantee_set-20-card_loan{width:80px}
+#id_guarantee_set-20-institution{width: 180px}
+#id_guarantee_set-20-money{width:80px}
+#id_guarantee_set-20-money2{width:80px}
+#id_guarantee_set-20-figure{width:80px}
+#id_guarantee_set-20-yuqi_money{width: 80px}
+

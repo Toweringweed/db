@@ -11,7 +11,7 @@
 
     <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/china.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/city.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/city2.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 
     <link type="text/css" href="../visual/static/css/layout.css" rel="stylesheet" />
@@ -323,6 +323,59 @@
     </script>
 
 
+<script type="text/javascript" language="javascript">
+    function ajax_s4(url, xy) {
+
+        var series = [];
+        var series2 = [];
+        var names = [];    //类别数组（实际用来盛放X轴坐标值） 
+        $.ajax({
+            type: 'get',
+            url: url,//请求数据的地址
+            dataType: "json",        //返回数据形式为json
+            success: function (result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                $.each(result.name_data1, function (index, item) {
+                    names.push(item.name);    //挨个取出类别并填入类别数组
+                    series.push(item.value1);
+                    
+                });
+
+                myChart.hideLoading();    //隐藏加载动画
+
+                if (xy = 'x') {
+                    myChart.setOption({        //加载数据图表
+                        xAxis: {
+                            data: names
+                        },
+                        series: [{
+                            data: series
+                        }
+                    ]
+                    });
+                }
+                if (xy = 'y') {
+                    myChart.setOption({        //加载数据图表
+                        yAxis: {
+                            data: names
+                        },
+                        series: [{
+                            data: series
+                        }]
+                    });
+                }
+
+            },
+            error: function (errorMsg) {
+                //请求失败时执行该函数
+                myChart.showLoading();
+                myChart.hideLoading();
+            }
+        });
+    };
+</script>
+
+
 </head>
 
 
@@ -331,6 +384,7 @@
 
     <div class="container">
         <div class="header">
+            
 
             <h1>红上信贷数据中心</h1>
             <div id="time" style="padding-right:300px; height:20px; text-align:right"></div>
@@ -361,6 +415,8 @@
         <div class="sidebar0">
 
             <div id="yue" class="echarts_box" style="width:280px; height:960px"></div>
+            
+            
             <div>
                 <script type="text/javascript">
                     var myChart = echarts.init(document.getElementById('yue'));
@@ -370,7 +426,7 @@
 
                         backgroundColor: 'rgba(0, 0, 0, 0.2)',
                         title: {
-                            text: '上月各营业部提醒客户数及C-M1',
+                            text: '2月各营业部客户量及环比增长率',
                             left: 'center',
                             textStyle: {
                                 color: '#eee',
@@ -386,7 +442,7 @@
                             }
                         },
                         legend: {
-                            data: ['提醒客户数', 'C-M1'],
+                            data: ['提醒客户数', '环比增长率(%)'],
                             top: 30,
                             height: 20,
                             textStyle: {
@@ -419,13 +475,14 @@
                                 splitLine: false,
                                 show: false,
                                 inverse: true,
-                                max: 10,
+                                max: 'dataMax',
 
                                 axisLabel: {
                                     show: false,
                                     color: '#eee'
                                 }
                             }
+                            
                         ],
 
 
@@ -441,7 +498,7 @@
                                     show: true,
                                     color: '#eee'
                                 },
-                                data: ['西安锦绣华庭', '西安中贸广场', '汉中财富首座', '宝鸡天同国际', '安康汉城国际', '咸阳峰汇国际', '银川紫荆花商务中心', '西宁同仁路', '成都时代八号', '郑州盛润白宫', '拉萨哈达滨河花园', '兰州金都广场', '上海豫园', '上海南证大厦', '宁波汇金大厦', '合肥绿地赢海', '台州天和大厦', '南京天时商贸中心', '南通金融汇', '苏州新苏大厦', '无锡清扬路', '镇江中浩国际广场', '钦州阳光曼哈顿', '柳州桂中大道', '玉林美桥商务中心', '南宁青秀万达', '遵义航天大厦', '襄阳盛特区C座', '昆明金泰大厦', '贵阳花果园', '石家庄万达广场 ', '保定康泰国际', '济宁万丽富德', '临沂奥斯卡CBD', '青岛国华大厦', '烟台阳光100', '济南中银大厦', '泰安万达广场', '潍坊万达广场', '淄博潘成国际', '滨州国际大厦']
+                                data: ['西安锦绣华庭营业部','西安中贸广场营业部','汉中财富首座营业部','宝鸡天同国际营业部','安康汉城国际营业部','咸阳峰汇国际营业部','银川紫荆花商务中心营业部','西宁五四广场营业部','重庆大都会营业部','成都时代八号营业部','成都雄飞中心营业部','郑州盛润白宫营业部','拉萨哈达滨河花园营业部','兰州民安大厦第一营业部','兰州民安大厦第二营业部','苏州宏海大厦营业部','无锡清扬路营业部','合肥绿地赢海营业部','南京城开大厦营业部','镇江中浩国际广场营业部','合肥新城国际营业部','宁波汇金大厦营业部','台州天和大厦营业部','杭州西子国际营业部','上海豫园营业部','上海南证大厦营业部','南通金融汇营业部','钦州阳光曼哈顿营业部','柳州桂中大道营业部','玉林美桥商务中心营业部','南宁青秀万达营业部','遵义航天大厦营业部','襄阳盛特区C座营业部','昆明建工大厦营业部','贵阳花果园营业部','石家庄万达广场营业部','石家庄华强广场营业部','保定康泰国际营业部','济宁万丽富德营业部','临沂奥斯卡CBD营业部','青岛国华大厦营业部','烟台阳光100营业部','济南中银大厦营业部','泰安万达广场营业部','潍坊万达广场营业部','淄博潘成国际营业部','东营华泰大厦营业部','滨州国际大厦营业部','长沙中天广场营销一部','长沙中天广场营销二部','天津宝利国际营销一部','天津宝利国际营销二部']
                             }
                         ],
                         series: [
@@ -460,10 +517,11 @@
                                         show: true
                                     }
                                 },
-                                data: [668, 333, 549, 205, 454, 387, 376, 674, 1077, 668, 134, 876, 231, 557, 842, 374, 303, 682, 446, 349, 432, 320, 147, 319, 283, 716, 283, 255, 449, 462, 268, 193, 533, 488, 153, 418, 348, 335, 285, 449, 325]
+                                data: [851,701,645,329,497,657,476,887,353,1346,447,1084,222,959,521,357,716,772,704,508,40,833,431,145,151,1059,572,380,474,575,1506,421,630,987,880,962,21,512,826,901,228,468,879,573,746,772,273,400,241,265,19,18]
+                                
                             },
                             {
-                                name: 'C-M1',
+                                name: '环比增长率(%)',
                                 type: 'line',
 
                                 itemStyle: {
@@ -479,8 +537,9 @@
 
                                     }
                                 },
-                                data: [3.7, 4.2, 1.6, 2.9, 2.4, 2.3, 6.1, 1.5, 2.6, 2.5, 0, 1.8, 3, 4.1, 4.5, 2.7, 3.6, 1.6, 4.7, 6.6, 5.3, 3.1, 3.4, 6, 2.8, 2.7, 4.2, 2.7, 2.2, 3.2, 2.2, 2.6, 2.8, 2.9, 5.9, 5.5, 2.3, 4.2, 3.9, 2.4, 4.6]
+                                data:[-1.4,4.9,-1.5,-1.8,-1.6,-0.2,-3.3,1.1,67.3,0.5,6.2,2.6,2.3,4.1,7.2,-9.8,-0.3,7.1,-3,2.4,300,-1.2,-5.3,154.4,-7.4,-0.3,2.7,0.8,2.2,6.3,2.8,-3.2,6.6,9.5,0.9,6.4,2000,5.8,3.4,5.5,5.6,-6,8.3,-1.7,8.1,1.7,4.6,0.8,62.8,55,0,0]
                             }
+                                                                       
                         ]
                     };
 
@@ -501,28 +560,51 @@
 
                 <div class="txt_box">
                     <ul>
-                        <dd>上月</dd>
+                        <dd>2017年至今进件客户</dd>
                         <li>
-                            <span>提醒客户数：</span>
-                            <b>17646</b>
+                            <span>2017年至今累计进件客户数：</span>
+                            <b id="in2017"></b>
                             <span> 人</span>
                         </li>
 
                         <li>
-                            <span>正常还款客户数：</span>
-                            <b>17063</b>
+                            <span>2017年至今累计核批通过客户数：</span>
+                            <b id="get2017"></b>
                             <span> 人</span>
                         </li>
-                        <li>
-                            <span>回收金额：</span>
-                            <b>4172.98</b>
-                            <span> 万元</span>
-                        </li>
+                        
 
 
                     </ul>
 
                 </div>
+                
+                <script type="text/javascript">
+                    
+                    function ajax_get5() {
+                        $.ajax({
+                            type: 'get',
+                            url: 'ajax_in_year',//请求数据的地址
+                            dataType: 'json',        //返回数据形式为json
+                            success: function (result) {
+                                document.getElementById("in2017").innerHTML = result.jj_year;
+                                document.getElementById("get2017").innerHTML = result.hp_year;
+                                
+                            },
+                        });
+                    }
+                    ajax_get5();
+                    setInterval(function () {
+                        ajax_get5()
+                    }, 240000)
+                                       
+                    
+                    
+                </script>
+
+                
+
+
 
                 <div id="mm" class="echarts_box" style="height:245px; width:270px; margin-bottom:10px"></div>
                 <div>
@@ -533,7 +615,7 @@
 
                             backgroundColor: 'rgba(0, 0, 0, 0.2)',
                             title: {
-                                text: '上月逾期率与还款进度',
+                                text: '还款情况与还款进度（截止2月底）',
                                 left: 'center',
                                 textStyle: {
                                     color: '#eee',
@@ -584,14 +666,14 @@
 
                                     boundaryGap: ['10%', '10%'],
 
-                                    data: ['12期', '18期', '24期', '36期']
+                                    data: ['12期', '18期', '24期', '36期', '48期']
                                 }
                             ],
 
 
                             series: [
                                 {
-                                    name: 'C-M1',
+                                    name: '',
                                     type: 'pie',
                                     center: ['16%', '30%'],
                                     avoidLabelOverlap: false,
@@ -615,7 +697,7 @@
                                     },
                                     data: [
                                         {                                            
-value: 3.3, name: 'C-M1', selected: true,
+                                            value: 0.74, name: '损失率', selected: true,
                                             itemStyle: {
                                                 normal: {
                                                     color: '#eacf02'
@@ -648,8 +730,8 @@ value: 3.3, name: 'C-M1', selected: true,
 
                                         },
                                         {                                            
-value: 96.7, name: '', label: {                                                
-normal: {
+                                            value: 99.36, name: '', label: {                                                
+                                            normal: {
                                                     show: false
                                                 }
                                             },
@@ -680,8 +762,8 @@ normal: {
 
                                     data: [
                                         {
-                                            value: 3.0,
-                                            name: 'C-M2',
+                                            value: 0.9,
+                                            name: '损失催回率',
                                             itemStyle: {
                                                 normal: {
                                                     color: '#eacf02'
@@ -709,11 +791,11 @@ normal: {
                                                 },
 
                                             }                                        
-},
+                                        },
 
 
 
-                                        { value: 97, name: '', label: { normal: { show: false } } },
+                                        { value: 99.1, name: '', label: { normal: { show: false } } },
 
                                     ]
                                 },
@@ -740,7 +822,7 @@ normal: {
 
                                     data: [
                                         {
-                                            value: 2.5, name: 'C-M3',
+                                            value: 0.5, name: '提前还款率',
                                             itemStyle: {
                                                 normal: {
                                                     color: '#eacf02'
@@ -767,9 +849,9 @@ normal: {
                                                     }
                                                     ,
                                                 }                                            
-}
+                }
                                         },
-                                        { value: 97.5, name: '', label: { normal: { show: false } } },
+                                        { value: 99.5, name: '', label: { normal: { show: false } } },
 
                                     ]
                                 }
@@ -793,7 +875,7 @@ normal: {
                                         }
                                     },
 
-                                    data: [50, 37.2, 29.6, 21.8]
+                                    data: [100, 74.7, 56.9, 21.6, 5.1]
 
 
                                 },
@@ -810,6 +892,11 @@ normal: {
 
                 <div id="chanpin" class="echarts_box" style="width:270px; height:250px"></div>
 
+
+                          
+
+
+
                 <div>
                     <script type="text/javascript" language="javascript">
                         var myChart1 = echarts.init(document.getElementById('chanpin'));
@@ -818,7 +905,7 @@ normal: {
 
                             backgroundColor: 'rgba(0, 0, 0, 0.2)',
                             title: {
-                                text: '上月各产品提醒客户数及C-M1',
+                                text: '2月各产品审批量及核批率',
                                 left: 'center',
                                 textStyle: {
                                     color: '#eee',
@@ -826,6 +913,15 @@ normal: {
                                 },
 
                             },
+                            legend: {
+                                    show: true,
+                                    left: 20,
+                                    top: 30,
+                                    data: ['审批量', '核批率(%)'],
+                                    textStyle: {
+                                        color: '#eee'
+                                    }
+                                },
 
                             grid: [{
                                 left: 0,
@@ -848,7 +944,7 @@ normal: {
                                         interval: 0
 
                                     },
-                                    data: ['安居贷', '红商贷', '开薪贷', '融易贷', '薪居贷',]
+                                    data: ['微加贷','融易贷','开薪贷','薪居贷','安居贷','红商贷']
                                 }
 
                             ],
@@ -864,7 +960,7 @@ normal: {
                                 {
                                     type: 'value',
                                     show: false,
-
+                                    max: 70
 
                                 },
 
@@ -873,9 +969,9 @@ normal: {
                             series: [
 
                                 {
-                                    name: '提醒客户数',
+                                    name: '审批量',
                                     type: 'bar',
-                                    stack: '提醒客户数',
+                                    stack: '审批量',
                                     barCategoryGap: '40%',
                                     label: {
                                         normal: {
@@ -886,13 +982,13 @@ normal: {
                                         normal: { color: '#6c890b', opacity: 0.9 },
 
                                     },
-                                    data: [1748, 1512, 5568, 8204, 1488]
+                                    data: [3834,1243,0,0,0,0]
                                 },
                                 {
-                                    name: 'C-M1',
+                                    name: '核批率(%)',
                                     type: 'line',
                                     yAxisIndex: 1,
-                                    stack: 'C-M1',
+                                    stack: '核批率(%)',
                                     label: {
                                         normal: {
                                             show: true,
@@ -905,7 +1001,7 @@ normal: {
                                         normal: { color: '#f01b2d' },
 
                                     },
-                                    data: [2.9, 3.5, 4.4, 2.3, 4]
+                                    data: [39.4,55.6,0,0,0,0]
                                 },
 
 
@@ -920,6 +1016,7 @@ normal: {
 
 
                     </script>
+                    
 
                 </div>
 
@@ -930,9 +1027,10 @@ normal: {
             </div>
 
             <div class="content">
-                <div align="center">累计签约额：</div>
+                    <div style="color:crimson; padding:5px 0; text-align:center; font-size:16px">注：由于数据迁移和系统升级，近期部分数据会显示低于实际值。</div>
+                <div align="center">2017年至今累计核批合同金额：</div>
                 <div class="ul_title">
-                    <ul id="mnoney_contract"></ul>
+                    <ul id="money_contract"></ul>
 
 
                 </div>
@@ -940,21 +1038,21 @@ normal: {
 
                 <script type="text/javascript">
 
-                    function ajax_get() {
+                    function ajax_get2() {
                         $.ajax({
                             type: 'get',
                             url: 'ajax_contract_money',//请求数据的地址
                             dataType: 'html',        //返回数据形式为json
                             success: function (result) {
-                                document.getElementById("mnoney_contract").innerHTML = result;
+                                document.getElementById("money_contract").innerHTML = result;
                             },
                         });
                     }
-                    ajax_get()
+                    ajax_get2();
 
                     setInterval(function () {
-                        ajax_get()
-                    }, 9000)
+                        ajax_get2()
+                    }, 240000)
 
 
                 </script>
@@ -962,8 +1060,9 @@ normal: {
 
                 <div id="first" style="position:relative;z-index:1;height:600px; width:800px;clear:both"></div>
                 <div id="message">
-                    <div style="position:absolute; z-index:3; top:62px; left:0; right:0; width:1920px; height:1000px; background:rgba(0, 0, 0,0.5) none repeat scroll !important; filter:Alpha(opacity=20); background:#000;">
-                        <p style="margin-top:300px; font-size:18px; text-align:center; ">首次加载的时间可能较长，预计需要30秒，请耐心等待</p>
+                    <div style="position:absolute; z-index:3; top:62px; left:0; right:0; width:1920px; height:1000px; background:rgba(0, 0, 0,0.7) none repeat scroll !important; filter:Alpha(opacity=70); background:#000;">
+                        <!-- <p style="margin-top:300px; font-size:18px; text-align:center; ">因系统切换，数据暂停更新，系统切换完毕后将恢复正常。</p> -->
+                        <p style="margin-top:300px; font-size:18px; text-align:center; ">首次加载时间较长，请耐心等待</p>
                     </div>
                 </div>
 
@@ -974,7 +1073,7 @@ normal: {
   
                         setTimeout(
                             aa, 15000)
-  //--> 
+
                 </script>
 
 
@@ -1012,8 +1111,8 @@ normal: {
 
                                 calculable: true,
                                 inRange: {
-                                    color: ['#62abfd', '#047afe', '#016fea', '#0265d3'],
-                                    colorAlpha: 0.7,
+                                    color: ['#62abfd', '#016fea', '#0265d3', '#0631f0'],
+                                    colorAlpha: 0.8,
                                 }
                             },
                             tooltip: {
@@ -1146,7 +1245,7 @@ normal: {
                         ajax_citymap('ajax_map');
                         setInterval(function () {
                             ajax_citymap('ajax_map');
-                        }, 3000)
+                        }, 240000)
 
 
                     </script>
@@ -1203,11 +1302,11 @@ normal: {
                                 },
                             });
                         }
-                        ajax_get()
-
+                        ajax_get();
                         setInterval(function () {
                             ajax_get()
-                        }, 9000)
+                        }, 240000)
+                   
 
 
                     </script>
@@ -1332,8 +1431,8 @@ normal: {
 
                                                     },
                                                     {                                                        
-value: 100 - series1, name: '', label: {                                                            
-normal: {
+                                                        value: 100 - series1, name: '', label: {                                                            
+                                                        normal: {
                                                                 show: false
                                                             }
                                                         },
@@ -1425,7 +1524,7 @@ normal: {
 
                                                 data: [
                                                     {                                                        
-value: series3, name: '本年核批率',
+                                                        value: series3, name: '本年核批率',
                                                         itemStyle: {
                                                             normal: {
                                                                 color: '#eacf02',
@@ -1452,9 +1551,9 @@ value: series3, name: '本年核批率',
                                                                     },
                                                                 }
                                                                 ,                                                            
-}                                                        
-}                                                    
-},
+                                                            }                                                        
+                                                        }                                                    
+                                                    },
                                                     { value: 100 - series3, name: '', label: { normal: { show: false } } },
 
                                                 ]
@@ -1605,8 +1704,9 @@ value: series3, name: '本年核批率',
 
                         loadOneColumn();
                         setInterval(function () {
-                            loadOneColumn();
-                        }, 3000)
+                            loadOneColumn('ajax_hp', 'y');
+                            }, 240000)
+
 
 
                     </script>
@@ -1623,7 +1723,7 @@ value: series3, name: '本年核批率',
 
                             backgroundColor: 'rgba(0, 0, 0, 0.2)',
                             title: {
-                                text: '智能风控',
+                                text: '2月智能风控拒绝率（%）',
                                 left: 'center',
                                 textStyle: {
                                     color: '#eee',
@@ -1692,7 +1792,7 @@ value: series3, name: '本年核批率',
                                 // areaStyle: {normal: {}},
                                 data: [
                                     {
-                                        value: [3.2, 4.6, 5.7, 7.5, 14.6, 5.8],
+                                        value: [3.9, 5.6, 4.2, 6.8, 13.4, 6.3],
                                         name: '智能',
                                         label: {
                                             normal: {
@@ -1746,7 +1846,7 @@ value: series3, name: '本年核批率',
                                     show: true,
                                     left: 20,
                                     top: 30,
-                                    data: ['进件量', '核批率'],
+                                    data: ['进件量', '核批率(%)'],
                                     textStyle: {
                                         color: '#eee'
                                     }
@@ -1818,7 +1918,7 @@ value: series3, name: '本年核批率',
 
                                     },
                                     {
-                                        name: '核批率',
+                                        name: '核批率(%)',
                                         type: 'line',
                                         smooth: true,
                                         yAxisIndex: 1,
@@ -1842,7 +1942,7 @@ value: series3, name: '本年核批率',
                             ajax_hp2('ajax_hp2', 'y');
                             setInterval(function () {
                                 ajax_hp2('ajax_hp2', 'y');
-                            }, 3000)
+                            }, 240000)
 
                         </script>
 
@@ -1961,7 +2061,7 @@ value: series3, name: '本年核批率',
                             ajax_hp3('ajax_hp3', 'y');
                             setInterval(function () {
                                 ajax_hp3('ajax_hp3', 'y');
-                            }, 3000)
+                            }, 240000)
 
 
                         </script>
@@ -1989,7 +2089,7 @@ value: series3, name: '本年核批率',
 
                         backgroundColor: 'rgba(0, 0, 0, 0.2)',
                         title: {
-                            text: '本月各地进件与今日进件',
+                            text: '本月各营业部进件与今日进件',
                             left: 'center',
                             textStyle: {
                                 color: '#eee',
@@ -2088,7 +2188,7 @@ value: series3, name: '本年核批率',
                     ajax_s3('ajax_city', 'x');
                     setInterval(function () {
                         ajax_s3('ajax_city', 'x');
-                    }, 3000)
+                    }, 240000)
 
                 </script>
             </div>

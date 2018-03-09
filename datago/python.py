@@ -166,26 +166,10 @@ import time
 
 # name = input('please enter your name: ')
 # print(name)
-#
-# today_str = '^20170904'
-# h4 = []
-# for i in range(0, 9):
-#     today_str = float(str(today_str).replace('^', '') + '0' + str(i))
-#     h4.append(today_str)
-# print(h4)
-from datetime import timedelta
 
-# today_str = '^20170922'
-# this_month = '^201709'
-# this_year = '^2017'
-# today = datetime.today()
-# today_str2 = str(datetime.strftime(today, '%Y%m%d'))
-# today_30 = today - timedelta(days=100)
-# today_30_str = str(datetime.strftime(today_30, '%Y%m%d')) + '000000'
-# print(today_30_str)
-
-de_j_d = list(de_j_d)
-de_j_m = list(de_j_m)
-
-for i in de_j_m:
-    dc = {'name': i['name'].replace('营业部', ''), 'value1': i['value1'], 'value2': j['value2'] for j in de_j_d if j == i else 0}
+today_str = '^20170904'
+h4 = []
+for i in range(0, 9):
+    today_str = float(str(today_str).replace('^', '') + '0' + str(i))
+    h4.append(today_str)
+print(h4)

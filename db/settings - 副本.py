@@ -28,12 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '114.55.30.247',
-    'p2p.hoomsun.cn',
-    'glgj.hoomsun.cn'
+    'http://114.55.30.247:8080/',
+    'http://114.55.30.247:8099/',
+    '114.55.30.247'
 ]
-
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
 
 
 # Application definition
@@ -41,17 +39,14 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     'visual',
-    'credit',
-
+    'credit'
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,14 +92,6 @@ DATABASES = {
         'PASSWORD': 'LJRoOrnaWtG0',
         'HOST': '114.55.30.247',
         'PORT': '3306',
-
-        # 'USER': 'houliwei',
-        # 'PASSWORD': 'Houdata6',
-        # 'HOST': '192.168.2.55',
-        # 'PORT': '3306',
-
-
-
         'OPTIONS': {
             'autocommit': True
         }
@@ -129,13 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'my_cache_table',
-    }
-}
 
 
 # Internationalization

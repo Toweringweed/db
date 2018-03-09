@@ -1,0 +1,983 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>通话记录可视化</title>
+
+    <script type="text/javascript" src="../static/js/echarts.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+
+<style>
+    .box{height:300px; width:500px; border: 1px solid #ddd; margin: 30px; padding: 10px}
+
+</style>
+
+
+</head>
+
+
+
+<body>
+    <div id='call1' class="box"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+            var myChart1 = echarts.init(document.getElementById('call1'));
+            var data= [
+            {name: '06月', value: [30.3, 40.6]},  // value值 第一个为主叫，第二为被叫
+                {name: '07月', value: [30, 41]},
+                {name: '08月', value: [31, 46]},
+                {name: '09月', value: [30, 40]},
+                {name: '10月', value: [38, 46]},
+                {name: '11月', value: [30, 40]},
+            ]
+            option1 = {                
+                title: {
+                    text: '通话连续性 —— 每月全部、主叫的通话频次',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                legend: {
+                        show: true,
+                        left: 20,
+                        top: 30,
+                        data: ['全部', '主叫'],
+                        textStyle: {
+                            color: '#222'
+                        }
+                    },
+
+                grid: [{
+                    left: 0,
+                    right: 0,
+                    bottom: '13',
+                    containLabel: true
+                }
+                ],
+                toolbox: {
+                    show: false,
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+
+                    }
+                },
+                xAxis: [
+                    {
+                        gridIndex: 0,
+                        boundaryGap: 0,
+                        type: 'category',
+                        axisTick: { show: false },
+                        axisLabel: {
+                            color: '#222',
+                            show: true,
+                            interval: 0
+                        },
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                        data: data.map(function (d){
+                            return d.name
+                        })
+                    }
+
+                ],
+                yAxis: [
+                    {
+
+                        type: 'value',                        
+                        position: 'left',
+                        
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                    },
+                    {
+                        type: 'value',
+                        show: false,
+                        
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                    },
+                ],
+                series: [
+
+                    {
+                        name: '全部',
+                        type: 'line',
+                        smooth: true,
+                        areaStyle: { normal: { color: '#4fb3a4', opacity: 0.3 } },
+                        itemStyle: { normal: { color: '#4fb3a4' } },
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: { color: '#4fb3a4', opacity: 0.9 },
+
+                        },
+                        data: data.map(function (d){
+                            return d.value[0]
+                        })
+                    },
+                    {
+                        name: '主叫',
+                        type: 'line',
+                        smooth: true,
+                        areaStyle: { normal: { color: '#ff7073', opacity: 0.5 } },
+                        itemStyle: { normal: { color: '#ff7073' } },
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+
+                        },
+                        itemStyle: {
+                            normal: { color: '#ff7073' },
+
+                        },
+                        data: data.map(function (d){
+                            return d.value[1]
+                        })
+                    },
+
+
+                ]
+            };
+            myChart1.setOption(option1);
+        </script>        
+
+    </div>
+
+    <div id='call2' class="box"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+            var myChart2 = echarts.init(document.getElementById('call2'));
+            var data = [
+                {name: '06月', value: [30.3, 40.6]},  // value值 第一个为主叫，第二为被叫
+                {name: '07月', value: [30.3, 41.6]},
+                {name: '08月', value: [31.3, 46.6]},
+                {name: '09月', value: [30.3, 40.6]},
+                {name: '10月', value: [38.3, 46.6]},
+                {name: '11月', value: [30.3, 40.6]},
+
+            ]
+            option2 = {                
+                title: {
+                    text: '通话录匹配度',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                legend: {
+                        show: true,
+                        left: 20,
+                        top: 30,
+                        data: ['主叫（%）', '被叫（%）'],
+                        textStyle: {
+                            color: '#222'
+                        }
+                    },
+
+                grid: [{
+                    left: 0,
+                    right: 0,
+                    bottom: '13',
+                    containLabel: true
+                }
+                ],
+                toolbox: {
+                    show: false,
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+
+                    }
+                },
+                xAxis: [
+                    {
+                        gridIndex: 0,
+                        
+                        type: 'category',
+                        axisTick: { show: false },
+                        axisLabel: {
+                            color: '#222',
+                            show: true,
+                            interval: 0
+                        },
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                        data: data.map(function (d){
+                            return d.name
+                        })
+                    }
+
+                ],
+                yAxis: [
+                    {
+
+                        type: 'value',                        
+                        position: 'left',
+                        max: 100,
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                    },
+                   
+                ],
+                series: [
+
+                    {
+                        name: '主叫（%）',
+                        type: 'bar',
+                        
+                        areaStyle: { normal: { color: '#4fb3a4' } },
+                        
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: { color: '#4fb3a4'},
+
+                        },
+                        data: data.map(function (d){
+                            return d.value[0]
+                        })
+                    },
+                    {
+                        name: '被叫（%）',
+                        type: 'bar',                        
+                        areaStyle: { normal: { color: '#ff7073', opacity: 0.5 } },
+                        itemStyle: { normal: { color: '#ff7073' } },
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+
+                        },
+                        itemStyle: {
+                            normal: { color: '#ff7073' },
+
+                        },
+                        data: data.map(function (d){
+                            return d.value[1]
+                        })
+                    },
+
+
+                ]
+            };
+            myChart2.setOption(option2);
+        </script>        
+
+    </div>
+
+    <div id='call3' class="box"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+
+                var data = [[0,0,5],[0,1,1],[0,2,11],[0,3,4],[0,4,10],[0,5,7],[0,6,8],  // 00:00-03:59 星期一到星期日 依次 
+                [1,0,7],[1,1,0],[1,2,2],[1,3,3],[1,4,0],[1,5,0],[1,6,0],  // 04:00-07:59 星期一到星期日 依次 
+                [2,0,1],[2,1,1],[2,2,0],[2,3,0],[2,4,0],[2,5,0],[2,6,0],
+                [3,0,7],[3,1,3],[3,2,1],[3,3,0],[3,4,0],[3,5,2],[3,6,0],
+                [4,0,1],[4,1,3],[4,2,4],[4,3,0],[4,4,3],[4,5,1],[4,6,2],
+                [5,0,2],[5,1,1],[5,2,5],[5,3,3],[5,4,0],[5,5,3],[5,6,2]];
+                data = data.map(function (item) {
+                    return [item[0], item[1], item[2]];
+                });
+
+
+            var myChart3 = echarts.init(document.getElementById('call3'));
+            option3 = {                
+                title: {
+                    text: '通话时段分布 —— 最近30天',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                
+
+                grid: [{
+                    left: 0,
+                    right: 0,
+                    bottom: '13',
+                    containLabel: true
+                }
+                ],
+                toolbox: {
+                    show: false,
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+
+                    }
+                },
+                xAxis: [
+                    {
+                        gridIndex: 0,
+                        type: 'category',
+                        axisTick: { show: false },
+                        axisLabel: {
+                            color: '#222',
+                            show: true,
+                            interval: 0,
+                        },
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                        data: ['00:00-03:59', '04:00-07:59', '08:00-11:59', '12:00-15:59', '16:00-19:59', '20:00-23:59']
+                    }
+
+                ],
+                yAxis: [
+                    {
+
+                        type: 'category',                        
+                        position: 'left',
+                        
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                        data: [ "星期一", "星期二", "星期三",  "星期四",  "星期五", "星期六",  "星期日"]
+                    },
+                   
+                ],
+                series: [
+
+                    {
+                        name: '时段分布',
+                        type: 'scatter',
+                        
+
+                        symbolSize: function (val) {
+                            return val[2] * 2;
+                        },
+                        data: data,
+                        animationDelay: function (idx) {
+                            return idx * 5;
+                        },                        
+                        
+                        itemStyle: {
+                            normal: { color: '#f5b977' },
+
+                        },
+                        
+                    },
+
+
+                ]
+            };
+            myChart3.setOption(option3);
+        </script>        
+
+    </div>
+
+
+    <div id='call4' class="box"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+            var myChart4 = echarts.init(document.getElementById('call4'));
+            var data = [
+                {name: '西安', value: [40,30]},  // value值 第一个为主叫，第二为被叫
+                {name: '北京', value: [23,54]},
+                {name: '上海', value: [56,21]},
+                {name: '郑州', value: [12,30]},
+                {name: '南京', value: [20,41]}
+            ]
+            option4 = {                
+                title: {
+                    text: '社交区域TOP5 —— 最近30天',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                legend: {
+                        show: true,
+                        left: 20,
+                        top: 30,
+                        data: ['主叫', '被叫'],
+                        textStyle: {
+                            color: '#222'
+                        }
+                    },
+
+                grid: [{
+                    left: 0,
+                    right: 0,
+                    bottom: '13',
+                    containLabel: true
+                }
+                ],
+                toolbox: {
+                    show: false,
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+
+                    }
+                },
+                yAxis: [
+                    {
+                        gridIndex: 0,
+                        type: 'category',
+                        axisTick: { show: false },
+                        axisLabel: {
+                            color: '#222',
+                            show: true,
+                            interval: 0
+                        },
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                        data: data.map(function(d){
+                            return d.name
+                        })
+                    }
+
+                ],
+                xAxis: [
+                    {
+
+                        type: 'value',                        
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                    },
+                   
+                ],
+                series: [
+
+                    {
+                        name: '主叫',
+                        type: 'bar',
+                        stack: '总量',
+                        barCategoryGap:'40%',
+                        areaStyle: { normal: { color: '#4fb3a4', opacity: 0.3 } },
+                        itemStyle: { normal: { color: '#4fb3a4' } },
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: { color: '#4fb3a4', opacity: 0.9 },
+
+                        },
+                        data: data.map(function(d){
+                            return d.value[0]
+                        })
+                    },
+                    {
+                        name: '被叫',
+                        type: 'bar',
+                        stack: '总量',                        
+                        areaStyle: { normal: { color: '#ff7073', opacity: 0.5 } },
+                        itemStyle: { normal: { color: '#ff7073' } },
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+
+                        },
+                        itemStyle: {
+                            normal: { color: '#ff7073' },
+
+                        },
+                        data: data.map(function(d){
+                            return d.value[1]
+                        })
+                    },
+
+
+                ]
+            };
+            myChart4.setOption(option4);
+        </script>        
+
+    </div>
+
+
+    <div id='call5' class="box"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+            var myChart5 = echarts.init(document.getElementById('call5'));
+            var data1 = [
+                {name: '捷信', value: 4},     // data1 为疑似被催收
+                {name: '拍拍贷', value: 2},
+                {name: '小牛', value: 3},
+                {name: '用钱宝', value: 1},
+                /* 没有值则显示 以下 
+                {name: '无', value: 0} */
+            ]
+            var data2 = [
+                {name: '捷信', value: 4},      // data2 为疑似被审核           
+                {name: '小牛', value: 3},
+                {name: '用钱宝', value: 1}
+                /* 没有值则显示 以下 
+                {name: '无', value: 0} */
+            ]
+            option5 = {                
+                title: {
+                    text: '非银行信贷机构关系',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                
+                legend: {
+                        show: true,
+                        bottom:20,
+                        data: data1.concat(data2).map(function (d) {
+                            return d.name
+                        }),
+                        textStyle: {
+                            color: '#222'
+                        }
+                    },
+
+                grid: [{
+                    left: 0,
+                    right: 0,
+                    bottom: '13',
+                    containLabel: true
+                }
+                ],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{b}: {c} ({d}%)"
+                },
+                toolbox: {
+                    show: false,
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+
+                    }
+                },
+                series: [
+                {
+                    name:'催收关系',
+                    type:'pie',
+                    radius: ['40%', '55%'],
+                    avoidLabelOverlap: false,
+                    center:['25%', '45%'],
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'center',
+                            formatter: function(){
+                                var total = 0;
+                                for(var i = 0; i < data1.length; i++){
+                                    total = total + data1[i].value
+                                };
+                                return  '{rr|' + total +'} {d|次}\n {d|疑似被催收}'
+                            },
+                            color: '#000',
+                            rich: {
+                                rr: {
+                                    color: '#ff0000',
+                                    fontSize: 30,
+                                    
+                                },
+                                d: {
+                                    fontSize: 12,
+                                },
+                            }
+                            
+                        },
+                        emphasis: {
+                            show: false,
+                            textStyle: {
+                                fontSize: '20',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    
+                    
+                    data:data1
+                },
+                {
+                    name:'审核关系',
+                    type:'pie',
+                    center:['75%', '45%'],
+                    radius: ['40%', '55%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'center',
+                            formatter: function(){
+                                var total = 0;
+                                for(var i = 0; i < data2.length; i++){
+                                    total = total + data2[i].value
+                                };
+                                return  '{rr|' + total +'} {d|次}\n {d|疑似被催收}'
+                            },
+                            color: '#000',
+                            rich: {
+                                rr: {
+                                    color: '#ff0000',
+                                    fontSize: 30,
+                                    
+                                },
+                                d: {
+                                    fontSize: 12,
+                                },
+                            }
+                            
+                        },
+                        emphasis: {
+                            show: false,
+                            formatter: '{c}',
+                            position: 'right',
+                            textStyle: {
+                                fontSize: '14',
+                                fontWeight: 'bold',
+                                
+                            }
+                        }
+                    },
+                    
+                    data: data2
+                }
+            ]
+            };
+            myChart5.setOption(option5);
+        </script>        
+
+    </div>
+
+    <div id='call6' class="box"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+            var myChart6 = echarts.init(document.getElementById('call6'));
+            var data = [
+                {name: '张三', value:[34,52,23,134000000]},   // value 值，第一个为主叫次数，第二个为被叫次数，第三个通话时长，第四个为电话号码
+                {name: '李四', value:[24,52,24,134000000]},
+                {name: '王五', value:[34,62,52,134000000]},
+                {name: '赵六', value:[44,72,34,134000000]},
+                {name: '麻子', value:[54,12,54,134000000]},
+            ]
+            
+            option6 = {                
+                title: {
+                    text: '联系人TOP5 —— 最近30天',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                legend: {
+                        show: true,
+                        left: 20,
+                        top: 30,
+                        data: ['主叫次数','被叫次数', '时长'],
+                        textStyle: {
+                            color: '#222'
+                        }
+                    },
+
+                grid: [{
+                    left: 0,
+                    right: 0,
+                    bottom: '5',
+                    containLabel: true
+                }
+                ],
+                tooltip: {
+                    trigger: 'item',
+                    
+                    
+                },
+                toolbox: {
+                    show: false,
+                   
+                    feature: {
+                        dataView: { show: false, readOnly: false },
+                        magicType: { show: true, type: ['line', 'bar'] },
+
+                    }
+                },
+                xAxis: [
+                    {
+                        gridIndex: 0,
+                        type: 'category',
+                        axisTick: { show: false },
+                        axisLabel: {
+                            color: '#222',
+                            show: true,
+                            interval: 0
+                        },
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                        data: data.map(function (d) {
+                            return d.name + '\n' + d.value[3];
+                        }), 
+                                       
+
+                    }
+
+                ],
+                yAxis: [
+                    {
+
+                        type: 'value',                        
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                    },
+                    {
+
+                        type: 'value',                        
+                        axisLine:{
+                            show:true,
+                            lineStyle:{
+                                color: '#999'
+                            }
+                        },
+                    },
+                   
+                ],
+                series: [
+
+                    {
+                        name: '主叫次数',
+                        type: 'bar',
+                        stack: '总量',
+                        
+                        barCategoryGap:'40%',
+                        areaStyle: { normal: { color: '#4fb3a4', opacity: 0.3 } },
+                        itemStyle: { normal: { color: '#4fb3a4' } },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideTop',
+                            }
+                        },
+                        itemStyle: {
+                            normal: { color: '#4fb3a4', opacity: 0.9 },
+
+                        },
+                        data: data.map(function (d) {
+                            return d.value[0];
+                        }),   
+                         
+                    },
+                    {
+                        name: '被叫次数',
+                        type: 'bar',
+                        stack: '总量',
+                        barCategoryGap:'40%',
+                        areaStyle: { normal: { color: '#ff7073', opacity: 0.3 } },
+                        itemStyle: { normal: { color: '#ff7073' } },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideTop',
+                            }
+                        },
+                        itemStyle: {
+                            normal: { color: '#f5b977', opacity: 0.9 },
+
+                        },
+                        data: data.map(function (d) {
+                            return d.value[1];
+                        }),   
+                    },
+                    {
+                        name: '时长',
+                        type: 'line',
+                        yAxisIndex:1,
+                        smooth:true,                                              
+                        
+                        itemStyle: { normal: { color: '#e08031' } },
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+
+                        },
+                        itemStyle: {
+                            normal: { color: '#ff7073' },
+
+                        },
+                        data: data.map(function (d) {
+                            return d.value[2];
+                        }),   
+                    },
+
+
+                ]
+            };
+            myChart6.setOption(option6);
+        </script>        
+
+    </div>
+
+
+    <div id='call7' class="box" style="height:500px"></div>
+    <div>
+        <script type="text/javascript" language="javascript">
+            var myChart7 = echarts.init(document.getElementById('call7'));
+            var data = [
+                {name: '张三', 'value': [0.7,180,1340000000]},     // value 值，第一个为距离圆心距离，第二个为角度，第三个为电话号码
+                {name: '李四', 'value': [1.3,220, 1564234234]},
+                {name: '王五', 'value': [1.7,120]},
+                {name: '赵六', 'value': [0.7,10]},
+                {name: '麻子', 'value': [1.3,30]},
+                {name: '', 'value': [2.7,50]},
+                {name: '未知', 'value': [0.9,70]},
+                {name: '未知2', 'value': [1.2,90]},
+                {name: '未知3', 'value': [2.5,50]},
+                {name: '未知', 'value': [0.9,180]},
+                {name: '未知2', 'value': [1.3,190]},
+                {name: '未知3', 'value': [1.7,120]},
+                
+                {name: '未知2', 'value': [1.3,30]},
+                {name: '未知3', 'value': [2.7,50]},
+                {name: '未知', 'value': [2.9,70]},
+                {name: '未知2', 'value': [2.2,130]},
+                {name: '未知3', 'value': [2.4,100]},
+                
+                {name: '未知2', 'value': [1.3,30]},
+                {name: '未知3', 'value': [2.7,170]},
+                {name: '未知', 'value': [2.9,270]},
+                {name: '未知2', 'value': [2.2,230]},
+                {name: '未知3', 'value': [2.4,200]},
+
+                    
+                    ];
+            option7 = {                
+                title: {
+                    text: '社交圈',
+                    left: 'center',
+                    textStyle: {
+                        color: '#222',
+                        fontSize: 14,
+                    },
+                },
+                toolbox: {
+                    show:true,
+
+                },
+                legend: {
+                        show: true,
+                        left: 20,
+                        top: 30,
+                        data:[],
+                        textStyle: {
+                            color: '#222'
+                        }
+                    },
+
+                polar: {},
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        return params.name + ' : ' + params.value[2];
+                    }
+                },
+                angleAxis: {
+                    type: 'value',
+                    startAngle: 0
+                },
+                radiusAxis: {
+                    interval:1,
+                    max:3,
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                        
+                        }
+                    },
+                    splitArea: {
+                        show:true,
+                        areaStyle: {
+                            color: ['rgba(253,252,127,0.1)', 'rgba(245,185,119,0.1)','rgba(225,112,115,0.2)',  ]
+                        }
+
+                    }
+                },
+                dataZoom: [{
+                    type: 'slider',
+                    radiusAxisIndex: 0 
+                }],
+                label:{
+                    normal:{
+                        show: true,
+                        position: 'right',
+                        formatter: function (params) {
+                                    return params.name;
+                                },
+                    }
+                },
+                series: [{
+                    coordinateSystem: 'polar',
+                    name: '社交圈',
+                    type: 'scatter',                    
+                    data: data                 
+                    
+                }]
+            };
+            myChart7.setOption(option7);
+        </script>        
+
+    </div>
+
+
+</body>
+
+</html>
